@@ -16,3 +16,16 @@ Lisäksi maksut kategorisoidaan tarvittaessa erikseen seurattaviin kulukategorio
 * Liitostaulu Maksu<>Maksukategoria - Maksu voi kuulua moneen kategoriaan tarpeen mukaan.
 
 ## Toiminnallisuuksia, alustava suunnitelma
+* Käyttäjän maksaman kokonaissumman tarkistaminen
+* Maksujen määrien ja maksettujen summien jakaantuminen käyttäjittäin
+* Osaprojektin maksimibudjetin ja osaprojektiin liitettyjen toteutuneiden maksujen summien vertaaminen, tieto budjetin alituksesta tai ylityksestä
+* Koko tapahtuman kuluarvion (osaprojektien maksimisummien summa) vertaaminen kaikkiin toteutuneisiin maksutapahtumiin
+* Maksujen haku tietyltä päivältä tai ennen tai jälkeen tietyn päivän (esim. ennen tai jälkeen tapahtuman)
+* Tietyn kulukategorian maksujen seuraaminen
+* Mahdollisesti toteutettava: syötetyn maksun tietojen muokkaaminen (voisi olla näppärä?)
+
+## Suunniteltu kehitysjärjestys
+Aluksi toteutetaan maksu-taulu ja maksujen syöttäminen. Tämän jälkeen toteutetaan käyttäjä-taulu ja kirjautuminen, mahdollistetaan maksun syöttäminen vain kirjautuneelle ja yhdistetään kukin syötetty maksu käyttäjään.
+Tämän jälkeen kehitetään maksujen listaus- ja hakunäkymät, joissa aluksi rajatut toiminnallisuudet. 
+Näkymän valmistuttua toteutetaan osa-alue- ja maksukategoria-taulut ja yhdistetään niiden toiminnallisuudet sovellukseen.
+Viimeiseksi viimeistellään toiminnallisuudet, kuten kaikkia tauluja hyödyntävät haut, ja sovelluksen ulkoasu. 
