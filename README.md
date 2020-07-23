@@ -10,10 +10,10 @@ Lisäksi maksut kategorisoidaan tarvittaessa erikseen seurattaviin kulukategorio
 ## Taulut, alustava suunnitelma
 * Käyttäjä - Sovelluksen käyttäjän tiedot
 * Maksu - Maksutapahtumat
-* Osa-alue - Kertoo, mihin juhlan osa-alueeseen maksu kuuluu. Joka osa-alueella on määritelty budjetti.
+* Tapahtuma - Tapahtuma, johon maksu liittyy
+* Osa-alue - Kertoo, mihin tapahtuman osa-alueeseen maksu kuuluu. Joka osa-alueella on määritelty budjetti.
 * Maksukategoria - Kirjanpitoa varten, maksun voi merkitä esimerkiksi varausmaksuksi tai käteiskassan maksuksi.
-* Liitostaulu Maksu<>Osa-alue - Joka osa-alueesta vastaa yksi tai useampi käyttäjä, ja tätä kautta voi selvittää keneen voi olla yhteydessä siitä
-* Liitostaulu Maksu<>Maksukategoria - Maksu voi kuulua moneen kategoriaan tarpeen mukaan.
+* Liitostaulu Maksu<>Maksukategoria - Jos päädytään siihen, että maksu voi kuulua moneen kategoriaan tarpeen mukaan.
 
 ## Toiminnallisuuksia, alustava suunnitelma
 * Käyttäjän maksaman kokonaissumman tarkistaminen
@@ -24,8 +24,10 @@ Lisäksi maksut kategorisoidaan tarvittaessa erikseen seurattaviin kulukategorio
 * Tietyn kulukategorian maksujen seuraaminen
 * Mahdollisesti toteutettava: syötetyn maksun tietojen muokkaaminen (voisi olla näppärä?)
 
-## Suunniteltu kehitysjärjestys
-Aluksi toteutetaan maksu-taulu ja maksujen syöttäminen. Tämän jälkeen toteutetaan käyttäjä-taulu ja kirjautuminen, mahdollistetaan maksun syöttäminen vain kirjautuneelle ja yhdistetään kukin syötetty maksu käyttäjään.
-Tämän jälkeen kehitetään maksujen listaus- ja hakunäkymät, joissa aluksi rajatut toiminnallisuudet. 
-Näkymän valmistuttua toteutetaan osa-alue- ja maksukategoria-taulut ja yhdistetään niiden toiminnallisuudet sovellukseen.
-Viimeiseksi viimeistellään toiminnallisuudet, kuten kaikkia tauluja hyödyntävät haut, ja sovelluksen ulkoasu. 
+## Kehityksen tilanne
+Nyt sovelluksessa on toteutettu etusivu ja kirjautuminen ilman kantayhteyttä. Kantayhteyden avulla lasketaan kannan tapahtuma-taulun rivimäärä index-sivulle kirjautumisen jälkeen.
+Lisäksi CREATE TABLET on tehty kaikille tauluille nykyisen suunnitelman mukaan.
+Rakenne on heti toteutettu niin, että kyselyt voidaan tehdä taulukohtaisesti ja uudelleenohjaukset ovat toistaiseksi yhdellä omalla sivullaan.
+
+Seuraavaksi toteutetaan tapahtumien listaustoiminnallisuus ja niistä linkit kunkin tapahtuman omalle sivulle, jolla voi sitten tarkastella tapahtuman osa-alueita ja maksuja myöhemmin eri hakujen kautta.
+En ole vielä päättänyt, lisätäänkö uusi maksu kunkin tapahtuman oman sivun kautta vai erillisellä Lisää maksu -sivullaan.
