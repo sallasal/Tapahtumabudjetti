@@ -1,8 +1,9 @@
 CREATE TABLE kayttajat (
     id SERIAL PRIMARY KEY, 
-    nimi TEXT, 
-    salasana TEXT, 
-    email TEXT
+    nimi TEXT NOT NULL, 
+    salasana TEXT NOT NULL, 
+    email TEXT,
+    CONSTRAINT nimi_unique UNIQUE (nimi)
 );
 
 CREATE TABLE tapahtumat (
