@@ -1,12 +1,13 @@
 {% extends "layout.html" %}
 
 {% block content %}
-{% if session.username %}
-<p>Tervetuloa hallinnoimaan tapahtumasi kuluja. Olet kirjautunut sisään tunnuksella {{ session.username }}</p>
+{% if session.user_id %}
+<p>Tervetuloa hallinnoimaan tapahtumien kuluja.</p>
 <p><a href="/logout">Kirjaudu ulos</a></p>
+<h2>Kaikki tapahtumat</h2>
 <p>Tapahtumia järjestelmässä: {{ laskuri }} kappaletta (laskuri)</p>
 {% else %}
-<h2>Kirjaudu sisään sovellukseen.</h2>
+<h2>Aloita kirjautumalla sisään.</h2>
 <form action="/login" method="POST">
 <p>Tunnus:<br />
   <input type="text" name="username" />
@@ -16,5 +17,6 @@
 </p>
 <input type="submit" value="Kirjaudu sisään" />
 </form>
+<p>Jos sinulla ei ole vielä tunnusta, <a href="/register">rekisteröidy</a>.</p>
 {% endif %}
 {% endblock %}

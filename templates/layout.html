@@ -6,10 +6,14 @@
 
   <body>
     <h1>Tapahtumabudjetti</h1>
-    <p>
-      Valikkoa tähän | 
+{% if session.user_id %}
+    <p> 
+      <a href="/">Etusivu</a> | <a href="/logout">Kirjaudu ulos</a>
+    </p>
+{% else %}
+    <p> 
       <a href="/">Etusivu</a>
     </p>
+{% endif %}
     <p>{% block content %}{% endblock %}</p>
-  </body>
 </html>
