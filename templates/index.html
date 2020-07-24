@@ -3,7 +3,6 @@
 {% block content %}
 {% if session.user_id %}
 <p>Tervetuloa hallinnoimaan tapahtumien kuluja.</p>
-<p><a href="/logout">Kirjaudu ulos</a></p>
 <h2>Kaikki tapahtumat</h2>
 <p>Tapahtumia järjestelmässä: {{ laskuri }} kappaletta (laskuri)</p>
 {% else %}
