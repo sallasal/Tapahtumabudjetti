@@ -20,7 +20,8 @@ CREATE TABLE osaprojektit (
 
 CREATE TABLE kulukategoriat (
     id SERIAL PRIMARY KEY, 
-    nimi TEXT);
+    nimi TEXT
+);
 
 CREATE TABLE maksut (
     id SERIAL PRIMARY KEY, 
@@ -29,5 +30,6 @@ CREATE TABLE maksut (
     kulukategoria INTEGER REFERENCES kulukategoriat, 
     saaja TEXT, 
     summa INTEGER, 
-    pvm DATE);
+    pvm DATE
+);
 
