@@ -2,12 +2,16 @@ from app import app
 import tapahtumat, users
 from flask import render_template, redirect, session, request
 
-# Avaussivun reititys
+# Sivujen reititykset
 @app.route("/")
 def index():
     laskuri = tapahtumat.laske_tapahtumat()
     tapahtumalista = tapahtumat.listaa_tapahtumat()
     return render_template("index.html", laskuri = laskuri, tapahtumalista = tapahtumalista)
+
+@app.route("/createtapahtuma")
+def createtapahutma():
+    return render_template("createtapahtuma.html")
 
 
 # Kirjautumiseen liittyvät reitit
