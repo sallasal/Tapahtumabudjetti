@@ -6,7 +6,8 @@ from flask import render_template, redirect, session, request
 @app.route("/")
 def index():
     laskuri = tapahtumat.laske_tapahtumat()
-    return render_template("index.html", laskuri = laskuri)
+    tapahtumalista = tapahtumat.listaa_tapahtumat()
+    return render_template("index.html", laskuri = laskuri, tapahtumalista = tapahtumalista)
 
 
 # Kirjautumiseen liittyvät reitit
