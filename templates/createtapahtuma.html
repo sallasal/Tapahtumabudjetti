@@ -2,4 +2,15 @@
 
 {% block content %}
 <h2>Lisää uusi tapahtuma</h2>
+<p>Luo uusi tapahtuma syöttämällä tapahtuman nimi alla olevaan kenttään.
+Tämän jälkeen voit lisätä tapahtumaan osa-alueita ja maksuja tapahtuman omalla sivulla.</p>
+<form action="/createtapahtuma" method="POST">
+  <p>Uuden tapahtuman nimi:</p>
+  <p>
+    <input type="text" name="nimi" />
+  </p>
+  <p>
+    <input type="submit" value="Luo tapahtuma" />
+  </p>
+</form>
 {% endblock %}

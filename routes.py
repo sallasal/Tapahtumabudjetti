@@ -9,9 +9,16 @@ def index():
     tapahtumalista = tapahtumat.listaa_tapahtumat()
     return render_template("index.html", laskuri = laskuri, tapahtumalista = tapahtumalista)
 
-@app.route("/createtapahtuma")
-def createtapahutma():
-    return render_template("createtapahtuma.html")
+@app.route("/createtapahtuma", methods=["GET","POST"])
+def createtapahtuma():
+    if request.method == "GET":
+        return render_template("createtapahtuma.html")
+    if request.method == "POST":
+        nimi = request.form["nimi"]
+        if tapahtumat.lisaa_tapahtuma(nimi):
+            return redirect("/")
+        else:
+            return render_template("error.html",message="Tapahtuman luominen ei jostain syystä onnistunut. Tarkista arvo ja yritä uudelleen.")
 
 
 # Kirjautumiseen liittyvät reitit
