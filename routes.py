@@ -20,6 +20,10 @@ def createtapahtuma():
         else:
             return render_template("error.html",message="Tapahtuman luominen ei jostain syystä onnistunut. Tarkista arvo ja yritä uudelleen.")
 
+@app.route("/tapahtuma/<int:id>", methods=["GET"])
+def tapahtuma(id):
+    tapahtumatiedot = tapahtumat.hae_tapahtuma(id)
+    return render_template("tapahtuma.html", tapahtumatiedot = tapahtumatiedot)
 
 # Kirjautumiseen liittyvät reitit
 @app.route("/login", methods=["get","post"])

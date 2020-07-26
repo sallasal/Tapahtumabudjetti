@@ -18,3 +18,9 @@ def lisaa_tapahtuma(nimi):
     db.session.execute(sql, {"nimi":nimi,"user_id":user_id})
     db.session.commit()
     return True
+
+def hae_tapahtuma(id):
+    sql = "SELECT id, nimi, kayttaja FROM tapahtumat WHERE id=:id"
+    result = db.session.execute(sql, {"id":id})
+    tapahtumatiedot = result.fetchall()
+    return tapahtumatiedot

@@ -8,7 +8,7 @@
 
 <ul>
   {% for tapahtuma in tapahtumalista %}
-    <li>{{ tapahtuma[1] }}</li>
+    <li><a href="/tapahtuma/{{ tapahtuma[0]}}">{{ tapahtuma[1] }}</a></li>
   {% endfor %}
 </ul>
 
