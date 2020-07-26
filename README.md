@@ -25,9 +25,22 @@ Lisäksi maksut kategorisoidaan tarvittaessa erikseen seurattaviin kulukategorio
 * Mahdollisesti toteutettava: syötetyn maksun tietojen muokkaaminen (voisi olla näppärä?)
 
 ## Kehityksen tilanne
-Nyt sovelluksessa on toteutettu etusivu ja kirjautuminen ilman kantayhteyttä. Kantayhteyden avulla lasketaan kannan tapahtuma-taulun rivimäärä index-sivulle kirjautumisen jälkeen.
-Lisäksi CREATE TABLET on tehty kaikille tauluille nykyisen suunnitelman mukaan.
-Rakenne on heti toteutettu niin, että kyselyt voidaan tehdä taulukohtaisesti ja uudelleenohjaukset ovat toistaiseksi yhdellä omalla sivullaan.
+Ohjelmalle on nyt toteutettu runkoa, hyvin perustason ominaisuuksia ja mm. koko kannan rakenne on jo tiedostossa schema.sql (toki voi tulla viilauksia vielä).
+Tähän mennessä on tehty kirjautuminen ja tapahtumat-taulun uusien tapahtumien lisääminen siten, että jokainen tapahtuma liittyy sen luoneeseen käyttäjään.
+Ohjelman käyttöliittymässä taas on luotu tapahtumien listaus, josta pääsee tarkastelemaan kullekin tapahtumalle id:n perusteella generoituvaa omaa sivua, sekä uuden tapahtuman lisäyslomake.
 
-Seuraavaksi toteutetaan tapahtumien listaustoiminnallisuus ja niistä linkit kunkin tapahtuman omalle sivulle, jolla voi sitten tarkastella tapahtuman osa-alueita ja maksuja myöhemmin eri hakujen kautta.
-En ole vielä päättänyt, lisätäänkö uusi maksu kunkin tapahtuman oman sivun kautta vai erillisellä Lisää maksu -sivullaan.
+Tiivistetysti: kirjautumaton käyttäjä voi ohjelman tämänhetkisessä versiossa
+* kirjautua sisään
+* rekisteröityä.
+
+Kirjautunut käyttäjä puolestaan voi
+* tarkastella tapahtumalistaa
+* tarkastella kunkin tapahtuman tietoja omalla sivullaan
+* lisätä tapahtuman
+* kirjautua ulos.
+
+Seuraavaksi parannetaan tapahtuman tietojen näyttämistä tapahtuman omalla sivulla.
+Tämän jälkeen mahdollistetaan osa-alueiden ja niiden budjettien lisääminen, muokkaaminen, listaaminen ja poistaminen tapahtuman alla.
+Sitten kannattaa varmaan tehdä maksukategorioiden lisääminen ja listaus, ja viimeisenä eniten riippuvuuksia sisältävä eli maksutapahtuman lisääminen, muokkaus ja listaus.
+
+Aivan viimeiseksi jää sitten erilaisten yhteenvetokyselyiden tekeminen kunkin tapahtuman sivulla.
