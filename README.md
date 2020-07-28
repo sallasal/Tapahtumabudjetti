@@ -40,6 +40,7 @@ Kirjautunut käyttäjä puolestaan voi
 * lisätä osaprojekteja tapahtumille kunkin tapahtuman omalla sivulla
 * kirjautua ulos.
 
+Viikkopalautteen perusteella on nyt käännetty lähes kaikki koodin muuttujat ym. englanniksi. Ainoastaan kanta ja sieltä ilman välikäsiä hakeva SQL on vielä suomeksi. Se käännetään seuraavaksi.
 Tämän jälkeen mahdollistetaan osa-alueiden ja niiden budjettien listaaminen, muokkaaminen ja poistaminen tapahtuman alla.
 Sitten kannattaa varmaan tehdä maksukategorioiden lisääminen ja listaus, ja viimeisenä eniten riippuvuuksia sisältävä eli maksutapahtuman lisääminen, muokkaus ja listaus.
 
