@@ -26,6 +26,7 @@ Lisäksi maksut kategorisoidaan tarvittaessa erikseen seurattaviin kulukategorio
 
 ## Kehityksen tilanne
 Ohjelmalle on nyt toteutettu runkoa, hyvin perustason ominaisuuksia ja mm. koko kannan rakenne on jo tiedostossa schema.sql (toki voi tulla viilauksia vielä).
+Viikkopalautteen perusteella on nyt käännetty koodi ja tietokanta englanniksi.
 Tähän mennessä on tehty kirjautuminen ja tapahtumat-taulun uusien tapahtumien lisääminen siten, että jokainen tapahtuma liittyy sen luoneeseen käyttäjään.
 Ohjelman käyttöliittymässä taas on luotu tapahtumien listaus, josta pääsee tarkastelemaan kullekin tapahtumalle id:n perusteella generoituvaa omaa sivua, sekä uuden tapahtuman lisäyslomake.
 
@@ -40,7 +41,6 @@ Kirjautunut käyttäjä puolestaan voi
 * lisätä osaprojekteja tapahtumille kunkin tapahtuman omalla sivulla
 * kirjautua ulos.
 
-Viikkopalautteen perusteella on nyt käännetty lähes kaikki koodin muuttujat ym. englanniksi. Ainoastaan kanta ja sieltä ilman välikäsiä hakeva SQL on vielä suomeksi. Se käännetään seuraavaksi.
 Tämän jälkeen mahdollistetaan osa-alueiden ja niiden budjettien listaaminen, muokkaaminen ja poistaminen tapahtuman alla.
 Sitten kannattaa varmaan tehdä maksukategorioiden lisääminen ja listaus, ja viimeisenä eniten riippuvuuksia sisältävä eli maksutapahtuman lisääminen, muokkaus ja listaus.
 
