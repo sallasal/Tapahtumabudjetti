@@ -6,9 +6,9 @@ def list_all_subprojects():
     osaprojektilista = result.fetchall()
     return osaprojektilista
 
-def add_subproject(nimi,budjettisumma,tapahtumaid):
-    sql = "INSERT INTO osaprojektit (nimi, budjettisumma,tapahtuma) VALUES (:nimi,:budjettisumma,:tapahtumaid)"
-    db.session.execute(sql, {"nimi":nimi,"budjettisumma":budjettisumma,"tapahtumaid":tapahtumaid})
+def add_subproject(name,total_sum,project_id):
+    sql = "INSERT INTO osaprojektit (nimi, budjettisumma,tapahtuma) VALUES (:name,:total_sum,:project_id)"
+    db.session.execute(sql, {"name":name,"total_sum":total_sum,"project_id":project_id})
     db.session.commit()
     return True
 

@@ -14,27 +14,27 @@ def createproject():
     if request.method == "GET":
         return render_template("createproject.html")
     if request.method == "POST":
-        nimi = request.form["nimi"]
-        if projects.add_project(nimi):
+        name = request.form["name"]
+        if projects.add_project(name):
             return redirect("/")
         else:
             return render_template("error.html",message="Tapahtuman luominen ei jostain syystä onnistunut. Tarkista arvo ja yritä uudelleen.")
 
 @app.route("/project/<int:id>", methods=["GET"])
 def project(id):
-    tapahtumatiedot = projects.get_project(id)
-    jarjestaja_id = tapahtumatiedot[2]
-    kayttajatiedot = users.user_name(jarjestaja_id)
-    return render_template("project.html", tapahtumatiedot = tapahtumatiedot, kayttajatiedot = kayttajatiedot)
+    project_information = projects.get_project(id)
+    creator_id = project_information[2]
+    user_information = users.user_name(creator_id)
+    return render_template("project.html", project_information = project_information, user_information = user_information)
 
 #Osaprojekteihin liittyvät reititykset
 @app.route("/createsubproject", methods=["POST"])
 def createsubproject():
-    tapahtumaid = request.form["tapahtumaid"]
-    nimi = request.form["nimi"]
-    budjettisumma = request.form["budjettisumma"]
-    if subprojects.add_subproject(nimi,budjettisumma,tapahtumaid):
-        return redirect("/project/"+tapahtumaid)
+    project_id = request.form["tapahtumaid"]
+    name = request.form["name"]
+    total_sum = request.form["total_sum"]
+    if subprojects.add_subproject(name,total_sum,project_id):
+        return redirect("/project/"+project_id)
     else:
         return render_template("error.html",message="Osa-alueen lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
 

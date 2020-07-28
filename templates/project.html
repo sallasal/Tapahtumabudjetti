@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h2>Tarkastelet tapahtumaa: {{ tapahtumatiedot[1] }}</h2>
-<p>Tapahtuman järjestäjä: {{ kayttajatiedot[0] }}, {{ kayttajatiedot[1] }}</p>
+<h2>Tarkastelet tapahtumaa: {{ project_information[1] }}</h2>
+<p>Tapahtuman järjestäjä: {{ user_information[0] }}, {{ user_information[1] }}</p>
 <p>Lasketaan tähän tapahtuman kokonaiskuluarvio osa-alueista myöhemmin</p>
 
 <hr>
@@ -10,11 +10,11 @@
 <p>Listataan tapahtuman osa-alueet tähän myöhemmin</p>
 <h4>Lisää uusi osa-alue</h4>
 <form action="/createsubproject" method="POST">
-  <input type="hidden" name="tapahtumaid" value="{{ tapahtumatiedot[0] }}" />
+  <input type="hidden" name="tapahtumaid" value="{{ project_information[0] }}" />
   <p>Uuden osa-alueen nimi:</p>
-  <p><input type="text" name="nimi" /></p>
+  <p><input type="text" name="name" /></p>
   <p>Osa-alueelle budjetoitava summa:</p>
-  <p><input type="number" name="budjettisumma" /><p>
+  <p><input type="number" name="total_sum" /><p>
   <p><input type="submit" value="Lisää osa-alue" /></p>
 </form>
 

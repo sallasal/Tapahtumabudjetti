@@ -12,10 +12,10 @@ def list_projects():
     tapahtumalista = result.fetchall()
     return tapahtumalista
 
-def add_project(nimi):
+def add_project(name):
     user_id = users.user_id()
-    sql = "INSERT INTO tapahtumat (nimi, kayttaja) VALUES (:nimi,:user_id)"
-    db.session.execute(sql, {"nimi":nimi,"user_id":user_id})
+    sql = "INSERT INTO tapahtumat (nimi, kayttaja) VALUES (:name,:user_id)"
+    db.session.execute(sql, {"name":name,"user_id":user_id})
     db.session.commit()
     return True
 
