@@ -22,5 +22,5 @@ def lisaa_tapahtuma(nimi):
 def hae_tapahtuma(id):
     sql = "SELECT id, nimi, kayttaja FROM tapahtumat WHERE id=:id"
     result = db.session.execute(sql, {"id":id})
-    tapahtumatiedot = result.fetchall()
+    tapahtumatiedot = result.fetchone()
     return tapahtumatiedot

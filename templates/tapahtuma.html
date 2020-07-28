@@ -1,12 +1,10 @@
 {% extends "layout.html" %}
 
 {% block content %}
-{% for tapahtumatieto in tapahtumatiedot %}
-<h2>Tarkastelet tapahtumaa: {{ tapahtumatieto[1] }}</h2>
-<p>Tapahtuman luoja-id (haetaan myöhemmin nimi tähän): {{ tapahtumatieto[2] }}</p>
+<h2>Tarkastelet tapahtumaa: {{ tapahtumatiedot[1] }}</h2>
+<p>Tapahtuman järjestäjä: {{ kayttajatiedot[0] }}, {{ kayttajatiedot[1] }}</p>
 <h3>Osa-alueet</h3>
 <p>Listataan tapahtuman osa-alueet tähän myöhemmin</p>
 <h3>Maksut</h3>
 <p>Listataan tapahtuman maksut tai eri hakuvaihtoehtoja / yhteenvetoa tähän myöhemmin</p>
-{% endfor %}
 {% endblock %}

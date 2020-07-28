@@ -30,3 +30,9 @@ def register(username,password,email):
 
 def user_id():
     return session.get("user_id",0)
+
+def user_name(id):
+    sql = "SELECT nimi, email FROM kayttajat WHERE id=:id"
+    result = db.session.execute(sql, {"id":id})
+    kayttajatiedot = result.fetchone()
+    return kayttajatiedot

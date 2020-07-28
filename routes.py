@@ -23,7 +23,9 @@ def createtapahtuma():
 @app.route("/tapahtuma/<int:id>", methods=["GET"])
 def tapahtuma(id):
     tapahtumatiedot = tapahtumat.hae_tapahtuma(id)
-    return render_template("tapahtuma.html", tapahtumatiedot = tapahtumatiedot)
+    jarjestaja_id = tapahtumatiedot[2]
+    kayttajatiedot = users.user_name(jarjestaja_id)
+    return render_template("tapahtuma.html", tapahtumatiedot = tapahtumatiedot, kayttajatiedot = kayttajatiedot)
 
 # Kirjautumiseen liittyvät reitit
 @app.route("/login", methods=["get","post"])

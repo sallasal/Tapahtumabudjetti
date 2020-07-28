@@ -39,7 +39,6 @@ Kirjautunut käyttäjä puolestaan voi
 * lisätä tapahtuman
 * kirjautua ulos.
 
-Seuraavaksi parannetaan tapahtuman tietojen näyttämistä tapahtuman omalla sivulla.
 Tämän jälkeen mahdollistetaan osa-alueiden ja niiden budjettien lisääminen, muokkaaminen, listaaminen ja poistaminen tapahtuman alla.
 Sitten kannattaa varmaan tehdä maksukategorioiden lisääminen ja listaus, ja viimeisenä eniten riippuvuuksia sisältävä eli maksutapahtuman lisääminen, muokkaus ja listaus.
 
