@@ -4,11 +4,11 @@
 {% if session.user_id %}
 <p>Tervetuloa hallinnoimaan tapahtumien kuluja.</p>
 <h2>Kaikki tapahtumat</h2>
-<p>Tapahtumia järjestelmässä: {{ laskuri }} kappaletta.</p>
+<p>Tapahtumia järjestelmässä: {{ counter }} kappaletta.</p>
 
 <ul>
-  {% for tapahtuma in tapahtumalista %}
-    <li><a href="/tapahtuma/{{ tapahtuma[0]}}">{{ tapahtuma[1] }}</a></li>
+  {% for project in project_list %}
+    <li><a href="/project/{{ project[0]}}">{{ project[1] }}</a></li>
   {% endfor %}
 </ul>
 
