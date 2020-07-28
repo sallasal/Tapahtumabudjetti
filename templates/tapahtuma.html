@@ -3,8 +3,22 @@
 {% block content %}
 <h2>Tarkastelet tapahtumaa: {{ tapahtumatiedot[1] }}</h2>
 <p>Tapahtuman järjestäjä: {{ kayttajatiedot[0] }}, {{ kayttajatiedot[1] }}</p>
+<p>Lasketaan tähän tapahtuman kokonaiskuluarvio osa-alueista myöhemmin</p>
+
+<hr>
 <h3>Osa-alueet</h3>
 <p>Listataan tapahtuman osa-alueet tähän myöhemmin</p>
+<h4>Lisää uusi osa-alue</h4>
+<form action="/createosaprojekti" method="POST">
+  <input type="hidden" name="tapahtumaid" value="{{ tapahtumatiedot[0] }}" />
+  <p>Uuden osa-alueen nimi:</p>
+  <p><input type="text" name="nimi" /></p>
+  <p>Osa-alueelle budjetoitava summa:</p>
+  <p><input type="number" name="budjettisumma" /><p>
+  <p><input type="submit" value="Lisää osa-alue" /></p>
+</form>
+
+<hr>
 <h3>Maksut</h3>
 <p>Listataan tapahtuman maksut tai eri hakuvaihtoehtoja / yhteenvetoa tähän myöhemmin</p>
 {% endblock %}
