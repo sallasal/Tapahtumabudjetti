@@ -3,7 +3,7 @@ from flask import session
 from werkzeug.security import check_password_hash, generate_password_hash
 
 def login(username,password):
-    sql = "SELECT salasana, id FROM kayttajat WHERE nimi=:username"
+    sql = "SELECT password, id FROM users WHERE name=:username"
     result = db.session.execute(sql, {"username":username})
     user = result.fetchone()
     if user == None:
@@ -21,7 +21,7 @@ def logout():
 def register(username,password,email):
     hash_value = generate_password_hash(password)
     try:
-        sql = "INSERT INTO kayttajat (nimi,salasana,email) VALUES (:username,:password,:email)"
+        sql = "INSERT INTO users (name,password,email) VALUES (:username,:password,:email)"
         db.session.execute(sql, {"username":username,"password":hash_value,"email":email})
         db.session.commit()
     except:
@@ -32,7 +32,7 @@ def user_id():
     return session.get("user_id",0)
 
 def user_name(id):
-    sql = "SELECT nimi, email FROM kayttajat WHERE id=:id"
+    sql = "SELECT name, email FROM users WHERE id=:id"
     result = db.session.execute(sql, {"id":id})
-    kayttajatiedot = result.fetchone()
-    return kayttajatiedot
+    user_information = result.fetchone()
+    return user_information

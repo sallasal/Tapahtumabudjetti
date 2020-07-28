@@ -1,36 +1,34 @@
-CREATE TABLE kayttajat (
+CREATE TABLE users (
     id SERIAL PRIMARY KEY, 
-    nimi TEXT NOT NULL, 
-    salasana TEXT NOT NULL, 
-    email TEXT,
-    CONSTRAINT nimi_unique UNIQUE (nimi)
+    name TEXT UNIQUE NOT NULL, 
+    password TEXT NOT NULL, 
+    email TEXT
 );
 
-CREATE TABLE tapahtumat (
+CREATE TABLE projects (
     id SERIAL PRIMARY KEY, 
-    nimi TEXT, 
-    kayttaja INTEGER REFERENCES kayttajat
+    name TEXT,
+    userid INTEGER REFERENCES users
 );
 
-CREATE TABLE osaprojektit (
+CREATE TABLE subprojects (
     id SERIAL PRIMARY KEY, 
-    nimi TEXT, 
-    budjettisumma INTEGER, 
-    tapahtuma INTEGER REFERENCES tapahtumat
+    name TEXT, 
+    total INTEGER, 
+    project INTEGER REFERENCES projects
 );
 
-CREATE TABLE kulukategoriat (
+CREATE TABLE categories (
     id SERIAL PRIMARY KEY, 
-    nimi TEXT
+    name TEXT
 );
 
-CREATE TABLE maksut (
+CREATE TABLE payments (
     id SERIAL PRIMARY KEY, 
-    kayttaja INTEGER REFERENCES kayttajat, 
-    osaprojekti INTEGER REFERENCES osaprojektit NOT NULL, 
-    kulukategoria INTEGER REFERENCES kulukategoriat, 
-    saaja TEXT, 
-    summa INTEGER, 
-    pvm DATE
+    userid INTEGER REFERENCES users, 
+    subproject INTEGER REFERENCES subprojects NOT NULL, 
+    category INTEGER REFERENCES categories, 
+    recipient TEXT, 
+    total INTEGER, 
+    date DATE
 );
-
