@@ -1,12 +1,12 @@
 from db import db
 
 # Osaprojekteja koskevat SQL:t
-def listaa_kaikki_osaprojektit():
+def list_all_subprojects():
     result = db.session.execute("SELECT id, nimi, budjettisumma FROM osaprojektit ORDER BY id DESC")
     osaprojektilista = result.fetchall()
     return osaprojektilista
 
-def lisaa_osaprojekti(nimi,budjettisumma,tapahtumaid):
+def add_subproject(nimi,budjettisumma,tapahtumaid):
     sql = "INSERT INTO osaprojektit (nimi, budjettisumma,tapahtuma) VALUES (:nimi,:budjettisumma,:tapahtumaid)"
     db.session.execute(sql, {"nimi":nimi,"budjettisumma":budjettisumma,"tapahtumaid":tapahtumaid})
     db.session.commit()

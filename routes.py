@@ -1,5 +1,5 @@
 from app import app
-import osaprojektit, projects, users
+import projects, subprojects, users
 from flask import render_template, redirect, session, request
 
 # Sivujen reititykset
@@ -28,12 +28,12 @@ def project(id):
     return render_template("project.html", tapahtumatiedot = tapahtumatiedot, kayttajatiedot = kayttajatiedot)
 
 #Osaprojekteihin liittyvät reititykset
-@app.route("/createosaprojekti", methods=["POST"])
-def createosaprojekti():
+@app.route("/createsubproject", methods=["POST"])
+def createsubproject():
     tapahtumaid = request.form["tapahtumaid"]
     nimi = request.form["nimi"]
     budjettisumma = request.form["budjettisumma"]
-    if osaprojektit.lisaa_osaprojekti(nimi,budjettisumma,tapahtumaid):
+    if subprojects.add_subproject(nimi,budjettisumma,tapahtumaid):
         return redirect("/project/"+tapahtumaid)
     else:
         return render_template("error.html",message="Osa-alueen lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
