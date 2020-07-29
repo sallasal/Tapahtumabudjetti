@@ -39,6 +39,10 @@ def createsubproject():
     else:
         return render_template("error.html",message="Osa-alueen lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
 
+@app.route("/editsubprojects/<int:id>", methods=["GET"])
+def editsubprojects(id):
+    return render_template("editsubprojects.html")
+
 # Kirjautumiseen liittyvät reitit
 @app.route("/login", methods=["get","post"])
 def login():

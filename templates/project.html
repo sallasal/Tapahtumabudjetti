@@ -14,6 +14,8 @@
   {% endfor %}
 </ul>
 
+Tapahtuman järjestäjänä voit <a href="/editsubprojects/{{ project_information[0] }}">lisätä ja muokata osa-alueita</a>.
+
 <h4>Lisää uusi osa-alue</h4>
 <form action="/createsubproject" method="POST">
   <input type="hidden" name="tapahtumaid" value="{{ project_information[0] }}" />
