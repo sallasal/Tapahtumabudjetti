@@ -1,13 +1,20 @@
 # Tapahtumabudjetti
 Tsoha 2020 -harjoitustyö
 
+## Heroku
+Sovellusta voi testata Herokussa: https://tapahtumabudjetti.herokuapp.com/.
+
+Testatessa kannattaa rekisteröidä itselle oma testikäyttäjä ja luoda tällä testikäyttäjällä uusi tapahtuma.
+Näin pääsee testaamaan sekä tapahtuman järjestäjän ominaisuuksia (omassa tapahtumassa) että muiden käyttäjien tapahtumien käyttäytymistä.
+Herokussa on ainakin käyttäjän Salla tapahtumia jo pari testimielessä.
+
 ## Sovelluksen tarkoitus
 Sovellus on tarkoitettu tilanteeseen, jossa joukko ihmisiä järjestää tapahtumaa. Sovellus sopii esimerkiksi suurten juhlien tai järjestötapahtumien järjestäjäjoukoille.
 Sovelluksen avulla voi budjetoida koko tapahtuman ja sen osa-alueet (esim. ruoka, koristelu, ohjelma) sekä seurata toteutuneita maksuja käyttäjittäin ja osa-alueittain.
 Sovelluksella voi siis seurata, pysyvätkö suuren tapahtuman osaprojektit tai koko tapahtuma suunnitelluissa budjeteissaan, sekä tarkkailla maksun tarkkuudella, kuinka paljon kukin käyttäjä on maksanut tapahtuman kuluja, mihin osaprojekteihin maksut liittyvät jne. 
 Lisäksi maksut kategorisoidaan tarvittaessa erikseen seurattaviin kulukategorioihin (esim. varausmaksu, käteiskassan maksu, kuititon kulu), ja maksuja voi tarkastella näistä kategorioista käsin.
 
-## Taulut, alustava suunnitelma
+## Taulut, suunnitelma
 * Käyttäjä - Sovelluksen käyttäjän tiedot
 * Maksu - Maksutapahtumat
 * Tapahtuma - Tapahtuma, johon maksu liittyy
@@ -36,12 +43,12 @@ Tiivistetysti: kirjautumaton käyttäjä voi ohjelman tämänhetkisessä versios
 
 Kirjautunut käyttäjä puolestaan voi
 * tarkastella tapahtumalistaa
-* tarkastella kunkin tapahtuman tietoja omalla sivullaan
-* lisätä tapahtuman
-* lisätä osaprojekteja tapahtumille kunkin tapahtuman omalla sivulla
+* tarkastella kaikkien tapahtumien tietoja ja osaprojekteja niiden omilla tapahtumasivuilla
+* lisätä tapahtuman (jolloin rooliksi tulee tapahtuman järjestäjä)
+* lisätä tapahtumaan, jonka järjestäjä on, osaprojekteja.
 * kirjautua ulos.
 
-Tämän jälkeen mahdollistetaan osa-alueiden ja niiden budjettien listaaminen, muokkaaminen ja poistaminen tapahtuman alla.
+Tämän jälkeen mahdollistetaan osa-alueiden ja niiden budjettien muokkaaminen ja poistaminen tapahtuman osaprojektien muokkaussivulla.
 Sitten kannattaa varmaan tehdä maksukategorioiden lisääminen ja listaus, ja viimeisenä eniten riippuvuuksia sisältävä eli maksutapahtuman lisääminen, muokkaus ja listaus.
 
 Aivan viimeiseksi jää sitten erilaisten yhteenvetokyselyiden tekeminen kunkin tapahtuman sivulla.
