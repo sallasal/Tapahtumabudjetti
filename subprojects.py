@@ -1,8 +1,8 @@
 from db import db
 
 # Osaprojekteja koskevat SQL:t
-def list_all_subprojects():
-    result = db.session.execute("SELECT id, nimi, budjettisumma FROM osaprojektit ORDER BY id DESC")
+def list_subprojects():
+    result = db.session.execute("SELECT id, name, total FROM subprojects")
     subproject_list = result.fetchall()
     return subproject_list
 

@@ -25,7 +25,8 @@ def project(id):
     project_information = projects.get_project(id)
     creator_id = project_information[2]
     user_information = users.user_name(creator_id)
-    return render_template("project.html", project_information = project_information, user_information = user_information)
+    subproject_list = subprojects.list_subprojects()
+    return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list)
 
 #Osaprojekteihin liittyvät reititykset
 @app.route("/createsubproject", methods=["POST"])

@@ -7,7 +7,13 @@
 
 <hr>
 <h3>Osa-alueet</h3>
-<p>Listataan tapahtuman osa-alueet tähän myöhemmin</p>
+
+<ul>
+  {% for subproject in subproject_list %}
+    <li>{{ subproject[1] }}, budjetoitu {{ subproject[2] }} euroa. Osaprojektin tunniste {{ subproject[0] }}.</li>
+  {% endfor %}
+</ul>
+
 <h4>Lisää uusi osa-alue</h4>
 <form action="/createsubproject" method="POST">
   <input type="hidden" name="tapahtumaid" value="{{ project_information[0] }}" />
