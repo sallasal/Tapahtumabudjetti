@@ -1,8 +1,9 @@
 from db import db
 
 # Osaprojekteja koskevat SQL:t
-def list_subprojects():
-    result = db.session.execute("SELECT id, name, total FROM subprojects")
+def list_subprojects(project_id):
+    sql = "SELECT id, name, total FROM subprojects WHERE project=:project_id"
+    result = db.session.execute(sql, {"project_id":project_id})
     subproject_list = result.fetchall()
     return subproject_list
 
