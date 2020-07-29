@@ -41,7 +41,9 @@ def createsubproject():
 
 @app.route("/editsubprojects/<int:id>", methods=["GET"])
 def editsubprojects(id):
-    return render_template("editsubprojects.html")
+    project_information = projects.get_project(id)
+    subproject_list = subprojects.list_subprojects(id)
+    return render_template("editsubprojects.html", project_information = project_information, subproject_list = subproject_list)
 
 # Kirjautumiseen liittyvät reitit
 @app.route("/login", methods=["get","post"])

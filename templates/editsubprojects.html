@@ -1,5 +1,26 @@
 {% extends "layout.html" %}
 
 {% block content %}
-Tähän tulee osa-alueen muokkaussivu koskien tapahtumaa X
+<h2>Muokkaa tapahtuman {{ project_information[1] }} osa-alueita</h2>
+<p>[placeholder: linkki takaisin tapahtumasivulle]</p>
+
+<h3>Lisää uusi osa-alue</h3>
+<form action="/createsubproject" method="POST">
+  <input type="hidden" name="tapahtumaid" value="{{ project_information[0] }}" />
+  <p>Uuden osa-alueen nimi:</p>
+  <p><input type="text" name="name" /></p>
+  <p>Osa-alueelle budjetoitava summa:</p>
+  <p><input type="number" name="total_sum" /><p>
+  <p><input type="submit" value="Lisää osa-alue" /></p>
+</form>
+
+<h3>Muokkaa nykyisiä osa-alueita</h3>
+<ul>
+{% for subproject in subproject_list %}
+<h4>{{ subproject[1] }}</h4>
+<p>Tunniste: {{ subproject[0] }}. Budjetoitu {{ subproject[2] }} euroa.</p>
+<p>[Placeholder: edit ja remove -kentät]</p>
+{% endfor %}
+</ul>
+
 {% endblock %}
