@@ -41,9 +41,20 @@ def createsubproject():
 
 @app.route("/editsubprojects/<int:id>", methods=["GET"])
 def editsubprojects(id):
+    allow = False
     project_information = projects.get_project(id)
     subproject_list = subprojects.list_subprojects(id)
-    return render_template("editsubprojects.html", project_information = project_information, subproject_list = subproject_list)
+    getid = projects.get_userid(id)
+    userid1 = getid[0]
+    print(userid1)
+    userid2 = users.user_id()
+    print(userid2)
+    if userid1 == userid2:
+        allow = True
+    if not allow:
+        return render_template("error.html", message="Ei oikeutta muokata osa-alueita. Vain tapahtuman järjestäjällä on oikeus muokata osa-alueita.")
+    else:
+        return render_template("editsubprojects.html", project_information = project_information, subproject_list = subproject_list)
 
 # Kirjautumiseen liittyvät reitit
 @app.route("/login", methods=["get","post"])

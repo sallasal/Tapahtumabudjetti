@@ -24,3 +24,9 @@ def get_project(id):
     result = db.session.execute(sql, {"id":id})
     project_information = result.fetchone()
     return project_information
+
+def get_userid(id):
+    sql = "SELECT userid FROM projects WHERE id=:id"
+    result = db.session.execute(sql, {"id":id})
+    userid = result.fetchone()
+    return userid
