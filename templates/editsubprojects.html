@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>Muokkaa tapahtuman {{ project_information[1] }} osa-alueita</h2>
-<p>[placeholder: linkki takaisin tapahtumasivulle]</p>
+<p><a href="/project/{{ project_information[0] }}">Palaa takaisin tapahtuman sivulle</a></p>
 
 <h3>Lisää uusi osa-alue</h3>
 <form action="/createsubproject" method="POST">
