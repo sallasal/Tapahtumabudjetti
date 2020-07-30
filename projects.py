@@ -8,7 +8,7 @@ def count_projects():
     return counter
 
 def list_projects():
-    result = db.session.execute("SELECT id, name FROM projects ORDER BY id DESC")
+    result = db.session.execute("SELECT id, name FROM projects ORDER BY name ASC")
     project_list = result.fetchall()
     return project_list
 
