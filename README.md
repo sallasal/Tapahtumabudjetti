@@ -45,10 +45,10 @@ Kirjautunut käyttäjä puolestaan voi
 * tarkastella tapahtumalistaa
 * tarkastella kaikkien tapahtumien tietoja ja osaprojekteja niiden omilla tapahtumasivuilla
 * lisätä tapahtuman (jolloin rooliksi tulee tapahtuman järjestäjä)
-* lisätä tapahtumaan, jonka järjestäjä on, osaprojekteja.
+* lisätä tapahtumaan, jonka järjestäjä on, osaprojekteja ja muokata niihin budjetoituja summia.
 * kirjautua ulos.
 
-Tämän jälkeen mahdollistetaan osa-alueiden ja niiden budjettien muokkaaminen ja poistaminen tapahtuman osaprojektien muokkaussivulla.
+Seuraavaksi voisi tehdä pienen viilauksen projektilistaan: voisi listata käyttäjän mukaan omat tapahtumat ja muut tapahtumat.
 Sitten kannattaa varmaan tehdä maksukategorioiden lisääminen ja listaus, ja viimeisenä eniten riippuvuuksia sisältävä eli maksutapahtuman lisääminen, muokkaus ja listaus.
 
 Aivan viimeiseksi jää sitten erilaisten yhteenvetokyselyiden tekeminen kunkin tapahtuman sivulla.

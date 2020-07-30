@@ -56,6 +56,16 @@ def editsubprojects(id):
     else:
         return render_template("editsubprojects.html", project_information = project_information, subproject_list = subproject_list)
 
+@app.route("/updatetotal", methods=["POST"])
+def updatetotal():
+    project_id = request.form["project_id"]
+    subproject_id = request.form["subproject_id"]
+    newtotal = request.form["newtotal"]
+    if subprojects.update_total(subproject_id,newtotal):
+        return redirect("/project/"+project_id)
+    else:
+        return render_template("error.html", message="Osa-alueen päivittäminen ei onnistunut.")
+
 # Kirjautumiseen liittyvät reitit
 @app.route("/login", methods=["get","post"])
 def login():
