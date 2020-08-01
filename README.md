@@ -20,16 +20,16 @@ Lisäksi maksut kategorisoidaan tarvittaessa erikseen seurattaviin kulukategorio
 * Tapahtuma - Tapahtuma, johon maksu liittyy
 * Osa-alue - Kertoo, mihin tapahtuman osa-alueeseen maksu kuuluu. Joka osa-alueella on määritelty budjetti.
 * Maksukategoria - Kirjanpitoa varten, maksun voi merkitä esimerkiksi varausmaksuksi tai käteiskassan maksuksi.
-* Liitostaulu Maksu<>Maksukategoria - Jos päädytään siihen, että maksu voi kuulua moneen kategoriaan tarpeen mukaan.
+* Liitostaulu Maksu<>Maksukategoria - Tarpeellinen, koska maksu voi kuulua moneen kategoriaan tarpeen mukaan.
 
 ## Toiminnallisuuksia, alustava suunnitelma
-* Käyttäjän maksaman kokonaissumman tarkistaminen
-* Maksujen määrien ja maksettujen summien jakaantuminen käyttäjittäin
 * Osaprojektin maksimibudjetin ja osaprojektiin liitettyjen toteutuneiden maksujen summien vertaaminen, tieto budjetin alituksesta tai ylityksestä
 * Koko tapahtuman kuluarvion (osaprojektien maksimisummien summa) vertaaminen kaikkiin toteutuneisiin maksutapahtumiin
 * Maksujen haku tietyltä päivältä tai ennen tai jälkeen tietyn päivän (esim. ennen tai jälkeen tapahtuman)
 * Tietyn kulukategorian maksujen seuraaminen
 * Mahdollisesti toteutettava: syötetyn maksun tietojen muokkaaminen (voisi olla näppärä?)
+* Käyttäjän maksaman kokonaissumman tarkistaminen
+* Maksujen määrien ja maksettujen summien jakaantuminen käyttäjittäin
 
 ## Kehityksen tilanne
 Ohjelmalle on nyt toteutettu runkoa, hyvin perustason ominaisuuksia ja mm. koko kannan rakenne on jo tiedostossa schema.sql (toki voi tulla viilauksia vielä).
@@ -45,10 +45,13 @@ Kirjautunut käyttäjä puolestaan voi
 * tarkastella tapahtumalistaa
 * tarkastella kaikkien tapahtumien tietoja ja osaprojekteja niiden omilla tapahtumasivuilla
 * lisätä tapahtuman (jolloin rooliksi tulee tapahtuman järjestäjä)
-* lisätä tapahtumaan, jonka järjestäjä on, osaprojekteja ja muokata niihin budjetoituja summia.
+* lisätä tapahtumaan, jonka järjestäjä on, osaprojekteja ja muokata niihin budjetoituja summia
+* lisätä tapahtumaan, jonka järjestäjä on, maksukategorioita
 * kirjautua ulos.
 
-Seuraavaksi voisi tehdä pienen viilauksen projektilistaan: voisi listata käyttäjän mukaan omat tapahtumat ja muut tapahtumat.
-Sitten kannattaa varmaan tehdä maksukategorioiden lisääminen ja listaus, ja viimeisenä eniten riippuvuuksia sisältävä eli maksutapahtuman lisääminen, muokkaus ja listaus.
+Seuraavaksi listalla on maksukategorioiden listaaminen kunkin tapahtuman sivulla.
+Tämän jälkeen lisätään tapahtuman sivulle lomake uuden maksun lisäämistä varten, tämän voi tättää kuka tahansa käyttäjä.
+Lähiaikoina voisi listata etusivun projektilistauksessa erikseen käyttäjän mukaan omat tapahtumat ja muut tapahtumat.
 
-Aivan viimeiseksi jää sitten erilaisten yhteenvetokyselyiden tekeminen kunkin tapahtuman sivulla.
+Myöhemmin lisätään ominaisuus, että jo lisätyn maksun tietoja voi muokata tai maksun voi poistaa joko tapahtuman järjestäjä tai maksun lisääjä.
+Myöhemmin lisätään myös erilaisten yhteenvetokyselyiden tekeminen kunkin tapahtuman sivulla.
