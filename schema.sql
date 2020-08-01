@@ -21,14 +21,20 @@ CREATE TABLE subprojects (
 CREATE TABLE categories (
     id SERIAL PRIMARY KEY, 
     name TEXT
+    project_id INTEGER REFERENCES projects
 );
 
 CREATE TABLE payments (
     id SERIAL PRIMARY KEY, 
     userid INTEGER REFERENCES users, 
     subproject INTEGER REFERENCES subprojects NOT NULL, 
-    category INTEGER REFERENCES categories, 
     recipient TEXT, 
     total INTEGER, 
     date DATE
+);
+
+CREATE TABLE paymentcategory (
+    id SERIAL PRIMARY KEY, 
+    payment_id INTEGER, 
+    category_id INTEGER
 );
