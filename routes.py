@@ -1,5 +1,5 @@
 from app import app
-import projects, subprojects, users
+import categories, projects, subprojects, users
 from flask import render_template, redirect, session, request
 
 # Sivujen reititykset
@@ -52,7 +52,7 @@ def editsubprojects(id):
     if userid1 == userid2:
         allow = True
     if not allow:
-        return render_template("error.html", message="Ei oikeutta muokata osa-alueita. Vain tapahtuman järjestäjällä on oikeus muokata osa-alueita.")
+        return render_template("error.html", message="Ei oikeutta muokata osa-alueita. Vain tapahtuman järjestäjällä on oikeus muokata osa-alueita ja kategorioita.")
     else:
         return render_template("editsubprojects.html", project_information = project_information, subproject_list = subproject_list)
 
@@ -65,6 +65,16 @@ def updatetotal():
         return redirect("/project/"+project_id)
     else:
         return render_template("error.html", message="Osa-alueen päivittäminen ei onnistunut.")
+
+#Kategorioihin liityvät reititykset
+@app.route("/addcategory", methods=["POST"])
+def addcategory():
+    project_id = request.form["project_id"]
+    name = request.form["name"]
+    if categories.add_category(name,project_id):
+        return redirect("/project/"+project_id)
+    else:
+        return render_template("error.html",message="Kategorian lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
 
 # Kirjautumiseen liittyvät reitit
 @app.route("/login", methods=["get","post"])
