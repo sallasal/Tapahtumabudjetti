@@ -20,7 +20,7 @@ CREATE TABLE subprojects (
 
 CREATE TABLE categories (
     id SERIAL PRIMARY KEY, 
-    name TEXT
+    name TEXT, 
     project_id INTEGER REFERENCES projects
 );
 
