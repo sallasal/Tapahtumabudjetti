@@ -24,9 +24,24 @@
 </ul>
 
 <strong>Tapahtuman järjestäjänä voit <a href="/editsubprojects/{{ project_information[0] }}">lisätä ja muokata maksukategorioita ja osa-alueita</a>.</strong>
+<p>(Tietoja on enemmän kuin lopullisessa käyttöliittymässä tulee olemaan, debuggauksen apuna.</p>
 
 <hr>
 <h3>Maksut</h3>
-<p>[Placeholder: Lisätään tähän pian maksun lisäämislomake]</p>
 <p>[Placeholder: Listataan tapahtuman maksut tai eri hakuvaihtoehtoja / yhteenvetoa /linkki sellaiseen myöhemmin]</p>
+<h4>Lisää uusi maksu</h4>
+<form action="/addpayment" method="POST">
+<input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+<p>Saaja: <input type="text" name="recipient" /></p>
+<p>Summa (EUR): <input type="number" name="total" /></p>
+<p>Maksu kuuluu tapahtuman osa-alueeseen (pakollinen)</p>
+  {% for subproject in subproject_list %}
+    <input type="radio" name="paymentsubproject" value={{ subproject[0] }}" /> {{ subproject[1] }} <br />
+  {% endfor %}
+<p>Maksu kuuluu kategorioihin</p>
+  {% for category in category_list %}
+    <input type="checkbox" name="paymentcategory" value=" {{ category[0] }}" /> {{ category[1] }} <br />
+  {% endfor %}
+<p><input type="submit" value="Lisää maksu" /></p>
+</form>
 {% endblock %}
