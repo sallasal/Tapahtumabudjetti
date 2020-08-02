@@ -2,12 +2,21 @@ from app import app
 import categories, projects, subprojects, users
 from flask import render_template, redirect, session, request
 
-# Sivujen reititykset
+# Projektisivujen reititykset
 @app.route("/")
 def index():
     counter = projects.count_projects()
     project_list = projects.list_projects()
     return render_template("index.html", counter = counter, project_list = project_list)
+
+@app.route("/project/<int:id>", methods=["GET"])
+def project(id):
+    project_information = projects.get_project(id)
+    creator_id = project_information[2]
+    user_information = users.user_name(creator_id)
+    subproject_list = subprojects.list_subprojects(id)
+    category_list = categories.list_categories(id)
+    return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list)
 
 @app.route("/createproject", methods=["GET","POST"])
 def createproject():
@@ -19,14 +28,6 @@ def createproject():
             return redirect("/")
         else:
             return render_template("error.html",message="Tapahtuman luominen ei jostain syystä onnistunut. Tarkista arvo ja yritä uudelleen.")
-
-@app.route("/project/<int:id>", methods=["GET"])
-def project(id):
-    project_information = projects.get_project(id)
-    creator_id = project_information[2]
-    user_information = users.user_name(creator_id)
-    subproject_list = subprojects.list_subprojects(id)
-    return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list)
 
 #Osaprojekteihin liittyvät reititykset
 @app.route("/createsubproject", methods=["POST"])

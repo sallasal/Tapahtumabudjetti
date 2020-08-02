@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Tarkastelet tapahtumaa: {{ project_information[1] }}</h2>
 <p>Tapahtuman järjestäjä: {{ user_information[0] }}, {{ user_information[1] }}</p>
-<p>[Placeholder: Lasketaan tähän tapahtuman kokonaiskuluarvio osa-alueista myöhemmin]</p>
+<p>[Placeholder: Lasketaan tähän tapahtuman yleinen budjettitilanne myöhemmin]</p>
 
 <hr>
 <h3>Budjetin osa-alueet</h3>
@@ -17,7 +17,11 @@
 <h3>Maksukategoriat</h3>
 
 <p>Tässä tapahtumassa voit seurata maksuja seuraavissa kategorioissa:</p>
-<p>[Placeholder: tähän lista kategorioista, joita ko. tapahtumalla on.]</p>
+<ul>
+  {% for category in category_list %}
+    <li>{{ category[1] }} (kategorian tunniste {{ category[0] }}).</li>
+  {% endfor %}
+</ul>
 
 <strong>Tapahtuman järjestäjänä voit <a href="/editsubprojects/{{ project_information[0] }}">lisätä ja muokata maksukategorioita ja osa-alueita</a>.</strong>
 
