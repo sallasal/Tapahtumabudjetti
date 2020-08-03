@@ -7,29 +7,18 @@
 
 <hr>
 <h3>Budjetin osa-alueet</h3>
-
+<p>Tapahtuman budjetti on jaettu osa-alueisiin seuraavasti:</p>
 <ul>
   {% for subproject in subproject_list %}
     <li>{{ subproject[1] }}, budjetoitu {{ subproject[2] }} euroa. Osaprojektin tunniste {{ subproject[0] }}.</li>
   {% endfor %}
 </ul>
 
-<h3>Maksukategoriat</h3>
-
-<p>Tässä tapahtumassa voit seurata maksuja seuraavissa kategorioissa:</p>
-<ul>
-  {% for category in category_list %}
-    <li>{{ category[1] }} (kategorian tunniste {{ category[0] }}).</li>
-  {% endfor %}
-</ul>
-
 <strong>Tapahtuman järjestäjänä voit <a href="/editsubprojects/{{ project_information[0] }}">lisätä ja muokata maksukategorioita ja osa-alueita</a>.</strong>
-<p>(Tietoja on enemmän kuin lopullisessa käyttöliittymässä tulee olemaan, debuggauksen apuna.</p>
+<p>(Tietoja on enemmän kuin lopullisessa käyttöliittymässä tulee olemaan, debuggauksen apuna. Tapahtumat kategoriat listattu lomakkeella.)</p>
 
 <hr>
-<h3>Maksut</h3>
-<p>[Placeholder: Listataan tapahtuman maksut tai eri hakuvaihtoehtoja / yhteenvetoa /linkki sellaiseen myöhemmin]</p>
-<h4>Lisää uusi maksu</h4>
+<h3>Lisää uusi maksu</h3>
 <form action="/addpayment" method="POST">
 <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
 <p>Saaja: <input type="text" name="recipient" /></p>
