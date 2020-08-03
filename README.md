@@ -50,9 +50,8 @@ Kirjautunut käyttäjä puolestaan voi
 * lisätä maksun kenen tahansa järjestämään tapahtumaan
 * kirjautua ulos.
 
-Maksun lisäyksessä havaitut ongelmat, jotka korjataan seuraavaksi: maksun voi syöttää ainoastaan kokonaislukuna, vaikka pitäisi olla desimaalit. Maksuun ei voi lisätä kommenttia.
-Näiden korjauksen jälkeen toteutetaan maksujen listaus.
-
+Seuraavaksi toteutetaan maksujen listaus.
 Lähiaikoina voisi listata etusivun projektilistauksessa erikseen käyttäjän mukaan omat tapahtumat ja muut tapahtumat.
+
 Myöhemmin lisätään ominaisuus, että jo lisätyn maksun tietoja voi muokata tai maksun voi poistaa joko tapahtuman järjestäjä tai maksun lisääjä.
 Myöhemmin lisätään myös erilaisten yhteenvetokyselyiden tekeminen kunkin tapahtuman sivulla.

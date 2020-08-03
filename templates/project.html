@@ -33,7 +33,8 @@
 <form action="/addpayment" method="POST">
 <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
 <p>Saaja: <input type="text" name="recipient" /></p>
-<p>Summa (EUR): <input type="number" name="total" /></p>
+<p>Maksun syy / lisätiedot: <input type="text" name="message" /></p>
+<p>Summa (EUR): <input type="number" name="total" placeholder="1.0" step="0.01" /></p>
 <p>Maksupäivä:</p>
 <input type="date" name="paymentdate" value="2020-08-01" />
 <p>Maksu kuuluu tapahtuman osa-alueeseen (pakollinen)</p>

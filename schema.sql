@@ -28,8 +28,9 @@ CREATE TABLE payments (
     id SERIAL PRIMARY KEY, 
     userid INTEGER REFERENCES users, 
     subproject INTEGER REFERENCES subprojects NOT NULL, 
-    recipient TEXT, 
-    total INTEGER, 
+    recipient TEXT,
+    message TEXT, 
+    total NUMERIC, 
     date DATE
 );
 
