@@ -1,5 +1,5 @@
 from app import app
-import categories, projects, subprojects, users
+import categories, payments, projects, subprojects, users
 from flask import render_template, redirect, session, request
 
 # Projektisivujen reititykset
@@ -47,7 +47,6 @@ def editsubprojects(id):
     subproject_list = subprojects.list_subprojects(id)
     getid = projects.get_userid(id)
     userid1 = getid[0]
-    print(userid1)
     userid2 = users.user_id()
     print(userid2)
     if userid1 == userid2:
@@ -76,6 +75,20 @@ def addcategory():
         return redirect("/project/"+project_id)
     else:
         return render_template("error.html",message="Kategorian lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
+
+# Maksuihin liittyvät reititykset
+@app.route("/addpayment", methods=["POST"])
+def addpayment():
+    project_id = request.form["project_id"]
+    recipient = request.form["recipient"]
+    total = request.form["total"]
+    if "paymentsubproject" in request.form:
+        paymentsubproject = request.form["paymentsubproject"]
+    category_list = request.form.getlist("paymentcategory")
+    if payments.add_payment(recipient,total,paymentsubproject,category_list):
+        return redirect("/project/"+project_id)
+    else:
+        return render_template("error.html",message="Maksun lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
 
 # Kirjautumiseen liittyvät reitit
 @app.route("/login", methods=["get","post"])
