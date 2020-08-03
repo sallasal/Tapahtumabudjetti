@@ -42,7 +42,7 @@
   {% endfor %}
 <p>Maksu kuuluu kategorioihin</p>
   {% for category in category_list %}
-    <input type="checkbox" name="paymentcategory" value=" {{ category[0] }}" /> {{ category[1] }} <br />
+    <input type="checkbox" name="paymentcategory" value="{{ category[0] }}" /> {{ category[1] }} <br />
   {% endfor %}
 <p><input type="submit" value="Lisää maksu" /></p>
 </form>
