@@ -82,10 +82,12 @@ def addpayment():
     project_id = request.form["project_id"]
     recipient = request.form["recipient"]
     total = request.form["total"]
+    date = request.form["paymentdate"]
+    paymentsubproject = -1
     if "paymentsubproject" in request.form:
         paymentsubproject = request.form["paymentsubproject"]
     category_list = request.form.getlist("paymentcategory")
-    if payments.add_payment(recipient,total,paymentsubproject,category_list):
+    if paymentsubproject is not -1 and payments.add_payment(recipient,total,paymentsubproject,category_list,date):
         return redirect("/project/"+project_id)
     else:
         return render_template("error.html",message="Maksun lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
