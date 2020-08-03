@@ -47,11 +47,12 @@ Kirjautunut käyttäjä puolestaan voi
 * lisätä tapahtuman (jolloin rooliksi tulee tapahtuman järjestäjä)
 * lisätä tapahtumaan, jonka järjestäjä on, osaprojekteja ja muokata niihin budjetoituja summia
 * lisätä tapahtumaan, jonka järjestäjä on, maksukategorioita
+* lisätä maksun kenen tahansa järjestämään tapahtumaan
 * kirjautua ulos.
 
-Tällä hetkellä parhaillaan lisätään tapahtuman sivulle lomaketta uuden maksun lisäämistä varten, tämän voi tättää kuka tahansa käyttäjä.
-Lomakkeen runko on nyt luotu, mutta sen käsitteleviä funktioita ja reitityksiä ei ole vielä toteutettu.
-Lähiaikoina voisi listata etusivun projektilistauksessa erikseen käyttäjän mukaan omat tapahtumat ja muut tapahtumat.
+Maksun lisäyksessä havaitut ongelmat, jotka korjataan seuraavaksi: maksun voi syöttää ainoastaan kokonaislukuna, vaikka pitäisi olla desimaalit. Maksuun ei voi lisätä kommenttia.
+Näiden korjauksen jälkeen toteutetaan maksujen listaus.
 
+Lähiaikoina voisi listata etusivun projektilistauksessa erikseen käyttäjän mukaan omat tapahtumat ja muut tapahtumat.
 Myöhemmin lisätään ominaisuus, että jo lisätyn maksun tietoja voi muokata tai maksun voi poistaa joko tapahtuman järjestäjä tai maksun lisääjä.
 Myöhemmin lisätään myös erilaisten yhteenvetokyselyiden tekeminen kunkin tapahtuman sivulla.
