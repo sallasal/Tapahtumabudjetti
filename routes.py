@@ -16,7 +16,8 @@ def project(id):
     user_information = users.user_name(creator_id)
     subproject_list = subprojects.list_subprojects(id)
     category_list = categories.list_categories(id)
-    return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list)
+    payment_list = payments.list_payments(id)
+    return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list, payment_list = payment_list)
 
 @app.route("/createproject", methods=["GET","POST"])
 def createproject():

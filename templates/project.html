@@ -36,4 +36,12 @@
   {% endfor %}
 <p><input type="submit" value="Lisää maksu" /></p>
 </form>
+
+<hr>
+<h3>Kaikki tapahtuman maksut</h3>
+<ul>
+  {% for payment in payment_list %}
+    <li><p><strong>Saaja: {{ payment[3] }}</strong> | Selite: {{ payment[4] }} | Summa: {{ payment[5] }} | Maksupäivämäärä: {{ payment[6] }}</p></li>
+  {% endfor %}
+</ul>
 {% endblock %}
