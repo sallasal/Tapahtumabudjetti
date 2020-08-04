@@ -94,6 +94,13 @@ def addpayment():
     else:
         return render_template("error.html",message="Maksun lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
 
+@app.route("/createpayment/<int:id>", methods=["GET"])
+def createpayment(id):
+    project_information = projects.get_project(id)
+    subproject_list = subprojects.list_subprojects(id)
+    category_list = categories.list_categories(id)
+    return render_template("createpayment.html", project_information = project_information, subproject_list = subproject_list, category_list = category_list)
+
 # Kirjautumiseen liittyvät reitit
 @app.route("/login", methods=["get","post"])
 def login():
