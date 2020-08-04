@@ -43,15 +43,15 @@ Tiivistetysti: kirjautumaton käyttäjä voi ohjelman tämänhetkisessä versios
 
 Kirjautunut käyttäjä puolestaan voi
 * tarkastella tapahtumalistaa
-* tarkastella kaikkien tapahtumien tietoja, osaprojekteja ja maksukategorioita niiden omilla tapahtumasivuilla
+* tarkastella kaikkien tapahtumien tietoja, osaprojekteja ja maksuja niiden omilla tapahtumasivuilla
 * lisätä tapahtuman (jolloin rooliksi tulee tapahtuman järjestäjä)
 * lisätä tapahtumaan, jonka järjestäjä on, osaprojekteja ja muokata niihin budjetoituja summia
 * lisätä tapahtumaan, jonka järjestäjä on, maksukategorioita
 * lisätä maksun kenen tahansa järjestämään tapahtumaan
+* tarkastella tapahtuman maksukategorioita maksunlisäyslomakkeella
 * kirjautua ulos.
 
-Seuraavaksi toteutetaan maksujen listaus.
-Lähiaikoina voisi listata etusivun projektilistauksessa erikseen käyttäjän mukaan omat tapahtumat ja muut tapahtumat.
+Seuraavaksi voisi listata etusivun projektilistauksessa erikseen käyttäjän mukaan omat tapahtumat ja muut tapahtumat, sekä tapahtuman maksulistassa käyttäjän omat ja kaikki maksut erikseen.
 
 Myöhemmin lisätään ominaisuus, että jo lisätyn maksun tietoja voi muokata tai maksun voi poistaa joko tapahtuman järjestäjä tai maksun lisääjä.
-Myöhemmin lisätään myös erilaisten yhteenvetokyselyiden tekeminen kunkin tapahtuman sivulla.
+Myöhemmin lisätään myös erilaisten yhteenvetokyselyiden tekeminen ja kunkin tapahtuman budjettitunnuslukujen automaattinen laskeminen jokaisen tapahtuman sivulle.
