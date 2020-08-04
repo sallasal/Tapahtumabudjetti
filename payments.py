@@ -15,7 +15,7 @@ def add_payment(recipient,total,paymentsubproject,category_list,date,message):
     return True
 
 def list_payments(project_id):
-    sql = "SELECT id, userid, subproject, recipient, message, total, date FROM payments WHERE subproject IN (SELECT id FROM subprojects WHERE project=:project_id)"
+    sql = "SELECT p.recipient, p.message, p.total, p.date, users.name, s.name FROM payments p LEFT JOIN users ON users.id=p.userid LEFT JOIN subprojects s ON s.id=p.subproject WHERE subproject IN (SELECT id FROM subprojects WHERE project=:project_id)"
     result = db.session.execute(sql, {"project_id":project_id})
     payment_list = result.fetchall()
     return payment_list

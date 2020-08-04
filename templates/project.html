@@ -10,11 +10,11 @@
 <p>Tapahtuman budjetti on jaettu osa-alueisiin seuraavasti:</p>
 <ul>
   {% for subproject in subproject_list %}
-    <li>{{ subproject[1] }}, budjetoitu {{ subproject[2] }} euroa. Osaprojektin tunniste {{ subproject[0] }}.</li>
+    <li>{{ subproject[1] }}, budjetoitu {{ subproject[2] }} euroa. [Placeholder: tähän mennessä maksettu + jäljellä/ylitys]</li>
   {% endfor %}
 </ul>
 
-<strong>Tapahtuman järjestäjänä voit <a href="/editsubprojects/{{ project_information[0] }}">lisätä ja muokata maksukategorioita ja osa-alueita</a>.</strong>
+Tapahtuman järjestäjänä voit <a href="/editsubprojects/{{ project_information[0] }}">lisätä ja muokata maksukategorioita ja osa-alueita</a>.
 <p>(Tietoja on enemmän kuin lopullisessa käyttöliittymässä tulee olemaan, debuggauksen apuna. Tapahtumat kategoriat listattu lisäyslomakkeella.)</p>
 
 <hr>
@@ -22,7 +22,7 @@
 <p><a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a></p>
 <ul>
   {% for payment in payment_list %}
-    <li><p><strong>Saaja: {{ payment[3] }}</strong> | Selite: {{ payment[4] }} | Summa: {{ payment[5] }} | Maksupäivämäärä: {{ payment[6] }}</p></li>
+    <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p></li>
   {% endfor %}
 </ul>
 {% endblock %}

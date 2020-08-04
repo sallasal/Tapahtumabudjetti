@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h3>Lisää uusi maksu</h3>
+<h2>Lisää uusi maksu tapahtumaan {{ project_information[1] }}</h2>
+<p><a href="/project/{{ project_information[0] }}">Palaa takaisin tapahtuman sivulle</a></p>
 <form action="/addpayment" method="POST">
 <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
 <p>Saaja: <input type="text" name="recipient" /></p>
