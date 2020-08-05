@@ -16,12 +16,18 @@
 
 Tapahtuman järjestäjänä voit <a href="/editsubprojects/{{ project_information[0] }}">lisätä ja muokata maksukategorioita ja osa-alueita</a>.
 <p>(Tietoja on enemmän kuin lopullisessa käyttöliittymässä tulee olemaan, debuggauksen apuna. Tapahtumat kategoriat listattu lisäyslomakkeella.)</p>
-
 <hr>
-<h3>Kaikki tapahtuman maksut</h3>
+<h3>Maksut</h3>
 <p><a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a></p>
+<h4>Omat maksusi tapahtumassa</h4>
 <ul>
-  {% for payment in payment_list %}
+  {% for payment in user_payment_list %}
+    <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p></li>
+  {% endfor %}
+</ul>
+<h4>Muut tapahtuman maksut</h4>
+<ul>
+  {% for payment in other_payment_list %}
     <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p></li>
   {% endfor %}
 </ul>

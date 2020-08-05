@@ -7,7 +7,10 @@ from flask import render_template, redirect, session, request
 def index():
     counter = projects.count_projects()
     project_list = projects.list_projects()
-    return render_template("index.html", counter = counter, project_list = project_list)
+    user_id = users.user_id()
+    user_project_list = projects.list_user_projects(user_id)
+    other_projects_list = projects.list_other_projects(user_id)
+    return render_template("index.html", counter = counter, project_list = project_list, user_project_list = user_project_list, other_projects_list = other_projects_list)
 
 @app.route("/project/<int:id>", methods=["GET"])
 def project(id):
@@ -16,8 +19,10 @@ def project(id):
     user_information = users.user_name(creator_id)
     subproject_list = subprojects.list_subprojects(id)
     category_list = categories.list_categories(id)
-    payment_list = payments.list_payments(id)
-    return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list, payment_list = payment_list)
+    other_payment_list = payments.list_other_payments(id)
+    user_payment_list = payments.list_user_payments(id)
+    print(user_payment_list)
+    return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list, other_payment_list = other_payment_list, user_payment_list = user_payment_list)
 
 @app.route("/createproject", methods=["GET","POST"])
 def createproject():

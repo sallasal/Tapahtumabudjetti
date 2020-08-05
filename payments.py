@@ -19,3 +19,17 @@ def list_payments(project_id):
     result = db.session.execute(sql, {"project_id":project_id})
     payment_list = result.fetchall()
     return payment_list
+
+def list_user_payments(project_id):
+    user_id = users.user_id()
+    sql = "SELECT p.recipient, p.message, p.total, p.date, users.name, s.name FROM payments p LEFT JOIN users ON users.id=p.userid LEFT JOIN subprojects s ON s.id=p.subproject WHERE subproject IN (SELECT id FROM subprojects WHERE project=:project_id) AND p.userid=:user_id"
+    result = db.session.execute(sql, {"project_id":project_id,"user_id":user_id})
+    user_payment_list = result.fetchall()
+    return user_payment_list
+
+def list_other_payments(project_id):
+    user_id = users.user_id()
+    sql = "SELECT p.recipient, p.message, p.total, p.date, users.name, s.name FROM payments p LEFT JOIN users ON users.id=p.userid LEFT JOIN subprojects s ON s.id=p.subproject WHERE subproject IN (SELECT id FROM subprojects WHERE project=:project_id) AND NOT p.userid=:user_id"
+    result = db.session.execute(sql, {"project_id":project_id,"user_id":user_id})
+    other_payment_list = result.fetchall()
+    return other_payment_list
