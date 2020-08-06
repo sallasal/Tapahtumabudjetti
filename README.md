@@ -25,24 +25,23 @@ Tiivistetysti: kirjautumaton käyttäjä voi ohjelman tämänhetkisessä versios
 
 Kirjautunut käyttäjä puolestaan voi
 * tarkastella tapahtumalistaa ryhmiteltynä käyttäjän omiin ja muiden järjestämiin tapahtumiin
-* tarkastella kaikkien tapahtumien tietoja ja osaprojekteja niiden omilla tapahtumasivuilla
+* tarkastella kaikkien tapahtumien tietoja, osaprojekteja ja tapahtumia niiden omilla tapahtumasivuilla
 * tarkastella kaikkien tapahtumien maksuja tapahtumasivulla ryhmiteltynä käyttäjän omiin ja muiden käyttäjien maksuihin
 * lisätä tapahtuman (jolloin rooliksi tulee tapahtuman järjestäjä)
 * lisätä tapahtumaan, jonka järjestäjä on, osaprojekteja ja muokata niihin budjetoituja summia
 * lisätä tapahtumaan, jonka järjestäjä on, maksukategorioita
 * lisätä maksun kenen tahansa järjestämään tapahtumaan
-* tarkastella tapahtuman maksukategorioita maksunlisäyslomakkeella
+* nähdä tapahtumasivulla tapahtumaan budjetoidun kokonaissumman sekä tähän mennessä tapahtuman maksuista kertyneen summan
 * kirjautua ulos.
 
 Seuraavaksi lisätään ominaisuus, että jo lisätyn maksun tietoja voi muokata tai maksun voi poistaa joko tapahtuman järjestäjä tai maksun lisääjä.
-Myöhemmin lisätään myös erilaisten yhteenvetokyselyiden tekeminen ja kunkin tapahtuman budjettitunnuslukujen automaattinen laskeminen jokaisen tapahtuman sivulle.
+Myöhemmin lisätään vielä erilaisia yhteenvetokyselyitä mm. maksujen tarkastelemiseksi osaprojekteittain tai maksukategorioittain.
 
 ## Tulevia toiminnallisuuksia, alustava suunnitelma
 * Osaprojektin maksimibudjetin ja osaprojektiin liitettyjen toteutuneiden maksujen summien vertaaminen, tieto budjetin alituksesta tai ylityksestä
-* Koko tapahtuman kuluarvion (osaprojektien maksimisummien summa) vertaaminen kaikkiin toteutuneisiin maksutapahtumiin
 * Maksujen haku tietyltä päivältä tai ennen tai jälkeen tietyn päivän (esim. ennen tai jälkeen tapahtuman)
 * Tietyn kulukategorian maksujen seuraaminen
-* Mahdollisesti toteutettava: syötetyn maksun tietojen muokkaaminen (voisi olla näppärä?)
+* Mahdollisesti toteutettava: syötetyn maksun tietojen muokkaaminen
 * Käyttäjän maksaman kokonaissumman tarkistaminen
 * Maksujen määrien ja maksettujen summien jakaantuminen käyttäjittäin
 
