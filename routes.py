@@ -22,7 +22,8 @@ def project(id):
     other_payment_list = payments.list_other_payments(id)
     user_payment_list = payments.list_user_payments(id)
     grandtotal = subprojects.get_grandtotal(id)
-    return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list, other_payment_list = other_payment_list, user_payment_list = user_payment_list, grandtotal = grandtotal)
+    payment_grandtotal = payments.get_payment_grandtotal(id)
+    return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list, other_payment_list = other_payment_list, user_payment_list = user_payment_list, grandtotal = grandtotal, payment_grandtotal = payment_grandtotal)
 
 @app.route("/createproject", methods=["GET","POST"])
 def createproject():

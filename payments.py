@@ -33,3 +33,9 @@ def list_other_payments(project_id):
     result = db.session.execute(sql, {"project_id":project_id,"user_id":user_id})
     other_payment_list = result.fetchall()
     return other_payment_list
+
+def get_payment_grandtotal(project_id):
+    sql = "SELECT SUM(p.total) FROM payments p LEFT JOIN subprojects s ON s.id=p.subproject WHERE subproject IN (SELECT id FROM subprojects WHERE project=:project_id)"
+    result = db.session.execute(sql, {"project_id":project_id})
+    payment_grandtotal = result.fetchone()[0]
+    return payment_grandtotal
