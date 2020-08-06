@@ -18,3 +18,9 @@ def update_total(subproject_id,newtotal):
     db.session.execute(sql, {"newtotal":newtotal,"subproject_id":subproject_id})
     db.session.commit()
     return True
+
+def get_grandtotal(project_id):
+    sql = "SELECT SUM(total) FROM subprojects WHERE project=:project_id"
+    result = db.session.execute(sql, {"project_id":project_id})
+    grandtotal = result.fetchone()[0]
+    return grandtotal
