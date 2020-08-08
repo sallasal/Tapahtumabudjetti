@@ -2,7 +2,7 @@ from app import app
 import categories, payments, projects, subprojects, users
 from flask import render_template, redirect, session, request
 
-# Projektisivujen reititykset
+# Route for index page
 @app.route("/")
 def index():
     counter = projects.count_projects()
@@ -12,6 +12,7 @@ def index():
     other_projects_list = projects.list_other_projects(user_id)
     return render_template("index.html", counter = counter, project_list = project_list, user_project_list = user_project_list, other_projects_list = other_projects_list)
 
+# Rout for project pages
 @app.route("/project/<int:id>", methods=["GET"])
 def project(id):
     project_information = projects.get_project(id)
@@ -25,6 +26,7 @@ def project(id):
     payment_grandtotal = payments.get_payment_grandtotal(id)
     return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list, other_payment_list = other_payment_list, user_payment_list = user_payment_list, grandtotal = grandtotal, payment_grandtotal = payment_grandtotal)
 
+#Route for creating new project and form page for this
 @app.route("/createproject", methods=["GET","POST"])
 def createproject():
     if request.method == "GET":
@@ -55,7 +57,6 @@ def editsubprojects(id):
     getid = projects.get_userid(id)
     userid1 = getid[0]
     userid2 = users.user_id()
-    print(userid2)
     if userid1 == userid2:
         allow = True
     if not allow:
@@ -82,6 +83,13 @@ def addcategory():
         return redirect("/project/"+project_id)
     else:
         return render_template("error.html",message="Kategorian lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
+
+@app.route("/categorypayments/<int:category_id>", methods=["POST"])
+def categorypayments(category_id):
+    project_id = request.form["project_id"]
+    category_name = request.form["category_name"]
+    payments_in_category = categories.payments_in_category(category_id)
+    return render_template("categorypayments.html", category_name=category_name, project_id=project_id, payments_in_category=payments_in_category)
 
 # Maksuihin liittyvät reititykset
 @app.route("/addpayment", methods=["POST"])

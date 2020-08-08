@@ -32,16 +32,13 @@ Kirjautunut käyttäjä puolestaan voi
 * lisätä tapahtumaan, jonka järjestäjä on, maksukategorioita
 * lisätä maksun kenen tahansa järjestämään tapahtumaan
 * nähdä tapahtumasivulla tapahtumaan budjetoidun kokonaissumman sekä tähän mennessä tapahtuman maksuista kertyneen summan
+* verrata osaprojektin maksimibudjettia ja tähän mennessä syötettyjen maksujen summaa sekä nähdä tiedon budjetin alituksesta tai ylityksestä.
 * kirjautua ulos.
 
 Seuraavaksi lisätään ominaisuus, että jo lisätyn maksun tietoja voi muokata tai maksun voi poistaa joko tapahtuman järjestäjä tai maksun lisääjä.
 Myöhemmin lisätään vielä erilaisia yhteenvetokyselyitä mm. maksujen tarkastelemiseksi osaprojekteittain tai maksukategorioittain.
 
-## Tulevia toiminnallisuuksia, alustava suunnitelma
-* Osaprojektin maksimibudjetin ja osaprojektiin liitettyjen toteutuneiden maksujen summien vertaaminen, tieto budjetin alituksesta tai ylityksestä
-* Maksujen haku tietyltä päivältä tai ennen tai jälkeen tietyn päivän (esim. ennen tai jälkeen tapahtuman)
-* Tietyn kulukategorian maksujen seuraaminen
-* Mahdollisesti toteutettava: syötetyn maksun tietojen muokkaaminen
-* Käyttäjän maksaman kokonaissumman tarkistaminen
-* Maksujen määrien ja maksettujen summien jakaantuminen käyttäjittäin
-
+# Muita laajennusmahdollisuuksia
+Sovellus toimii suurin piirtein tällaisenaan esimerkiksi ainejärjestön tai muun yhden tapahtumia järjestävän joukon sisällä. 
+Jos käyttäjäkunta olisi useampi erillinen järjestäjäjoukko, sovelluksen käyttäjänhallintaa voisi kehittää vielä niin, että kullekin tapahtumalle määritetään järjestäjäjoukko, jota hallinnoi järjestäjä.
+Tällöin vain järjestäjäjoukko näkisi tapahtuman tiedot.
