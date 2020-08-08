@@ -101,10 +101,19 @@ def addcategory():
 # Route for listing all payments in one category
 @app.route("/categorypayments/<int:category_id>", methods=["POST"])
 def categorypayments(category_id):
+    allow = False
     project_id = request.form["project_id"]
     category_name = request.form["category_name"]
     payments_in_category = categories.payments_in_category(category_id)
-    return render_template("categorypayments.html", category_name=category_name, project_id=project_id, payments_in_category=payments_in_category)
+    getid = projects.get_userid(project_id)
+    userid1 = getid[0]
+    userid2 = users.user_id()
+    if userid1 == userid2:
+        allow=True
+    if not allow:
+        return render_template("error.html", message="Vain tapahtuman järjestäjä voi tarkastella kategoriaan liitettyjä maksuja.")
+    else:
+        return render_template("categorypayments.html", category_name=category_name, project_id=project_id, payments_in_category=payments_in_category)
 
 # -----
 # PAYMENT ROUTES
