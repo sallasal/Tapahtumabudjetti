@@ -8,7 +8,13 @@ def list_subprojects(project_id):
     sql = "SELECT s.id, s.name, s.total, SUM(p.total) FROM payments p LEFT JOIN subprojects s ON p.subproject=s.id WHERE s.project=:project_id GROUP BY s.id, s.name, s.total"
     result = db.session.execute(sql, {"project_id":project_id})
     subproject_list = result.fetchall()
-    return subproject_list
+    final_list = []
+    for row in subproject_list:
+        rowlist = list(row)
+        difference = rowlist[2] - rowlist[3]
+        rowlist.append(difference)
+        final_list.append(tuple(rowlist))
+    return final_list
 
 def add_subproject(name,total_sum,project_id):
     sql = "INSERT INTO subprojects (name,total,project) VALUES (:name,:total_sum,:project_id)"
