@@ -13,7 +13,7 @@ def list_categories(project_id):
     return category_list
 
 def payments_in_category(category_id):
-    sql = "SELECT c.name,p.recipient,p.message,p.total,p.date FROM payments p, categories c, paymentcategory q WHERE q.payment_id=p.id AND q.category_id=c.id"
+    sql = "SELECT p.recipient,p.message,p.total,p.date FROM payments p, categories c, paymentcategory q WHERE q.payment_id=p.id AND q.category_id=c.id AND category_id=:category_id"
     result = db.session.execute(sql, {"category_id":category_id})
     payments_in_category = result.fetchall()
     return payments_in_category

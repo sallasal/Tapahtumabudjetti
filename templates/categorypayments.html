@@ -5,5 +5,9 @@
 
 <a href="/project/{{ project_id }}">Palaa takaisin projektin sivulle</a>
 
-
+<ul>
+  {% for payment in payments_in_category %}
+  <li><strong>Saaja: {{ payment[0] }} </strong>| Summa: {{ payment[2] }} | Selite: {{ payment[1] }} | Pvm: {{ payment[3] }} </li>
+  {% endfor %}
+</ul>
 {% endblock %}
