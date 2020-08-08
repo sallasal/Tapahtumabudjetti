@@ -1,9 +1,6 @@
-#    sql = "SELECT id, name, total FROM subprojects WHERE project=:project_id ORDER BY name ASC"
-
-
 from db import db
 
-# Osaprojekteja koskevat SQL:t
+# Get full subproject information list, including total sum, for project page
 def list_subprojects(project_id):
     sql = "SELECT s.id, s.name, s.total, SUM(p.total) FROM payments p LEFT JOIN subprojects s ON p.subproject=s.id WHERE s.project=:project_id GROUP BY s.id, s.name, s.total"
     result = db.session.execute(sql, {"project_id":project_id})
@@ -16,18 +13,21 @@ def list_subprojects(project_id):
         final_list.append(tuple(rowlist))
     return final_list
 
+# Add new subproject to database
 def add_subproject(name,total_sum,project_id):
     sql = "INSERT INTO subprojects (name,total,project) VALUES (:name,:total_sum,:project_id)"
     db.session.execute(sql, {"name":name,"total_sum":total_sum,"project_id":project_id})
     db.session.commit()
     return True
 
+# Update budgeted sum for one subproject
 def update_total(subproject_id,newtotal):
     sql = "UPDATE subprojects SET total=:newtotal WHERE id=:subproject_id"
     db.session.execute(sql, {"newtotal":newtotal,"subproject_id":subproject_id})
     db.session.commit()
     return True
 
+# Get subproject total sum for any project
 def get_grandtotal(project_id):
     sql = "SELECT SUM(total) FROM subprojects WHERE project=:project_id"
     result = db.session.execute(sql, {"project_id":project_id})

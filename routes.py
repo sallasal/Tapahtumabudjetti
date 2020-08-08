@@ -12,7 +12,11 @@ def index():
     other_projects_list = projects.list_other_projects(user_id)
     return render_template("index.html", counter = counter, project_list = project_list, user_project_list = user_project_list, other_projects_list = other_projects_list)
 
-# Rout for project pages
+# -----
+# PROJECT ROUTES
+# -----
+
+# Route for project pages for every project
 @app.route("/project/<int:id>", methods=["GET"])
 def project(id):
     project_information = projects.get_project(id)
@@ -38,7 +42,11 @@ def createproject():
         else:
             return render_template("error.html",message="Tapahtuman luominen ei jostain syystä onnistunut. Tarkista arvo ja yritä uudelleen.")
 
-#Osaprojekteihin liittyvät reititykset
+# -----
+# SUBPROJECT ROUTES
+# -----
+
+# Route for creating new subproject
 @app.route("/createsubproject", methods=["POST"])
 def createsubproject():
     project_id = request.form["tapahtumaid"]
@@ -49,6 +57,7 @@ def createsubproject():
     else:
         return render_template("error.html",message="Osa-alueen lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
 
+# Route for allowing user to edit subproject values
 @app.route("/editsubprojects/<int:id>", methods=["GET"])
 def editsubprojects(id):
     allow = False
@@ -64,6 +73,7 @@ def editsubprojects(id):
     else:
         return render_template("editsubprojects.html", project_information = project_information, subproject_list = subproject_list)
 
+# Route for update subproject values in db
 @app.route("/updatetotal", methods=["POST"])
 def updatetotal():
     project_id = request.form["project_id"]
@@ -74,7 +84,11 @@ def updatetotal():
     else:
         return render_template("error.html", message="Osa-alueen päivittäminen ei onnistunut.")
 
-#Kategorioihin liityvät reititykset
+# -----
+# CATEGORY ROUTES
+# -----
+
+# Route for adding new category to db
 @app.route("/addcategory", methods=["POST"])
 def addcategory():
     project_id = request.form["project_id"]
@@ -84,6 +98,7 @@ def addcategory():
     else:
         return render_template("error.html",message="Kategorian lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
 
+# Route for listing all payments in one category
 @app.route("/categorypayments/<int:category_id>", methods=["POST"])
 def categorypayments(category_id):
     project_id = request.form["project_id"]
@@ -91,7 +106,11 @@ def categorypayments(category_id):
     payments_in_category = categories.payments_in_category(category_id)
     return render_template("categorypayments.html", category_name=category_name, project_id=project_id, payments_in_category=payments_in_category)
 
-# Maksuihin liittyvät reititykset
+# -----
+# PAYMENT ROUTES
+# -----
+
+# Route for page and form to adding payment
 @app.route("/addpayment", methods=["POST"])
 def addpayment():
     project_id = request.form["project_id"]
@@ -108,6 +127,7 @@ def addpayment():
     else:
         return render_template("error.html",message="Maksun lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
 
+# Route for creating a new category in project
 @app.route("/createpayment/<int:id>", methods=["GET"])
 def createpayment(id):
     project_information = projects.get_project(id)
@@ -115,8 +135,12 @@ def createpayment(id):
     category_list = categories.list_categories(id)
     return render_template("createpayment.html", project_information = project_information, subproject_list = subproject_list, category_list = category_list)
 
-# Kirjautumiseen liittyvät reitit
-@app.route("/login", methods=["get","post"])
+# -----
+# USER AND SESSION ROUTES
+# -----
+
+# Route for credential check and starting new session
+@app.route("/login", methods=["GET","POST"])
 def login():
     if request.method == "GET":
         return render_template("/login.html")
@@ -128,12 +152,14 @@ def login():
         else:
             return render_template("error.html",message="Väärä tunnus tai salasana")
 
+# Route for ending session
 @app.route("/logout")
 def logout():
     users.logout()
     return redirect("/")
 
-@app.route("/register", methods=["get","post"])
+# Route for registering new user credentials
+@app.route("/register", methods=["GET","POST"])
 def register():
     if request.method == "GET":
         return render_template("register.html")
