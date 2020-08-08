@@ -12,7 +12,7 @@
 <ul>
   {% for subproject in subproject_list %}
     <li>{{ subproject[1] }}. Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa. 
-        Osa-alueelle on syötetty maksuja <strong>XX</strong> euroa.</li>
+        Osa-alueelle on syötetty maksuja <strong>{{ subproject[3] }}</strong> euroa.</li>
   {% endfor %}
 </ul>
 

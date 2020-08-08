@@ -1,8 +1,11 @@
+#    sql = "SELECT id, name, total FROM subprojects WHERE project=:project_id ORDER BY name ASC"
+
+
 from db import db
 
 # Osaprojekteja koskevat SQL:t
 def list_subprojects(project_id):
-    sql = "SELECT id, name, total FROM subprojects WHERE project=:project_id ORDER BY name ASC"
+    sql = "SELECT s.id, s.name, s.total, SUM(p.total) FROM payments p LEFT JOIN subprojects s ON p.subproject=s.id WHERE s.project=:project_id GROUP BY s.id, s.name, s.total"
     result = db.session.execute(sql, {"project_id":project_id})
     subproject_list = result.fetchall()
     return subproject_list
