@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+{% if session.user_id %}
 <h2>Lisää uusi tapahtuma</h2>
 <p>Luo uusi tapahtuma syöttämällä tapahtuman nimi alla olevaan kenttään. Sinusta tulee tapahtuman järjestäjä.</p>
 <p>Lisäämisen jälkeen tapahtumaan voi lisätä osa-alueita ja maksuja tapahtuman omalla sivulla.</p>
@@ -13,4 +14,7 @@
     <input type="submit" value="Luo tapahtuma" />
   </p>
 </form>
+{% else %}
+<p>Sinulla ei ole lupaa nähdä sivua. <a href="/">Aloita kirjautumalla sisään.</a>
+{% endif %}
 {% endblock %}

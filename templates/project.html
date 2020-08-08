@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+{% if session.user_id %}
 <h2>Tarkastelet tapahtumaa: {{ project_information[1] }}</h2>
 <p>Tapahtuman järjestäjä: {{ user_information[0] }}, {{ user_information[1] }}</p>
 <p>Tapahtumaan on budjetoitu osaprojektien kautta yhteensä <strong>{{ grandtotal }}</strong> euroa. 
@@ -48,4 +49,8 @@ Tapahtuman järjestäjänä voit <a href="/editsubprojects/{{ project_informatio
      Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p></li>
   {% endfor %}
 </ul>
+
+{% else %}
+<p>Sinulla ei ole lupaa nähdä sivua. <a href="/">Aloita kirjautumalla sisään</a>.
+{% endif %}
 {% endblock %}
