@@ -12,8 +12,8 @@
 <p>Tapahtuman budjetti on jaettu osa-alueisiin seuraavasti:</p>
 <ul>
   {% for subproject in subproject_list %}
-    <li>{{ subproject[1] }}. Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa. 
-        Osa-alueelle on syötetty maksuja <strong>{{ subproject[3] }}</strong> euroa. Budjettia jäljellä: <strong>{{ subproject[4] }}</strong> euroa.</li>
+    <li>{{ subproject[1] }}. Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa, 
+        maksuja syötetty <strong>{{ subproject[3] }}</strong> euroa. Budjettia jäljellä: <strong>{{ subproject[4] }}</strong> euroa.</li>
   {% endfor %}
 </ul>
 
@@ -21,12 +21,14 @@
 Tapahtuman järjestäjä voi seurata maksuja seuraavissa kategorioissa:
 <ul>
   {% for category in category_list %}
-    <li>{{ category[1] }}.
+    <li>
       <form action="/categorypayments/{{ category[0] }}" method="POST">
+      {{ category[1] }}
       <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
       <input type="hidden" name="category_name" value="{{ category[1] }}" />
       <input type="submit" value="Tarkastele maksuja" />
       </form>
+      <br />
     </li>
   {% endfor %}
 </ul>
@@ -38,15 +40,13 @@ Tapahtuman järjestäjänä voit <a href="/editsubprojects/{{ project_informatio
 <p>Olet syöttänyt tapahtumaan maksuja <strong>XX(tulossa)</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
 <ul>
   {% for payment in user_payment_list %}
-    <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} <br />
-     Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p></li>
+    <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p></li>
   {% endfor %}
 </ul>
 <h4>Muut tapahtuman maksut (siirrettäneen omalle sivulleen, jota vain järjestäjä voi tarkastella)</h4>
 <ul>
   {% for payment in other_payment_list %}
-    <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} <br />
-     Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p></li>
+    <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p></li>
   {% endfor %}
 </ul>
 

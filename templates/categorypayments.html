@@ -5,9 +5,11 @@
 
 <a href="/project/{{ project_id }}">Palaa takaisin projektin sivulle</a>
 
+<p>[Tähän tulee vielä kokonaissumma kategorian maksuista]</p>
+
 <ul>
   {% for payment in payments_in_category %}
-  <li><strong>Saaja: {{ payment[0] }} </strong>| Summa: {{ payment[2] }} | Selite: {{ payment[1] }} | Pvm: {{ payment[3] }} </li>
+  <li><strong>Saaja: {{ payment[0] }} </strong>| Summa: {{ payment[2] }} | Osa-alue: {{ payment[6] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[5] }} | Pvm: {{ payment[3] }}</li>
   {% endfor %}
 </ul>
 {% endblock %}
