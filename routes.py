@@ -144,6 +144,17 @@ def createpayment(id):
     category_list = categories.list_categories(id)
     return render_template("createpayment.html", project_information = project_information, subproject_list = subproject_list, category_list = category_list)
 
+# Route for deleting payment first from paymentcategories, then from payments
+@app.route("/deletepayment", methods=["POST"])
+def deletepayment():
+    payment_id = request.form["payment_id"]
+    print(payment_id)
+    project_id = request.form["project_id"]
+    if payments.delete_payment(payment_id):
+        return redirect("/project/"+project_id)
+    else:
+        return render_template("error.html",message="Maksun poistaminen ei onnistunut.")
+
 # -----
 # USER AND SESSION ROUTES
 # -----

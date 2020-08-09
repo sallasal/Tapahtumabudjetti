@@ -31,13 +31,14 @@ Kirjautunut käyttäjä puolestaan voi
 * lisätä tapahtumaan, jonka järjestäjä on, osaprojekteja ja muokata niihin budjetoituja summia
 * lisätä tapahtumaan, jonka järjestäjä on, maksukategorioita
 * lisätä maksun kenen tahansa järjestämään tapahtumaan
+* poistaa omia maksujaan mistä tahansa tapahtumasta
 * nähdä tapahtumasivulla tapahtumaan budjetoidun kokonaissumman sekä tähän mennessä tapahtuman maksuista kertyneen summan
 * verrata osaprojektin maksimibudjettia ja tähän mennessä syötettyjen maksujen summaa sekä nähdä tiedon budjetin alituksesta tai ylityksestä.
 * listata tapahtuman, jonka järjestäjä on, maksut maksukategorioittain ja tarkastella niitä.
 * kirjautua ulos.
 
-Seuraavaksi lisätään ominaisuus, että jo lisätyn maksun tietoja voi muokata tai maksun voi poistaa joko tapahtuman järjestäjä tai maksun lisääjä.
-Myöhemmin lisätään vielä erilaisia yhteenvetokyselyitä mm. osaprojekteittain. Yhteenvetosivuille pääsee vain järjestäjä.
+Seuraavaksi siirretään kaikkien maksujen listaus omalle, vain järjestäjälle näkyvälle sivulle. Sivulla järjestäjä voi sitten myös poistaa maksuja.
+Myöhemmin lisätään vielä erilaisia yhteenvetokysely ainakin maksuista osaprojekteittain. Yhteenvetosivuille pääsee vain järjestäjä.
 Jos ehtii, voisi laittaa myös niin, että yhteenvetosivulla järjestäjä voisi sorttailla maksut haluamallaan tavalla (ei vaikea, mutta ei prioriteettilistan kärjessä?).
 
 # Muita laajennusmahdollisuuksia
