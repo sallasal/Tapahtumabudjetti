@@ -2,12 +2,14 @@ from db import db
 
 # Get full subproject information list, including total sum, for project page
 def list_subprojects(project_id):
-    sql = "SELECT s.id, s.name, s.total, SUM(p.total) FROM payments p LEFT JOIN subprojects s ON p.subproject=s.id WHERE s.project=:project_id GROUP BY s.id, s.name, s.total"
+    sql = "SELECT s.id, s.name, s.total, SUM(p.total) FROM payments p RIGHT JOIN subprojects s ON p.subproject=s.id WHERE s.project=:project_id GROUP BY s.id, s.name, s.total"
     result = db.session.execute(sql, {"project_id":project_id})
     subproject_list = result.fetchall()
     final_list = []
     for row in subproject_list:
         rowlist = list(row)
+        if rowlist[3] == None:
+            rowlist[3] = 0
         difference = rowlist[2] - rowlist[3]
         rowlist.append(difference)
         final_list.append(tuple(rowlist))
