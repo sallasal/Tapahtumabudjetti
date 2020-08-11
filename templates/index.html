@@ -3,8 +3,10 @@
 {% block content %}
 {% if session.user_id %}
 <p>Tervetuloa hallinnoimaan tapahtumien kuluja.</p>
+<p>Tapahtumia on järjestelmässä yhteensä <strong>{{ counter }}</strong> kappaletta.</p>
 
 <h2>Omat tapahtumasi</h2>
+<p>Omissa tapahtumissasi voit lisätä ja tarkastella maksuja sekä tehdä monipuolisia yhteenvetoja. Voit myös hallinnoida tapahtuman kaikkia maksuja, budjetin osa-alueita ja vapaaehtoisia lisäkategorioita laajasti.</p>
 <ul>
   {% for project in user_project_list %}
     <li><a href="/project/{{ project[0] }}">{{ project[1] }}</a></li>
@@ -12,14 +14,12 @@
 </ul>
 
 <h2>Muiden järjestämät tapahtumat</h2>
-
+<p>Voit lisätä ja poistaa omia maksujasi missä tahansa tapahtumassa ja nähdä kaikkien tapahtumien perustiedot.</p>
 <ul>
   {% for project in other_projects_list %}
     <li><a href="/project/{{ project[0] }}">{{ project[1] }}</a></li>
   {% endfor %}
 </ul>
-
-<p>Tapahtumia järjestelmässä yhteensä {{ counter }} kappaletta.</p>
 
 {% else %}
 <h2>Aloita kirjautumalla sisään.</h2>
