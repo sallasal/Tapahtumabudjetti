@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% if session.user_id %}
+<h2>Tarkastelet tapahtumaa: {{ project_information[1] }}</h2>
+<p>Tapahtuman järjestäjä: {{ user_information[0] }}, {{ user_information[1] }}</p>
+<p>Tapahtumaan on budjetoitu osaprojektien kautta yhteensä <strong>{{ grandtotal }}</strong> euroa. 
+  Maksuja on syötetty yhteensä <strong>{{ payment_grandtotal }}</strong> euroa.</p>
+
+<hr>
+<h3>Budjetin osa-alueet</h3>
+<p>Tapahtuman budjetti on jaettu osa-alueisiin seuraavasti:</p>
+<ul>
+  {% for subproject in subproject_list %}
+    <li>{{ subproject[1] }}. Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa, 
+        maksuja syötetty <strong>{{ subproject[3] }}</strong> euroa. Budjettia jäljellä: <strong>{{ subproject[4] }}</strong> euroa.</li>
+  {% endfor %}
+</ul>
+
+<h3>Maksukategoriat</h3>
+Tapahtuman järjestäjä voi seurata maksuja seuraavissa kategorioissa:
+<ul>
+  {% for category in category_list %}
+    <li>
+      {{ category[1] }}
+    </li>
+  {% endfor %}
+</ul>
+
+<hr>
+<h3>Maksut</h3>
+<h4>Omat maksusi tapahtumassa</h4>
+<p>Olet syöttänyt tapahtumaan maksuja <strong>XX(tulossa)</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
+<ul>
+  {% for payment in user_payment_list %}
+    <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p>
+      <form action="/deletepayment" method="POST">
+      <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+      <input type="hidden" name="payment_id" value="{{ payment[6] }}" />
+      <input type="submit" value="Poista maksu" />
+      </form>
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Sinulla ei ole lupaa nähdä sivua. <a href="/">Aloita kirjautumalla sisään</a>.
+{% endif %}
+{% endblock %}
