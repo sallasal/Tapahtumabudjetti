@@ -2,14 +2,16 @@
 
 {% block content %}
 {% if session.user_id %}
-<h2>Tarkastelet tapahtumaa: {{ project_information[1] }}</h2>
-<p>Tapahtuman järjestäjä: {{ user_information[0] }}, {{ user_information[1] }}</p>
+<h2>Oma tapahtumayhteenveto: {{ project_information[1] }}</h2>
+<p>Olet tapahtuman järjestäjä (kirjautunut käyttäjänä {{ user_information[0] }}, {{ user_information[1] }}).</p>
 <p>Tapahtumaan on budjetoitu osaprojektien kautta yhteensä <strong>{{ grandtotal }}</strong> euroa. 
   Maksuja on syötetty yhteensä <strong>{{ payment_grandtotal }}</strong> euroa.</p>
 
-<hr>
+<hr />
 <h3>Budjetin osa-alueet</h3>
-<p>Tapahtuman budjetti on jaettu osa-alueisiin seuraavasti:</p>
+<p>Tapahtuman budjetti on jaettu osa-alueisiin, joille kullekin on määritelty oma osabudjettinsa.
+<strong>Jokaisen maksun on kuuluttava yhteen budjetin osa-alueeseen.</strong></p>
+<p>Tämän tapahtuman budjetin osa-alueet:</p>
 <ul>
   {% for subproject in subproject_list %}
     <li>{{ subproject[1] }}. Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa, 
@@ -17,8 +19,11 @@
   {% endfor %}
 </ul>
 
-<h3>Maksukategoriat</h3>
-Tapahtuman järjestäjä voi seurata maksuja seuraavissa kategorioissa:
+<h3>Lisäkategoriat</h3>
+<p>Lisäkategoriat ovat vapaaehtoisia aihetunnisteita, joita voi tarvittaessa lisätä maksuille.
+Niiden avulla voi seurata esimerkiksi kaikkia ennakkomaksuja tai käteiskassamaksuja 
+riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjettiin.</p>
+<p>Tapahtuman järjestäjänä voit seurata maksuja näissä kategorioissa:</p>
 <ul>
   {% for category in category_list %}
     <li>
@@ -26,17 +31,15 @@ Tapahtuman järjestäjä voi seurata maksuja seuraavissa kategorioissa:
       {{ category[1] }}
       <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
       <input type="hidden" name="category_name" value="{{ category[1] }}" />
-      <input type="submit" value="Tarkastele maksuja" />
+      <input type="submit" value="Katso kategorian maksut" />
       </form>
       <br />
     </li>
   {% endfor %}
 </ul>
-
-Tapahtuman järjestäjänä voit <a href="/editsubprojects/{{ project_information[0] }}">lisätä ja muokata maksukategorioita ja osa-alueita</a>.
-<hr>
-<h3>Maksut</h3>
-<h4>Omat maksusi tapahtumassa</h4>
+<strong><a href="/editsubprojects/{{ project_information[0] }}">Lisää ja muokkaa budjetin osa-alueita ja vapaaehtoisia lisäkategorioita</a>.</strong>
+<hr />
+<h3>Omat maksusi tapahtumassa</h3>
 <p>Olet syöttänyt tapahtumaan maksuja <strong>XX(tulossa)</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
 <ul>
   {% for payment in user_payment_list %}
@@ -49,7 +52,9 @@ Tapahtuman järjestäjänä voit <a href="/editsubprojects/{{ project_informatio
     </li>
   {% endfor %}
 </ul>
-<h4>Muut tapahtuman maksut (siirrettäneen omalle sivulleen, jota vain järjestäjä voi tarkastella)</h4>
+<hr />
+<h3>Hallinnoi ja tarkastele kaikkia tapahtuman maksuja</h3>
+<p>Toistaiseksi alla oleva on other_payment_list, ei kaikkien maksujen listaus.</p>
 <ul>
   {% for payment in other_payment_list %}
     <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p></li>

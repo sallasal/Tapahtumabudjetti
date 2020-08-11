@@ -4,14 +4,9 @@
 <h2>Muokkaa tapahtuman {{ project_information[1] }} maksukategorioita ja osa-alueita</h2>
 <p><a href="/project/{{ project_information[0] }}">Palaa takaisin tapahtuman sivulle</a></p>
 <hr>
-<h3>Lisää uusi maksukategoria</h3>
-<form action="/addcategory" method="POST">
-  <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
-  <p>Uuden maksukategorian nimi: <input type="text" name="name" /></p>
-  <p><input type="submit" value="Lisää maksukategoria" /></p>
-</form>
-<hr>
-<h3>Lisää uusi osa-alue</h3>
+<h3>Lisää uusi budjetin osa-alue</h3>
+<p>Tapahtuman budjetti on jaettu osa-alueisiin, joille jokaiselle on määritelty oma osabudjettinsa. 
+Osa-alueiden yhteisbudjetti muodostaa koko tapahtuman budjetin. Lisää tapahtumaan uusi budjetin osa-alue:</p>
 <form action="/createsubproject" method="POST">
   <input type="hidden" name="tapahtumaid" value="{{ project_information[0] }}" />
   <p>Uuden osa-alueen nimi: <input type="text" name="name" /></p>
@@ -20,15 +15,24 @@
 </form>
 <hr>
 <h3>Muokkaa nykyisiä osa-alueita</h3>
-{% for subproject in subproject_list %}
-<h4>{{ subproject[1] }}</h4>
-<p>Tunniste: {{ subproject[0] }}. Budjetoitu {{ subproject[2] }} euroa.</p>
-<form action="/updatetotal" method="POST">
-  <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
-  <input type="hidden" name="subproject_id" value="{{ subproject[0] }}" />
-  <p>Muokkaa summaa: <input type="number" name="newtotal" /></p>
-  <p><input type="submit" value="Muuta budjetoitu summa" /></p>
-</form>
+<p>Tällä hetkellä tapahtumaan voi lisätä maksuja näiden osa-alueiden kautta. Muokkaa nykyisiin osa-alueisiin varattuja summia:
+<ul>
+  {% for subproject in subproject_list %}
+  <li><p><strong>{{ subproject[1] }}.</strong> Tällä hetkellä osa-alueeseen on budjetoitu {{ subproject[2] }} euroa.</p>
+    <form action="/updatetotal" method="POST">
+      <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+      <input type="hidden" name="subproject_id" value="{{ subproject[0] }}" />
+      <p>Uusi summa: <input type="number" name="newtotal" /> <input type="submit" value="Muuta budjetoitu summa" /></p>
+    </form>
+  </li>
 {% endfor %}
-
+</ul>
+<hr>
+<h3>Lisää uusi lisäkategoria</h3>
+<p>Vapaaehtoiset lisäkategoriat toimivat kuin aihetunnisteet: niiden avulla voit merkitä maksuja esimerkiksi käteiskassamaksuiksi tai ennakkomaksuiksi
+riippumatta siitä, minkä budjetin osa-alueen kautta ne on liitetty tapahtumaan.</p>
+<form action="/addcategory" method="POST">
+  <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+  <p>Uuden maksukategorian nimi: <input type="text" name="name" /> <input type="submit" value="Lisää maksukategoria" /></p>
+</form>
 {% endblock %}

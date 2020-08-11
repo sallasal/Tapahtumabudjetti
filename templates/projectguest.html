@@ -2,14 +2,16 @@
 
 {% block content %}
 {% if session.user_id %}
-<h2>Tarkastelet tapahtumaa: {{ project_information[1] }}</h2>
+<h2>Tapahtumayhteenveto: {{ project_information[1] }}</h2>
 <p>Tapahtuman järjestäjä: {{ user_information[0] }}, {{ user_information[1] }}</p>
 <p>Tapahtumaan on budjetoitu osaprojektien kautta yhteensä <strong>{{ grandtotal }}</strong> euroa. 
   Maksuja on syötetty yhteensä <strong>{{ payment_grandtotal }}</strong> euroa.</p>
 
 <hr>
 <h3>Budjetin osa-alueet</h3>
-<p>Tapahtuman budjetti on jaettu osa-alueisiin seuraavasti:</p>
+<p>Tapahtuman budjetti on jaettu osa-alueisiin, joille kullekin on määritelty oma tavoitebudjettinsa. 
+<strong>Jokaisen maksun on kuuluttava yhteen budjetin osa-alueeseen.</strong>
+<p>Tämän tapahtuman budjetin osa-alueet:</p>
 <ul>
   {% for subproject in subproject_list %}
     <li>{{ subproject[1] }}. Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa, 
@@ -17,8 +19,9 @@
   {% endfor %}
 </ul>
 
-<h3>Maksukategoriat</h3>
-Tapahtuman järjestäjä voi seurata maksuja seuraavissa kategorioissa:
+<h3>Lisäkategoriat</h3>
+<p>Lisäkategoriat ovat vapaaehtoisia tunnisteita, joita voi tarvittaessa lisätä maksuille. Ne toimivat kuin aihetunnisteet: niiden avulla voi seurata esimerkiksi kaikkia ennakkomaksuja tai käteiskassamaksuja riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjettiin.</p>
+<p>Tapahtuman järjestäjä voi seurata maksuja seuraavissa kategorioissa:</p>
 <ul>
   {% for category in category_list %}
     <li>
@@ -28,8 +31,7 @@ Tapahtuman järjestäjä voi seurata maksuja seuraavissa kategorioissa:
 </ul>
 
 <hr>
-<h3>Maksut</h3>
-<h4>Omat maksusi tapahtumassa</h4>
+<h3>Omat maksusi tapahtumassa</h3>
 <p>Olet syöttänyt tapahtumaan maksuja <strong>XX(tulossa)</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
 <ul>
   {% for payment in user_payment_list %}
