@@ -1,5 +1,19 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<p>Uuden tapahtuman id on {{ project_id }}</p>
+<h2>Tapahtuman luominen onnistui!</h2>
+
+<p>Lisää seuraavaksi tapahtumalle ensimmäinen osaprojekti. <strong>Jokaisen tapahtumaan lisättävän maksun on kuuluttava yhteen osaprojektiin.</strong>
+Osaprojektilla on nimi ja sille on budjetoitu summa, ja tapahtuman kokonaisbudjetti koostuu osaprojektien summasta. Kunkin osaprojektin budjetin toteutumista voi tarkastella ohjelmassa erikseen.</p>
+
+<form action="/createsubproject" method="POST">
+  <input type="hidden" name="tapahtumaid" value="{{ project_id }}" />
+  <p>Ensimmäisen osa-alueen nimi: <input type="text" name="name" /></p>
+  <p>Osa-alueelle budjetoitava summa: <input type="number" name="total_sum" /></p>
+  <p><input type="submit" value="Lisää osa-alue" /></p>
+</form>
+
+<p><em>Esimerkki: tapahtumalla Juhlat on kolme osaprojektia: koristelu (20 €), ruokailu (70 €) ja ohjelma (50 €). Jokainen maksu liittyy johonkin osaprojektiin, ja tapahtuman kokonaisbudjetti on 20+70+50=140 €.</em></p>
+
+<p>Huom! Tapahtumaan ei voi lisätä maksuja, jos sillä ei ole yhtään osaprojektia. <a href="/project/{{ project_id }}">Ohita silti osaprojektin lisäys ja siirry suoraan tapahtuman sivulle.</a></p>
 {% endblock %}
