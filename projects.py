@@ -30,10 +30,11 @@ def list_other_projects(user_id):
 # Add new project to system
 def add_project(name):
     user_id = users.user_id()
-    sql = "INSERT INTO projects (name, userid) VALUES (:name,:user_id)"
-    db.session.execute(sql, {"name":name,"user_id":user_id})
+    sql = "INSERT INTO projects (name, userid) VALUES (:name,:user_id) RETURNING id"
+    result = db.session.execute(sql, {"name":name,"user_id":user_id})
+    project_id = result.fetchone()[0]
     db.session.commit()
-    return True
+    return project_id
 
 # Get full project information for defined project
 def get_project(id):

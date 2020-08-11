@@ -42,8 +42,9 @@ def createproject():
         return render_template("createproject.html")
     if request.method == "POST":
         name = request.form["name"]
-        if projects.add_project(name):
-            return redirect("/")
+        project_id = projects.add_project(name)
+        if project_id != None:
+            return render_template("created.html", project_id = project_id)
         else:
             return render_template("error.html",message="Tapahtuman luominen ei jostain syystä onnistunut. Tarkista arvo ja yritä uudelleen.")
 
