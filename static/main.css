@@ -4,6 +4,15 @@ body {
 }
 
 h1 {
+    text-align: center;
     font-family: 'Permanent Marker', cursive;
     font-size: 400%;
+}
+
+p {
+    text-align: left;
+}
+
+.center_paragraph {
+    text-align: center;
 }

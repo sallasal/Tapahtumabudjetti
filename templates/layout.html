@@ -11,11 +11,12 @@
   <body>
     <h1>Tapahtumabudjetti</h1>
 {% if session.user_id %}
-    <p> 
+    <p class="center_paragraph"> 
       <a href="/">Kaikki tapahtumat</a> | 
       <a href="/createproject">Lisää tapahtuma</a> |
       <a href="/logout">Kirjaudu ulos</a>
     </p>
+    <hr />
 {% else %}
     <p> 
       <a href="/">Etusivu</a>
