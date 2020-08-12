@@ -5,6 +5,7 @@
     <title>Tapahtumabudjetti</title>
     <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='main.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
@@ -18,9 +19,9 @@
     </p>
     <hr />
 {% else %}
-    <p> 
+    <p class="center_paragraph"> 
       <a href="/">Etusivu</a>
     </p>
 {% endif %}
-    <p>{% block content %}{% endblock %}</p>
+    <div class="all_content">{% block content %}{% endblock %}</p></div>
 </html>
