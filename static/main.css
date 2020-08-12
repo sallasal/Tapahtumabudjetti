@@ -1,0 +1,9 @@
+body {
+    margin: auto;
+    max-width: 45em;
+}
+
+h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 400%;
+}
