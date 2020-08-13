@@ -90,6 +90,20 @@ def updatetotal():
     else:
         return render_template("error.html", message="Osa-alueen päivittäminen ei onnistunut.")
 
+# Route for listing all payments in one subproject
+@app.route("/subprojectpayments/<int:subproject_id>", methods=["POST"])
+def subprojectpayments(subproject_id):
+    project_id = request.form["project_id"]
+    subproject_name = request.form["subproject_name"]
+    payments_in_subproject = subprojects.payments_in_subproject(subproject_id)
+    getid = projects.get_userid(project_id)
+    userid1 = getid[0]
+    userid2 = users.user_id()
+    if userid1 != userid2:
+        return render_template("error.html", message="Vain tapahtuman järjestäjä voi tarkastella budjetin osa-alueisiin liitettyjä maksuja.")
+    else:
+        return render_template("subprojectpayments.html", payments_in_subproject=payments_in_subproject, subproject_name=subproject_name, project_id=project_id)
+
 # -----
 # CATEGORY ROUTES
 # -----

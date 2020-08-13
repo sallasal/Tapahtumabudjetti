@@ -35,3 +35,10 @@ def get_grandtotal(project_id):
     result = db.session.execute(sql, {"project_id":project_id})
     grandtotal = result.fetchone()[0]
     return grandtotal
+
+#List all payments from subproject
+def payments_in_subproject(subproject_id):
+    sql = "SELECT p.recipient, p.message, p.total, p.date, users.name FROM payments p LEFT JOIN users ON users.id=p.userid LEFT JOIN subprojects s ON s.id=p.subproject WHERE p.subproject=:subproject_id"
+    result = db.session.execute(sql, {"subproject_id":subproject_id})
+    subproject_payments = result.fetchall()
+    return subproject_payments
