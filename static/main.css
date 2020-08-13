@@ -25,6 +25,36 @@ p {
     color: #009c82;
 }
 
+a {
+    color: #009c82;
+}
+
+a:hover {
+    color: #65009c;
+}
+
+.navilink {
+    text-decoration: none;
+}
+
+input {
+    background-color: #fff;
+    color: #41404
+}
+
+input[type=submit] {
+    border-style: solid;
+    border-color: #009c82;
+    background-color: white;
+    color: #009c82;
+    padding: 4px 5px;
+    margin: 5px;
+}
+
+input[type=submit]:hover {
+    color: #65009c;
+}
+
 div {
     text-align:left;
 }
@@ -35,12 +65,4 @@ div {
     border-color: #009c82;
     border-style: dotted;
     border-radius: 2em;
-}
-
-a {
-    color: #009c82;
-}
-
-.navilink {
-    text-decoration: none;
 }

@@ -14,7 +14,7 @@
 <p>Tämän tapahtuman budjetin osa-alueet:</p>
 <ul>
   {% for subproject in subproject_list %}
-    <li>{{ subproject[1] }}. Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa, 
+    <li><strong>{{ subproject[1] }}.</strong> Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa, 
         maksuja syötetty <strong>{{ subproject[3] }}</strong> euroa. Budjettia jäljellä: <strong>{{ subproject[4] }}</strong> euroa.</li>
   {% endfor %}
 </ul>
