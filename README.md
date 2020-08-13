@@ -34,14 +34,15 @@ Kirjautunut käyttäjä puolestaan voi
 * poistaa omia maksujaan mistä tahansa tapahtumasta
 * nähdä tapahtumasivulla tapahtumaan budjetoidun kokonaissumman sekä tähän mennessä tapahtuman maksuista kertyneen summan
 * verrata osaprojektin maksimibudjettia ja tähän mennessä syötettyjen maksujen summaa sekä nähdä tiedon budjetin alituksesta tai ylityksestä.
+* listata tapahtuman, jonka järjestäjä on, maksut osa-alueittain ja tarkastella niitä.
 * listata tapahtuman, jonka järjestäjä on, maksut maksukategorioittain ja tarkastella niitä.
+* listata kaikki tapahtuman maksut päivämäärän mukaan
+* poistaa kaikkien maksujen yhteenvedoissa minkä tahansa maksun
 * kirjautua ulos.
 
-Seuraavaksi siirretään kaikkien maksujen listaus omalle, vain järjestäjälle näkyvälle sivulle. Sivulla järjestäjä voi sitten myös poistaa maksuja.
-Myöhemmin lisätään vielä erilaisia yhteenvetokysely ainakin maksuista osaprojekteittain. Yhteenvetosivuille pääsee vain järjestäjä.
-Jos ehtii, voisi laittaa myös niin, että yhteenvetosivulla järjestäjä voisi sorttailla maksut haluamallaan tavalla (ei vaikea, mutta ei prioriteettilistan kärjessä?).
+Lisäillään vielä kokonaissummia sekä erilaisia yhteenvetomahdollisuuksia tapahtuman järjestäjälle.
 
-# Muita laajennusmahdollisuuksia
+# Myöhempiä laajennusmahdollisuuksia
 Sovellus toimii suurin piirtein tällaisenaan esimerkiksi ainejärjestön tai muun yhden tapahtumia järjestävän joukon sisällä. 
 Jos käyttäjäkunta olisi useampi erillinen järjestäjäjoukko, sovelluksen käyttäjänhallintaa voisi kehittää vielä niin, että kullekin tapahtumalle määritetään järjestäjäjoukko, jota hallinnoi järjestäjä.
 Tällöin vain järjestäjäjoukko näkisi tapahtuman tiedot.
