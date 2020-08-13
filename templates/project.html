@@ -15,7 +15,7 @@
 <ul>
   {% for subproject in subproject_list %}
     <li>
-      <form action="/subprojectpayments/{{ subproject[0] }}" method="POST">{{ subproject[1] }}. Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa, 
+      <form action="/subprojectpayments/{{ subproject[0] }}" method="POST"><strong>{{ subproject[1] }}.</strong> Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa, 
         maksuja syötetty <strong>{{ subproject[3] }}</strong> euroa. Budjettia jäljellä: <strong>{{ subproject[4] }}</strong> euroa.
         <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
         <input type="hidden" name="subproject_name" value="{{ subproject[1] }}" />
@@ -48,17 +48,22 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
 <p>Olet syöttänyt tapahtumaan maksuja <strong>XX(tulossa)</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
 <ul>
   {% for payment in user_payment_list %}
-    <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p>
+    <li>
       <form action="/deletepayment" method="POST">
-      <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
-      <input type="hidden" name="payment_id" value="{{ payment[6] }}" />
-      <input type="submit" value="Poista maksu" />
+        <strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}
+        <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+        <input type="hidden" name="payment_id" value="{{ payment[6] }}" />
+        <input type="submit" value="Poista maksu" />
       </form>
     </li>
   {% endfor %}
 </ul>
 <hr />
 <h3>Hallinnoi ja tarkastele kaikkia tapahtuman maksuja</h3>
+  <form action="/paymentsbydate/{{ project_information[0] }}" method="POST">
+    <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+    <input type="submit" value="Listaa maksut päivämäärän mukaan" />
+  </form>
 <p>Toistaiseksi alla oleva on other_payment_list, ei kaikkien maksujen listaus.</p>
 <ul>
   {% for payment in other_payment_list %}

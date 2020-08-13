@@ -53,3 +53,10 @@ def delete_payment(payment_id):
     db.session.execute(sql_payments, {"payment_id":payment_id})
     db.session.commit()
     return True
+
+# List by date all payments from project, includes names of payment owner and subproject of the payment
+def payments_by_date(project_id):
+    sql = "SELECT p.recipient, p.message, p.total, p.date, users.name, s.name FROM payments p LEFT JOIN users ON users.id=p.userid LEFT JOIN subprojects s ON s.id=p.subproject WHERE subproject IN (SELECT id FROM subprojects WHERE project=:project_id) ORDER BY p.date"
+    result = db.session.execute(sql, {"project_id":project_id})
+    payments_by_date = result.fetchall()
+    return payments_by_date

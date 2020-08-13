@@ -28,8 +28,6 @@ def project(id):
     user_payment_list = payments.list_user_payments(id)
     grandtotal = subprojects.get_grandtotal(id)
     payment_grandtotal = payments.get_payment_grandtotal(id)
-    print(id)
-    print(subproject_list)
     if creator_id == users.user_id():
         return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list, other_payment_list = other_payment_list, user_payment_list = user_payment_list, grandtotal = grandtotal, payment_grandtotal = payment_grandtotal)
     else:
@@ -174,6 +172,14 @@ def deletepayment():
         return redirect("/project/"+project_id)
     else:
         return render_template("error.html",message="Maksun poistaminen ei onnistunut.")
+
+#Route for listing payments by date
+@app.route("/paymentsbydate/<int:id>", methods=["POST"])
+def paymentsbydate(id):
+    project_id = request.form["project_id"]
+    payments_by_date = payments.payments_by_date(id)
+    print(project_id)
+    return render_template("paymentsbydate.html", payments_by_date=payments_by_date, project_id=project_id)
 
 # -----
 # USER AND SESSION ROUTES
