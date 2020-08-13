@@ -1,7 +1,7 @@
 body {
     margin: auto;
     max-width: 60em;
-    background-color: #ebfff9;
+    background-color: #fff;
     color: #414042;
     font-family: 'Open Sans', sans-serif;
 }
@@ -10,7 +10,8 @@ h1 {
     text-align: center;
     font-family: 'Permanent Marker', cursive;
     font-size: 400%;
-    color: #0b0d42;
+    color: #009c82;
+    padding: 1em 0 0 0;
 }
 
 p {
@@ -19,6 +20,9 @@ p {
 
 .center_paragraph {
     text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 120%;
+    color: #009c82;
 }
 
 div {
@@ -28,5 +32,15 @@ div {
 .all_content {
     background-color: white;
     padding: 1.5em 3em;
+    border-color: #009c82;
+    border-style: dotted;
     border-radius: 2em;
+}
+
+a {
+    color: #009c82;
+}
+
+.navilink {
+    text-decoration: none;
 }

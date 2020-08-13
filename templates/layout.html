@@ -13,14 +13,13 @@
     <h1>Tapahtumabudjetti</h1>
 {% if session.user_id %}
     <p class="center_paragraph"> 
-      <a href="/">Kaikki tapahtumat</a> | 
-      <a href="/createproject">Lisää tapahtuma</a> |
-      <a href="/logout">Kirjaudu ulos</a>
+      <a href="/" class="navilink">Kaikki tapahtumat</a> - 
+      <a href="/createproject" class="navilink">Lisää tapahtuma</a> -  
+      <a href="/logout" class="navilink">Kirjaudu ulos</a>
     </p>
-    <hr />
 {% else %}
     <p class="center_paragraph"> 
-      <a href="/">Etusivu</a>
+      <a href="/" class="navilink">Kirjautuminen</a>
     </p>
 {% endif %}
     <div class="all_content">{% block content %}{% endblock %}</p></div>
