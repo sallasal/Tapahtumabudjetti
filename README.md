@@ -10,6 +10,12 @@ Testatessa kannattaa rekisteröidä itselle oma testikäyttäjä ja luoda täll�
 Näin pääsee testaamaan sekä tapahtuman järjestäjän ominaisuuksia (omassa tapahtumassa) että muiden käyttäjien tapahtumien käyttäytymistä.
 Herokussa on ainakin käyttäjän Salla tapahtumia jo pari testimielessä.
 
+# Vaatimukset ja laitteet
+
+Sovelluksen käyttämät kirjastot on listattu tiedostossa requirements.txt.
+
+Sovellus toimii myös mobiilissa.
+
 ## Sovelluksen tarkoitus
 Sovellus on tarkoitettu tilanteeseen, jossa joukko ihmisiä järjestää tapahtumaa. Sovellus sopii esimerkiksi suurten juhlien tai järjestötapahtumien järjestäjäjoukoille.
 Sovelluksen avulla voi budjetoida koko tapahtuman ja sen osa-alueet (esim. ruoka, koristelu, ohjelma) sekä seurata toteutuneita maksuja käyttäjittäin ja osa-alueittain.
