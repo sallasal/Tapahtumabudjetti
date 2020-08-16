@@ -45,7 +45,7 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
 <strong><a href="/editsubprojects/{{ project_information[0] }}">Lisää ja muokkaa budjetin osa-alueita ja vapaaehtoisia lisäkategorioita</a>.</strong>
 <hr />
 <h3>Omat maksusi tapahtumassa</h3>
-<p>Olet syöttänyt tapahtumaan maksuja <strong>XX(tulossa)</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
+<p>Olet syöttänyt tapahtumaan maksuja <strong>{{ user_payment_total }}</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
 <ul>
   {% for payment in user_payment_list %}
     <li>

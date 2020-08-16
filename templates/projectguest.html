@@ -32,7 +32,7 @@
 
 <hr>
 <h3>Omat maksusi tapahtumassa</h3>
-<p>Olet syöttänyt tapahtumaan maksuja <strong>XX(tulossa)</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
+<p>Olet syöttänyt tapahtumaan maksuja <strong>{{ user_payment_total }}</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
 <ul>
   {% for payment in user_payment_list %}
     <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p>

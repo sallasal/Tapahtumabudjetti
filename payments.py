@@ -60,3 +60,10 @@ def payments_by_date(project_id):
     result = db.session.execute(sql, {"project_id":project_id})
     payments_by_date = result.fetchall()
     return payments_by_date
+
+# Get total sum of payments from defined user in one project
+def user_payment_total(user_id,project_id):
+    sql = "SELECT SUM(p.total) FROM payments p LEFT JOIN subprojects s ON s.id=p.subproject WHERE p.userid=:user_id AND p.subproject IN (SELECT id FROM subprojects WHERE project=:project_id)"
+    result = db.session.execute(sql, {"user_id":user_id,"project_id":project_id})
+    user_payment_total = result.fetchone()[0]
+    return user_payment_total
