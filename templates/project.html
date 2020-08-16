@@ -66,7 +66,12 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
 
 <form action="/paymentsbydate/{{ project_information[0] }}" method="POST">
   <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
-  <input type="submit" value="Listaa maksut päivämäärän mukaan" />
+  <input type="submit" value="Listaa maksut päivämäärän mukaan: vanhin ensin" />
+</form>
+
+<form action="/paymentsbydatedesc/{{ project_information[0] }}" method="POST">
+  <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+  <input type="submit" value="Listaa maksut päivämäärän mukaan: uusin enisn" />
 </form>
 
 {% else %}

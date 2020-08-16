@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h2>Kaikki maksut päivämäärän mukaan, vanhin ensin</h2>
+<h2>Kaikki maksut päivämäärän mukaan, uusin ensin</h2>
 
 <a href="/project/{{ project_id }}">Palaa takaisin projektin sivulle</a>
 
 <ul>
-  {% for payment in payments_by_date %}
+  {% for payment in payments_by_date_desc %}
   <li>
     <form action="/deletepayment" method="POST">
       <strong>Saaja: {{ payment[0] }} </strong>| Summa: {{ payment[2] }} | Viesti: {{ payment[1] }} | Osa-alue: {{ payment[5] }} |

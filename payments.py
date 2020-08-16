@@ -54,12 +54,19 @@ def delete_payment(payment_id):
     db.session.commit()
     return True
 
-# List by date all payments from project, includes names of payment owner and subproject of the payment
+# List by date all payments from project, includes names of payment owner and subproject of the payment, oldest first
 def payments_by_date(project_id):
     sql = "SELECT p.recipient, p.message, p.total, p.date, users.name, s.name, p.id FROM payments p LEFT JOIN users ON users.id=p.userid LEFT JOIN subprojects s ON s.id=p.subproject WHERE subproject IN (SELECT id FROM subprojects WHERE project=:project_id) ORDER BY p.date"
     result = db.session.execute(sql, {"project_id":project_id})
     payments_by_date = result.fetchall()
     return payments_by_date
+
+# List by date all payments from project, includes names of payment owner and subproject of the payment, newest first
+def payments_by_date_desc(project_id):
+    sql = "SELECT p.recipient, p.message, p.total, p.date, users.name, s.name, p.id FROM payments p LEFT JOIN users ON users.id=p.userid LEFT JOIN subprojects s ON s.id=p.subproject WHERE subproject IN (SELECT id FROM subprojects WHERE project=:project_id) ORDER BY p.date DESC"
+    result = db.session.execute(sql, {"project_id":project_id})
+    payments_by_date_desc = result.fetchall()
+    return payments_by_date_desc
 
 # Get total sum of payments from defined user in one project
 def user_payment_total(user_id,project_id):

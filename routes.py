@@ -170,20 +170,25 @@ def createpayment(id):
 @app.route("/deletepayment", methods=["POST"])
 def deletepayment():
     payment_id = request.form["payment_id"]
-    print(payment_id)
     project_id = request.form["project_id"]
     if payments.delete_payment(payment_id):
         return redirect("/project/"+project_id)
     else:
         return render_template("error.html",message="Maksun poistaminen ei onnistunut.")
 
-#Route for listing payments by date
+# Route for listing payments by date, oldest first
 @app.route("/paymentsbydate/<int:id>", methods=["POST"])
 def paymentsbydate(id):
     project_id = request.form["project_id"]
     payments_by_date = payments.payments_by_date(id)
-    print(project_id)
     return render_template("paymentsbydate.html", payments_by_date=payments_by_date, project_id=project_id)
+
+# Route for listing payments by date, newest first
+@app.route("/paymentsbydatedesc/<int:id>", methods=["POST"])
+def paymentsbydatedesc(id):
+    project_id = request.form["project_id"]
+    payments_by_date_desc = payments.payments_by_date_desc(id)
+    return render_template("paymentsbydatedesc.html", payments_by_date_desc=payments_by_date_desc, project_id=project_id)
 
 # -----
 # USER AND SESSION ROUTES
