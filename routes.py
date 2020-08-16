@@ -29,8 +29,9 @@ def project(id):
     grandtotal = subprojects.get_grandtotal(id)
     payment_grandtotal = payments.get_payment_grandtotal(id)
     user_payment_total = payments.user_payment_total(users.user_id(), id)
+    count_payments = payments.count_payments(id)
     if creator_id == users.user_id():
-        return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list, other_payment_list = other_payment_list, user_payment_list = user_payment_list, grandtotal = grandtotal, payment_grandtotal = payment_grandtotal, user_payment_total=user_payment_total)
+        return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list, other_payment_list = other_payment_list, user_payment_list = user_payment_list, grandtotal = grandtotal, payment_grandtotal = payment_grandtotal, user_payment_total=user_payment_total, count_payments=count_payments)
     else:
         return render_template("projectguest.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list, other_payment_list = other_payment_list, user_payment_list = user_payment_list, grandtotal = grandtotal, payment_grandtotal = payment_grandtotal,user_payment_total=user_payment_total)
 

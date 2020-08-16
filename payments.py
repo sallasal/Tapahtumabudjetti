@@ -67,3 +67,10 @@ def user_payment_total(user_id,project_id):
     result = db.session.execute(sql, {"user_id":user_id,"project_id":project_id})
     user_payment_total = result.fetchone()[0]
     return user_payment_total
+
+# Count payments for defined project
+def count_payments(project_id):
+    sql = "SELECT COUNT(p.id) FROM payments p LEFT JOIN subprojects s ON s.id=p.subproject WHERE subproject IN (SELECT id FROM subprojects WHERE project=:project_id)"
+    result = db.session.execute(sql, {"project_id":project_id})
+    count_payments = result.fetchone()[0]
+    return count_payments

@@ -62,7 +62,7 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
 <hr />
 <h3>Hallinnoi ja tarkastele kaikkia tapahtuman maksuja</h3>
 
-<p>Tapahtumaan on syötetty yhteensä <strong>XX(tulossa)</strong> maksua.
+<p>Tapahtumaan on syötetty yhteensä <strong>{{ count_payments }}</strong> maksua.
 
 <form action="/paymentsbydate/{{ project_information[0] }}" method="POST">
   <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
