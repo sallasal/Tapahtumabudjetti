@@ -19,6 +19,7 @@
         maksuja syötetty <strong>{{ subproject[3] }}</strong> euroa. Budjettia jäljellä: <strong>{{ subproject[4] }}</strong> euroa.
         <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
         <input type="hidden" name="subproject_name" value="{{ subproject[1] }}" />
+        <input type="hidden" name="subproject_total" value="{{ subproject[3] }}" />
         <input type="submit" value="Katso-osa-alueen maksut" />
       </form>
     </li>
@@ -60,12 +61,13 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
 </ul>
 <hr />
 <h3>Hallinnoi ja tarkastele kaikkia tapahtuman maksuja</h3>
-  <form action="/paymentsbydate/{{ project_information[0] }}" method="POST">
-    <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
-    <input type="submit" value="Listaa maksut päivämäärän mukaan" />
-  </form>
 
-<p>Lisää toiminnallisuuksia tulossa</p>
+<p>Tapahtumaan on syötetty yhteensä <strong>XX(tulossa)</strong> maksua.
+
+<form action="/paymentsbydate/{{ project_information[0] }}" method="POST">
+  <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+  <input type="submit" value="Listaa maksut päivämäärän mukaan" />
+</form>
 
 {% else %}
 <p>Sinulla ei ole lupaa nähdä sivua. <a href="/">Aloita kirjautumalla sisään</a>.

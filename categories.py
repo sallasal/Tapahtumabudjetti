@@ -20,3 +20,10 @@ def payments_in_category(category_id):
     result = db.session.execute(sql, {"category_id":category_id})
     payments_in_category = result.fetchall()
     return payments_in_category
+
+# Get total sum of category payments
+def category_total(category_id):
+    sql = "SELECT SUM(p.total) FROM payments p LEFT JOIN paymentcategory c ON c.payment_id=p.id WHERE c.category_id=:category_id"
+    result = db.session.execute(sql, {"category_id":category_id})
+    category_total = result.fetchone()[0]
+    return category_total

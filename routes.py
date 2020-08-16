@@ -94,6 +94,7 @@ def updatetotal():
 def subprojectpayments(subproject_id):
     project_id = request.form["project_id"]
     subproject_name = request.form["subproject_name"]
+    subproject_total = request.form["subproject_total"]
     payments_in_subproject = subprojects.payments_in_subproject(subproject_id)
     getid = projects.get_userid(project_id)
     userid1 = getid[0]
@@ -101,7 +102,7 @@ def subprojectpayments(subproject_id):
     if userid1 != userid2:
         return render_template("error.html", message="Vain tapahtuman järjestäjä voi tarkastella budjetin osa-alueisiin liitettyjä maksuja.")
     else:
-        return render_template("subprojectpayments.html", payments_in_subproject=payments_in_subproject, subproject_name=subproject_name, project_id=project_id)
+        return render_template("subprojectpayments.html", payments_in_subproject=payments_in_subproject, subproject_name=subproject_name, project_id=project_id, subproject_total=subproject_total)
 
 # -----
 # CATEGORY ROUTES
@@ -124,6 +125,7 @@ def categorypayments(category_id):
     project_id = request.form["project_id"]
     category_name = request.form["category_name"]
     payments_in_category = categories.payments_in_category(category_id)
+    category_total = categories.category_total(category_id)
     getid = projects.get_userid(project_id)
     userid1 = getid[0]
     userid2 = users.user_id()
@@ -132,7 +134,7 @@ def categorypayments(category_id):
     if not allow:
         return render_template("error.html", message="Vain tapahtuman järjestäjä voi tarkastella kategoriaan liitettyjä maksuja.")
     else:
-        return render_template("categorypayments.html", category_name=category_name, project_id=project_id, payments_in_category=payments_in_category)
+        return render_template("categorypayments.html", category_name=category_name, project_id=project_id, payments_in_category=payments_in_category, category_total=category_total)
 
 # -----
 # PAYMENT ROUTES
