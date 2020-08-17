@@ -42,6 +42,8 @@ def createproject():
         return render_template("createproject.html")
     if request.method == "POST":
         name = request.form["name"]
+        if len(name) < 3 or len(name) > 100:
+            return render_template("error.html",message="Väärän pituinen nimi. Tapahtuman nimen on oltava 3–100 merkkiä pitkä.")
         project_id = projects.add_project(name)
         if project_id != None:
             return render_template("created.html", project_id = project_id)

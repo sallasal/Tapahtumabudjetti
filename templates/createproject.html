@@ -5,7 +5,7 @@
 <h2>Lisää uusi tapahtuma</h2>
 <p>Luo uusi tapahtuma syöttämällä tapahtuman nimi alla olevaan kenttään. Sinusta tulee tapahtuman järjestäjä.</p>
 <p>Lisäämisen jälkeen tapahtumaan voi lisätä osa-alueita ja maksuja tapahtuman omalla sivulla.</p>
-<form action="/createproject" method="POST">
+<form action="/createproject" method="POST" onsubmit="return check(this)">
   <p>Uuden tapahtuman nimi:</p>
   <p>
     <input type="text" name="name" />
@@ -14,6 +14,16 @@
     <input type="submit" value="Luo tapahtuma" />
   </p>
 </form>
+
+<script>
+function check(form) {
+    if (form.name.value.length > 100 || form.name.value.length < 3) {
+        alert("Virheellinen tapahtuma nimi. Nimessä on oltava 3–100 merkkiä.");
+        return false;
+    }
+    return true;
+}
+</script>
 {% else %}
 <p>Sinulla ei ole lupaa nähdä sivua. <a href="/">Aloita kirjautumalla sisään.</a>
 {% endif %}
