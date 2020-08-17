@@ -7,7 +7,7 @@
 <h3>Lisää uusi budjetin osa-alue</h3>
 <p>Tapahtuman budjetti on jaettu osa-alueisiin, joille jokaiselle on määritelty oma osabudjettinsa. 
 Osa-alueiden yhteisbudjetti muodostaa koko tapahtuman budjetin. Lisää tapahtumaan uusi budjetin osa-alue:</p>
-<form action="/createsubproject" method="POST">
+<form action="/createsubproject" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="tapahtumaid" value="{{ project_information[0] }}" />
   <p>Uuden osa-alueen nimi: <input type="text" name="name" /></p>
   <p>Osa-alueelle budjetoitava summa: <input type="number" name="total_sum" /><p>
@@ -31,8 +31,18 @@ Osa-alueiden yhteisbudjetti muodostaa koko tapahtuman budjetin. Lisää tapahtum
 <h3>Lisää uusi lisäkategoria</h3>
 <p>Vapaaehtoiset lisäkategoriat toimivat kuin aihetunnisteet: niiden avulla voit merkitä maksuja esimerkiksi käteiskassamaksuiksi tai ennakkomaksuiksi
 riippumatta siitä, minkä budjetin osa-alueen kautta ne on liitetty tapahtumaan.</p>
-<form action="/addcategory" method="POST">
+<form action="/addcategory" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
   <p>Uuden maksukategorian nimi: <input type="text" name="name" /> <input type="submit" value="Lisää maksukategoria" /></p>
 </form>
+
+<script>
+function check(form) {
+    if (form.name.value.length > 100 || form.name.value.length < 3) {
+        alert("Virheellinen nimi. Nimessä on oltava 3–100 merkkiä.");
+        return false;
+    }
+    return true;
+}
+</script>
 {% endblock %}

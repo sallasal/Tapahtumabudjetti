@@ -6,12 +6,22 @@
 <p>Lisää seuraavaksi tapahtumalle ensimmäinen osa-alue. <strong>Jokaisen tapahtumaan lisättävän maksun on kuuluttava yhteen osa-alueeseen.</strong>
 Osa-alueella on nimi ja sille on budjetoitu summa, ja tapahtuman kokonaisbudjetti koostuu osa-alueiden summasta. Kunkin osa-alueen budjetin toteutumista voi tarkastella ohjelmassa erikseen.</p>
 
-<form action="/createsubproject" method="POST">
+<form action="/createsubproject" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="tapahtumaid" value="{{ project_id }}" />
   <p>Ensimmäisen osa-alueen nimi: <input type="text" name="name" /></p>
   <p>Osa-alueelle budjetoitava summa: <input type="number" name="total_sum" /></p>
   <p><input type="submit" value="Lisää osa-alue" /></p>
 </form>
+
+<script>
+function check(form) {
+    if (form.name.value.length > 100 || form.name.value.length < 3) {
+        alert("Virheellinen osa-alueen nimi. Osa-alueen nimessä on oltava 3–100 merkkiä.");
+        return false;
+    }
+    return true;
+}
+</script>
 
 <p><em>Esimerkki: tapahtumalla Juhlat on kolme osaprojektia: koristelu (20 €), ruokailu (70 €) ja ohjelma (50 €). Jokainen maksu liittyy johonkin osa-aluetta, ja tapahtuman kokonaisbudjetti on 20+70+50=140 €.</em></p>
 

@@ -60,6 +60,8 @@ def createsubproject():
     project_id = request.form["tapahtumaid"]
     name = request.form["name"]
     total_sum = request.form["total_sum"]
+    if len(name) < 3 or len(name) > 100:
+        return render_template("error.html", message="Virheellinen osa-alueen nimi. Osa-alueen nimen on oltava 3–100 merkkiä pitkä.")
     if subprojects.add_subproject(name,total_sum,project_id):
         return redirect("/project/"+project_id)
     else:
@@ -116,6 +118,8 @@ def subprojectpayments(subproject_id):
 def addcategory():
     project_id = request.form["project_id"]
     name = request.form["name"]
+    if len(name) < 3 or len(name) > 100:
+        return render_template("error.html",message="Virheellinen kategorian nimi. Nimessä on oltava 3–100 merkkiä.")
     if categories.add_category(name,project_id):
         return redirect("/project/"+project_id)
     else:
