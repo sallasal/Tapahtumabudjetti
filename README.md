@@ -42,8 +42,8 @@ Kirjautunut käyttäjä puolestaan voi
 * verrata osaprojektin maksimibudjettia ja tähän mennessä syötettyjen maksujen summaa sekä nähdä tiedon budjetin alituksesta tai ylityksestä.
 * listata tapahtuman, jonka järjestäjä on, maksut osa-alueittain ja tarkastella niitä.
 * listata tapahtuman, jonka järjestäjä on, maksut maksukategorioittain ja tarkastella niitä.
-* listata kaikki tapahtuman maksut päivämäärän mukaan
-* poistaa kaikkien maksujen yhteenvedoissa minkä tahansa maksun
+* listata kaikki oman tapahtuman maksut päivämäärän mukaan nousevasti ja laskevasti
+* poistaa omasta tapahtumasta kaikkien maksujen yhteenvedoissa minkä tahansa maksun
 * kirjautua ulos.
 
 Lisäillään vielä kokonaissummia sekä erilaisia yhteenvetomahdollisuuksia tapahtuman järjestäjälle.
