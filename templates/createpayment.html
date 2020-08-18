@@ -4,7 +4,7 @@
 {% if session.user_id %}
 <h2>Lisää uusi maksu tapahtumaan {{ project_information[1] }}</h2>
 <p><a href="/project/{{ project_information[0] }}">Palaa takaisin tapahtuman sivulle</a></p>
-<form action="/addpayment" method="POST">
+<form action="/addpayment" method="POST" onsubmit="return check(this)">
 <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
 <p>Saaja: <input type="text" name="recipient" /></p>
 <p>Maksun syy / lisätiedot: <input type="text" name="message" /></p>
@@ -21,6 +21,20 @@
   {% endfor %}
 <p><input type="submit" value="Lisää maksu" /></p>
 </form>
+
+<script>
+function check(form) {
+    if (form.recipient.value.length < 3 || form.recipient.value.length > 100) {
+        alert("Saaja-kentän arvon on oltava 3–100 merkkiä pitkä.")
+        return false;
+    }
+    if (form.message.value.length > 100) {
+        alert("Liian pitkä viesti, viestin maksimipituus on 100 merkkiä.")
+        return false;
+    }
+    return true;
+}
+</script>
 {% else %}
 <p>Sinulla ei ole lupaa nähdä tätä sivua. <a href="/">Aloita kirjautumalla sisään.</a>
 {% endif %}

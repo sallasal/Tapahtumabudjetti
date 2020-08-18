@@ -155,6 +155,10 @@ def addpayment():
     total = request.form["total"]
     date = request.form["paymentdate"]
     message = request.form["message"]
+    if len(recipient) < 3 or len(recipient) > 100:
+        return render_template("error.html", message="Vastaanottaja-kentän arvon pituuden on oltava 3–100 merkkiä.")
+    if len(message) > 100:
+        return render_template("error.html", message="Viesti ei voi olla yli 100 merkkiä pitkä.")
     paymentsubproject = -1
     if "paymentsubproject" in request.form:
         paymentsubproject = request.form["paymentsubproject"]
@@ -228,6 +232,12 @@ def register():
         username = request.form["username"]
         password = request.form["password"]
         email = request.form["email"]
+        if len(username) < 3 or len(username) > 100:
+            return render_template("error.html",message="Tarkista käyttäjänimi. Käyttäjänimessä on oltava 3–100 merkkiä.")
+        if len(password) < 5 or len(username) > 100:
+            return render_template("error.html",message="Tarkista salasana. Salasanassa on oltava 5–100 merkkiä.")
+        if len(email) < 5 or len(email) > 100:
+            return render_template("error.html",message="Tarkista sähköpostiosoite. Sähköpostiosoitteessa on oltava 5–100 merkkiä.")
         if users.register(username,password,email):
             return redirect("/")
         else:
