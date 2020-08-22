@@ -70,15 +70,12 @@ def createsubproject():
 # Route for allowing user to edit subproject values
 @app.route("/editsubprojects/<int:id>", methods=["GET"])
 def editsubprojects(id):
-    allow = False
     project_information = projects.get_project(id)
     subproject_list = subprojects.list_subprojects(id)
     getid = projects.get_userid(id)
     userid1 = getid[0]
     userid2 = users.user_id()
-    if userid1 == userid2:
-        allow = True
-    if not allow:
+    if not userid1 == userid2:
         return render_template("error.html", message="Ei oikeutta muokata osa-alueita. Vain tapahtuman järjestäjällä on oikeus muokata osa-alueita ja kategorioita.")
     else:
         return render_template("editsubprojects.html", project_information = project_information, subproject_list = subproject_list)
@@ -128,7 +125,6 @@ def addcategory():
 # Route for listing all payments in one category
 @app.route("/categorypayments/<int:category_id>", methods=["POST"])
 def categorypayments(category_id):
-    allow = False
     project_id = request.form["project_id"]
     category_name = request.form["category_name"]
     payments_in_category = categories.payments_in_category(category_id)
@@ -136,9 +132,7 @@ def categorypayments(category_id):
     getid = projects.get_userid(project_id)
     userid1 = getid[0]
     userid2 = users.user_id()
-    if userid1 == userid2:
-        allow=True
-    if not allow:
+    if not userid1 == userid2:
         return render_template("error.html", message="Vain tapahtuman järjestäjä voi tarkastella kategoriaan liitettyjä maksuja.")
     else:
         return render_template("categorypayments.html", category_name=category_name, project_id=project_id, payments_in_category=payments_in_category, category_total=category_total)
