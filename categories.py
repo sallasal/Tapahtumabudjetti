@@ -9,7 +9,7 @@ def add_category(name,project_id):
 
 # List all categories with defined project
 def list_categories(project_id):
-    sql = "SELECT id, name FROM categories WHERE project_id=:project_id ORDER BY id ASC"
+    sql = "SELECT id, name FROM categories WHERE project_id=:project_id ORDER BY id"
     result = db.session.execute(sql, {"project_id":project_id})
     category_list = result.fetchall()
     return category_list
