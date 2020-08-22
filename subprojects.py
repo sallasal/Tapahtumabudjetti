@@ -2,7 +2,9 @@ from db import db
 
 # Get full subproject information list, including total sum, for project page
 def list_subprojects(project_id):
-    sql = "SELECT s.id, s.name, s.total, SUM(p.total) FROM payments p RIGHT JOIN subprojects s ON p.subproject=s.id WHERE s.project=:project_id GROUP BY s.id, s.name, s.total"
+    sql = """SELECT s.id, s.name, s.total, SUM(p.total) FROM payments p 
+        RIGHT JOIN subprojects s ON p.subproject=s.id 
+        WHERE s.project=:project_id GROUP BY s.id, s.name, s.total"""
     result = db.session.execute(sql, {"project_id":project_id})
     subproject_list = result.fetchall()
     final_list = []
@@ -38,7 +40,10 @@ def get_grandtotal(project_id):
 
 #List all payments from subproject
 def payments_in_subproject(subproject_id):
-    sql = "SELECT p.recipient, p.message, p.total, p.date, users.name FROM payments p LEFT JOIN users ON users.id=p.userid LEFT JOIN subprojects s ON s.id=p.subproject WHERE p.subproject=:subproject_id"
+    sql = """SELECT p.recipient, p.message, p.total, p.date, users.name FROM payments p 
+        LEFT JOIN users ON users.id=p.userid 
+        LEFT JOIN subprojects s ON s.id=p.subproject 
+        WHERE p.subproject=:subproject_id"""
     result = db.session.execute(sql, {"subproject_id":subproject_id})
     subproject_payments = result.fetchall()
     return subproject_payments

@@ -16,7 +16,12 @@ def list_categories(project_id):
 
 # List all payments in defined category, user name and subroject name included with joins
 def payments_in_category(category_id):
-    sql = "SELECT p.recipient,p.message,p.total,p.date,s.name,u.name FROM payments p LEFT JOIN users u ON p.userid=u.id LEFT JOIN subprojects s ON p.subproject=s.id LEFT JOIN paymentcategory q ON q.payment_id=p.id LEFT JOIN categories c ON c.id=q.category_id WHERE q.payment_id=p.id AND q.category_id=c.id AND category_id=:category_id"
+    sql = """SELECT p.recipient,p.message,p.total,p.date,s.name,u.name FROM payments p 
+        LEFT JOIN users u ON p.userid=u.id 
+        LEFT JOIN subprojects s ON p.subproject=s.id 
+        LEFT JOIN paymentcategory q ON q.payment_id=p.id 
+        LEFT JOIN categories c ON c.id=q.category_id 
+        WHERE q.payment_id=p.id AND q.category_id=c.id AND category_id=:category_id"""
     result = db.session.execute(sql, {"category_id":category_id})
     payments_in_category = result.fetchall()
     return payments_in_category
