@@ -35,8 +35,9 @@
 <p>Olet syöttänyt tapahtumaan maksuja <strong>{{ user_payment_total }}</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
 <ul>
   {% for payment in user_payment_list %}
-    <li><p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}</p>
+    <li>
       <form action="/deletepayment" method="POST">
+      <strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}
       <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
       <input type="hidden" name="payment_id" value="{{ payment[6] }}" />
       <input type="submit" value="Poista maksu" />

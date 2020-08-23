@@ -7,9 +7,10 @@ Sovellusta voi testata Herokussa: https://tapahtumabudjetti.herokuapp.com/.
 TESTIVERSION TIETOKANTA ON TYHJENNETTY 23.8., eli kaikki tätä ennen luodut käyttäjät, tapahtumat ym. on poistettu.
 
 Testatessa kannattaa rekisteröidä itselle oma testikäyttäjä ja luoda tällä testikäyttäjällä uusi tapahtuma.
-Näin pääsee testaamaan sekä tapahtuman järjestäjän ominaisuuksia (omassa tapahtumassa) että muiden käyttäjien tapahtumien käyttäytymistä.
+Näin pääsee testaamaan rekisteröitymistä, tapahtuman järjestäjän ominaisuuksia (omassa tapahtumassa) ja muiden käyttäjien tapahtumien käyttäytymistä.
 
-Sovelluksessa on jo käyttäjien Salla ja Eemeli luomia tapahtumia ja maksuja. Eemelin tiliä voi mennä katselemaan tunnuksilla Eemeli - testieemeli.
+Sovelluksessa on jo käyttäjien Salla ja Eemeli luomia tapahtumia ja maksuja. Eemelin tiliä voi mennä katselemaan tunnuksilla Eemeli - testieemeli. 
+(Eemelin tapahtumassa on jo aika paljon maksuja ym., niin saa ehkä paremman kuvan.)
 
 # Vaatimukset ja laitteet
 
