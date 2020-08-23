@@ -199,6 +199,11 @@ def paymentsbydatedesc(id):
 def paymnetsbeforedate():
     project_id = request.args["project_id"]
     date = request.args["enddate"]
+    getid = projects.get_userid(project_id)
+    userid1 = getid[0]
+    userid2 = users.user_id()
+    if userid1 != userid2:
+        return render_template("error.html", message="Vain tapahtuman järjestäjä voi listata maksut.")
     if date == '':
         return render_template("error.html",message="Syötä päivämäärä, jota varhaisemmat maksut listataan.")
     paymentsbeforedate = payments.paymentsbeforedate(project_id,date)
@@ -209,6 +214,11 @@ def paymnetsbeforedate():
 def paymentsafterdate():
     project_id = request.args["project_id"]
     date = request.args["enddate"]
+    getid = projects.get_userid(project_id)
+    userid1 = getid[0]
+    userid2 = users.user_id()
+    if userid1 != userid2:
+        return render_template("error.html",message="Vain tapahtuman järjestäjä voi listata maksut.")
     if date == '':
         return render_template("error.html",message="Syötä päivämäärä, jota varhaisemmat maksut listataan.")
     paymentsafterdate = payments.paymentsafterdate(project_id,date)
