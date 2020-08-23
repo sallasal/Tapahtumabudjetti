@@ -204,6 +204,16 @@ def paymnetsbeforedate():
     paymentsbeforedate = payments.paymentsbeforedate(project_id,date)
     return render_template("paymentsbeforedate.html", paymentsbeforedate = paymentsbeforedate, project_id=project_id)
 
+# Route for listing payments after defined date
+@app.route("/paymentsafterdate", methods=["GET"])
+def paymentsafterdate():
+    project_id = request.args["project_id"]
+    date = request.args["enddate"]
+    if date == '':
+        return render_template("error.html",message="Syötä päivämäärä, jota varhaisemmat maksut listataan.")
+    paymentsafterdate = payments.paymentsafterdate(project_id,date)
+    return render_template("paymentsafterdate.html", paymentsafterdate = paymentsafterdate, project_id=project_id)
+
 # -----
 # USER AND SESSION ROUTES
 # -----

@@ -62,7 +62,7 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
 <hr />
 <h3>Hallinnoi ja tarkastele kaikkia tapahtuman maksuja</h3>
 
-<p>Tapahtumaan on syötetty yhteensä <strong>{{ count_payments }}</strong> maksua.
+<p>Tapahtumaan on syötetty yhteensä <strong>{{ count_payments }}</strong> maksua. Voit poistaa maksuja listauksissa.
 
 <form action="/paymentsbydate/{{ project_information[0] }}" method="POST">
   <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
@@ -77,9 +77,19 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
 <form action="/paymentsbeforedate" method="GET" onsubmit="return check(this)">
   <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
   Listaa maksut ennen päivää 
-  <input type="date" name="enddate" />
+  <input type="date" name="enddate" />. * 
   <input type="submit" value="Listaa maksut" />
 </form>
+
+<form action="/paymentsafterdate" method="GET" onsubmit="return check(this)">
+  <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+  Listaa maksut päivän
+  <input type="date" name="enddate" />
+  jälkeen. * 
+  <input type="submit" value="Listaa maksut." />
+</form>
+
+<p>* Valittu päivä ei sisälly tuloksiin.</p>
 
 <script>
 function check(form) {

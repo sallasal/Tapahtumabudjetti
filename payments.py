@@ -116,3 +116,15 @@ def paymentsbeforedate(project_id,date):
     result = db.session.execute(sql, {"project_id":project_id,"date":date})
     paymentsbeforedate = result.fetchall()
     return paymentsbeforedate
+
+# List by date all payments from project that are created after defined date
+def paymentsafterdate(project_id,date):
+    sql= """SELECT p.recipient, p.message, p.total, p.date, u.name, s.name, p.id FROM payments p
+        LEFT JOIN users u ON u.id=p.userid
+        LEFT JOIN subprojects s ON s.id=p.subproject
+        WHERE subproject IN (SELECT id FROM subprojects WHERE project=:project_id)
+        AND p.date>:date
+        ORDER BY p.date"""
+    result = db.session.execute(sql, {"project_id":project_id,"date":date})
+    paymentsafterdate = result.fetchall()
+    return paymentsafterdate
