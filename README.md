@@ -4,11 +4,12 @@ Tsoha 2020 -harjoitustyö
 ## Heroku
 Sovellusta voi testata Herokussa: https://tapahtumabudjetti.herokuapp.com/.
 
-HUOM! Älä käytä Herokussa mitään oikeaa sähköpostiosoitetta (jos et halua, että sinuun otetaan tapahtumanjärjestäjänä yhteyttä).
+TESTIVERSION TIETOKANTA ON TYHJENNETTY 23.8., eli kaikki tätä ennen luodut käyttäjät, tapahtumat ym. on poistettu.
 
 Testatessa kannattaa rekisteröidä itselle oma testikäyttäjä ja luoda tällä testikäyttäjällä uusi tapahtuma.
 Näin pääsee testaamaan sekä tapahtuman järjestäjän ominaisuuksia (omassa tapahtumassa) että muiden käyttäjien tapahtumien käyttäytymistä.
-Herokussa on ainakin käyttäjän Salla tapahtumia jo pari testimielessä.
+
+Sovelluksessa on jo käyttäjien Salla ja Eemeli luomia tapahtumia ja maksuja. Eemelin tiliä voi mennä katselemaan tunnuksilla Eemeli - testieemeli.
 
 # Vaatimukset ja laitteet
 
@@ -43,6 +44,7 @@ Kirjautunut käyttäjä puolestaan voi
 * listata tapahtuman, jonka järjestäjä on, maksut osa-alueittain ja tarkastella niitä.
 * listata tapahtuman, jonka järjestäjä on, maksut maksukategorioittain ja tarkastella niitä.
 * listata kaikki oman tapahtuman maksut päivämäärän mukaan nousevasti ja laskevasti
+* listata kaikki oman tapahtuman maksut ennen ja jälkeen määrittelemänsä päivämäärän
 * poistaa omasta tapahtumasta kaikkien maksujen yhteenvedoissa minkä tahansa maksun
 * kirjautua ulos.
 
