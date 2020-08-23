@@ -194,6 +194,16 @@ def paymentsbydatedesc(id):
     payments_by_date_desc = payments.payments_by_date_desc(id)
     return render_template("paymentsbydatedesc.html", payments_by_date_desc=payments_by_date_desc, project_id=project_id)
 
+#Route for listing payments before defined date
+@app.route("/paymentsbeforedate", methods=["GET"])
+def paymnetsbeforedate():
+    project_id = request.args["project_id"]
+    date = request.args["enddate"]
+    if date == '':
+        return render_template("error.html",message="Syötä päivämäärä, jota varhaisemmat maksut listataan.")
+    paymentsbeforedate = payments.paymentsbeforedate(project_id,date)
+    return render_template("paymentsbeforedate.html", paymentsbeforedate = paymentsbeforedate, project_id=project_id)
+
 # -----
 # USER AND SESSION ROUTES
 # -----

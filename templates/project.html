@@ -74,6 +74,23 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
   <input type="submit" value="Listaa maksut päivämäärän mukaan: uusin enisn" />
 </form>
 
+<form action="/paymentsbeforedate" method="GET" onsubmit="return check(this)">
+  <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+  Listaa maksut ennen päivää 
+  <input type="date" name="enddate" />
+  <input type="submit" value="Listaa maksut" />
+</form>
+
+<script>
+function check(form) {
+    if (form.enddate.value == '') {
+        alert("Valitse päivämäärä.")
+        return false;
+    }
+    return true;
+}
+</script>
+
 {% else %}
 <p>Sinulla ei ole lupaa nähdä sivua. <a href="/">Aloita kirjautumalla sisään</a>.
 {% endif %}
