@@ -22,19 +22,11 @@ Osa-alueiden yhteisbudjetti muodostaa koko tapahtuman budjetin. Lisää tapahtum
     <form action="/updatetotal" method="POST">
       <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
       <input type="hidden" name="subproject_id" value="{{ subproject[0] }}" />
-      <p>Uusi summa: <input type="number" name="newtotal" /> <input type="submit" value="Muuta budjetoitu summa" /></p>
+      <p>Uusi summa: <input type="number" name="newtotal" value="{{ subproject[2] }}"/> <input type="submit" value="Muuta budjetoitu summa" /></p>
     </form>
   </li>
 {% endfor %}
 </ul>
-<hr>
-<h3>Lisää uusi lisäkategoria</h3>
-<p>Vapaaehtoiset lisäkategoriat toimivat kuin aihetunnisteet: niiden avulla voit merkitä maksuja esimerkiksi käteiskassamaksuiksi tai ennakkomaksuiksi
-riippumatta siitä, minkä budjetin osa-alueen kautta ne on liitetty tapahtumaan.</p>
-<form action="/addcategory" method="POST" onsubmit="return check(this)">
-  <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
-  <p>Uuden maksukategorian nimi: <input type="text" name="name" /> <input type="submit" value="Lisää maksukategoria" /></p>
-</form>
 
 <script>
 function check(form) {

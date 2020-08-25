@@ -26,6 +26,10 @@
   {% endfor %}
 </ul>
 
+<strong><a href="/editsubprojects/{{ project_information[0] }}">Lisää ja muokkaa projektin osa-alueita.</a></strong>
+
+<hr />
+
 <h3>Lisäkategoriat</h3>
 <p>Lisäkategoriat ovat vapaaehtoisia aihetunnisteita, joita voi tarvittaessa lisätä maksuille.
 Niiden avulla voi seurata esimerkiksi kaikkia ennakkomaksuja tai käteiskassamaksuja 
@@ -43,7 +47,7 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
     </li>
   {% endfor %}
 </ul>
-<strong><a href="/editsubprojects/{{ project_information[0] }}">Lisää ja muokkaa budjetin osa-alueita ja vapaaehtoisia lisäkategorioita</a>.</strong>
+<strong><a href="/createcategories/{{ project_information[0] }}">Lisää vapaaehtoisia lisäkategorioita</a>.</strong>
 <hr />
 <h3>Omat maksusi tapahtumassa</h3>
 <p>Olet syöttänyt tapahtumaan maksuja <strong>{{ user_payment_total }}</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.

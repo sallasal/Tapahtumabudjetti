@@ -147,6 +147,18 @@ def categorypayments(category_id):
     else:
         return render_template("categorypayments.html", category_name=category_name, project_id=project_id, payments_in_category=payments_in_category, category_total=category_total)
 
+# Route for adding new category
+@app.route("/createcategories/<int:id>", methods=["GET"])
+def createcategories(id):
+    project_information = projects.get_project(id)
+    getid = projects.get_userid(id)
+    userid1 = getid[0]
+    userid2 = users.user_id()
+    if not userid1 == userid2:
+        return render_template("error.html", message="Ei oikeutta muokata osa-alueita. Vain tapahtuman järjestäjällä on oikeus muokata osa-alueita ja kategorioita.")
+    else:
+        return render_template("createcategories.html", project_information = project_information)
+
 # -----
 # PAYMENT ROUTES
 # -----

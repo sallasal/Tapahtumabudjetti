@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Muokkaa tapahtuman {{ project_information[1] }} maksukategorioita ja osa-alueita</h2>
+<p><a href="/project/{{ project_information[0] }}">Palaa takaisin tapahtuman sivulle</a></p>
+<h3>Lisää uusi lisäkategoria</h3>
+<p>Vapaaehtoiset lisäkategoriat toimivat kuin aihetunnisteet: niiden avulla voit merkitä maksuja esimerkiksi käteiskassamaksuiksi tai ennakkomaksuiksi
+riippumatta siitä, minkä budjetin osa-alueen kautta ne on liitetty tapahtumaan.</p>
+<form action="/addcategory" method="POST" onsubmit="return check(this)">
+  <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+  <p>Uuden maksukategorian nimi: <input type="text" name="name" /> <input type="submit" value="Lisää maksukategoria" /></p>
+</form>
+
+<script>
+function check(form) {
+    if (form.name.value.length > 100 || form.name.value.length < 3) {
+        alert("Virheellinen nimi. Nimessä on oltava 3–100 merkkiä.");
+        return false;
+    }
+    if (form.total_sum.value == '') {
+        alert("Lisää uudelle osa-alueelle summa.");
+        return false;
+    }
+    return true;
+}
+</script>
+{% endblock %}
