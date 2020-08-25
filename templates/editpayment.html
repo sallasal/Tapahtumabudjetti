@@ -15,7 +15,7 @@
 <p>Maksu on liitetty osaprojektiin {{ subproject }}.</p>
 
 <h3>Muokkaa tietoja</h3>
-<form action="/setrecipient" method="POST">
+<form action="/setrecipient" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="payment_id" value="{{ payment_id }}" />
   <input type="hidden" name="project_id" value="{{ project_id }}" />
   Uusi vastaanottaja:
@@ -23,7 +23,7 @@
   <input type="submit" value="Muuta vastaanottaja" />
 </form>
 
-<form action="/settotal" method="POST">
+<form action="/settotal" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="payment_id" value="{{ payment_id }}" />
   <input type="hidden" name="project_id" value="{{ project_id }}" />
   Uusi summa:
@@ -31,7 +31,7 @@
   <input type="submit" value="Muuta summa" />
 </form>
 
-<form action="/setmessage" method="POST">
+<form action="/setmessage" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="payment_id" value="{{ payment_id }}" />
   <input type="hidden" name="project_id" value="{{ project_id }}" />
   Uusi viesti:
@@ -39,12 +39,26 @@
   <input type="submit" value="Muuta viesti" />
 </form>
 
-<form action="/setdate" method="POST">
+<form action="/setdate" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="payment_id" value="{{ payment_id }}" />
   <input type="hidden" name="project_id" value="{{ project_id }}" />
   Uusi päivämäärä:
   <input type="date" name="newdate" value="{{ date }}" />
   <input type="submit" value="Muuta päivämäärä" />
 </form>
+
+<script>
+function check(form) {
+    if (form.newrecipient.value.length < 3 || form.newrecipient.value.length > 100) {
+        alert("Vastaanottajan nimessä on oltava 3–100 merkkiä.");
+        return false;
+    }
+    if (form.newmessage.value.length > 100) {
+        alert("Viestissä saa olla korkeintaan 100 merkkiä.");
+        return false;
+    }
+    return true;
+}
+</script>
 
 {% endblock %}

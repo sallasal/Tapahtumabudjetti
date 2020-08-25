@@ -259,6 +259,8 @@ def set_recipient():
     payment_id = request.form["payment_id"]
     project_id = request.form["project_id"]
     new_recipient = request.form["newrecipient"]
+    if len(new_recipient) < 3 or len(new_recipient) > 100:
+        return render_template("error.html", message="Vastaanottajan nimessä on oltava 3–100 merkkiä.")
     payments.update_recipient(payment_id, new_recipient)
     return redirect("/project/"+project_id)
 
@@ -277,6 +279,8 @@ def set_message():
     payment_id = request.form["payment_id"]
     project_id = request.form["project_id"]
     new_message = request.form["newmessage"]
+    if len(new_message) > 100:
+        return render_template("error.html", message="Viestissä saa olla korkeintaan 100 merkkiä.")
     payments.update_message(payment_id, new_message)
     return redirect("/project/"+project_id)
 
