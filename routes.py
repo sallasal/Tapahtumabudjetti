@@ -27,8 +27,14 @@ def project(id):
     other_payment_list = payments.list_other_payments(id)
     user_payment_list = payments.list_user_payments(id)
     grandtotal = subprojects.get_grandtotal(id)
+    if grandtotal is None:
+        grandtotal = 0
     payment_grandtotal = payments.get_payment_grandtotal(id)
+    if payment_grandtotal is None:
+        payment_grandtotal = 0
     user_payment_total = payments.user_payment_total(users.user_id(), id)
+    if user_payment_total is None:
+        user_payment_total = 0
     count_payments = payments.count_payments(id)
     if creator_id == users.user_id():
         return render_template("project.html", project_information = project_information, user_information = user_information, subproject_list = subproject_list, category_list = category_list, other_payment_list = other_payment_list, user_payment_list = user_payment_list, grandtotal = grandtotal, payment_grandtotal = payment_grandtotal, user_payment_total=user_payment_total, count_payments=count_payments)
@@ -131,6 +137,8 @@ def categorypayments(category_id):
     category_name = request.form["category_name"]
     payments_in_category = categories.payments_in_category(category_id)
     category_total = categories.category_total(category_id)
+    if category_total is None:
+        category_total = 0
     getid = projects.get_userid(project_id)
     userid1 = getid[0]
     userid2 = users.user_id()
