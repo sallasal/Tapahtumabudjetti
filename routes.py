@@ -236,6 +236,25 @@ def paymentsafterdate():
     paymentsafterdate = payments.paymentsafterdate(project_id,date)
     return render_template("paymentsafterdate.html", paymentsafterdate = paymentsafterdate, project_id=project_id)
 
+# Route for payment edition form
+@app.route("/editpayment/<int:payment_id>", methods=["POST"])
+def editpayment(payment_id):
+    project_id = request.form["project_id"]
+    recipient = request.form["recipient"]
+    total = request.form["total"]
+    subproject = request.form["subproject"]
+    message = request.form["message"]
+    user_name = request.form["user_name"]
+    date = request.form["date"]
+    userid = request.form["user_id"]
+    sessionid = users.user_id()
+    print(userid)
+    print(sessionid)
+    if int(userid) == int(sessionid):
+        return render_template("editpayment.html", project_id=project_id, recipient=recipient, total=total, subproject=subproject, message=message, user_name=user_name, date=date, userid=userid)
+    else:
+        return render_template("error.html", message="Vain maksun luonut käyttäjä voi muokata sitä.")
+
 # -----
 # USER AND SESSION ROUTES
 # -----

@@ -27,7 +27,7 @@ def list_payments(project_id):
 # List all payments from project that are own by user logged in, includes name of subproject of the payment
 def list_user_payments(project_id):
     user_id = users.user_id()
-    sql = """SELECT p.recipient, p.message, p.total, p.date, users.name, s.name, p.id FROM payments p 
+    sql = """SELECT p.recipient, p.message, p.total, p.date, users.name, s.name, p.id, p.userid FROM payments p 
         LEFT JOIN users ON users.id=p.userid 
         LEFT JOIN subprojects s ON s.id=p.subproject 
         WHERE subproject IN (SELECT id FROM subprojects WHERE project=:project_id) AND p.userid=:user_id"""
