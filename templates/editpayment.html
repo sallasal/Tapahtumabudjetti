@@ -5,7 +5,22 @@
 
 <a href="/project/{{ project_id }}">Palaa takaisin projektin sivulle</a>
 
-<p>Maksun tiedot</p>
+<h3>Maksun tiedot</h3>
+<ul>
+  <li><strong>Saaja:</strong> {{ recipient }}
+  <li><strong>Summa:</strong> {{ total }}
+  <li><strong>Viesti:</strong> {{ message }}
+  <li><strong>Päivämäärä:</strong> {{ date }}
+</ul>
+<p>Maksu on liitetty osaprojektiin {{ subproject }}.</p>
 
+<h3>Muokkaa tietoja</h3>
+<form action="/setrecipient" method="POST">
+  <input type="hidden" name="payment_id" value="{{ payment_id }}" />
+  <input type="hidden" name="project_id" value="{{ project_id }}" />
+  Uusi vastaanottaja:
+  <input type="text" name="newrecipient" />
+  <input type="submit" value="Muuta vastaanottaja" />
+</form>
 
 {% endblock %}

@@ -128,3 +128,11 @@ def paymentsafterdate(project_id,date):
     result = db.session.execute(sql, {"project_id":project_id,"date":date})
     paymentsafterdate = result.fetchall()
     return paymentsafterdate
+
+
+# Update recipient
+def updaterecipient(payment_id, newrecipient):
+    sql= "UPDATE payments SET recipient=:newrecipient WHERE id=:payment_id"
+    db.session.execute(sql, {"newrecipient":newrecipient, "payment_id":payment_id})
+    db.session.commit()
+    return True

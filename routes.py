@@ -248,12 +248,20 @@ def editpayment(payment_id):
     date = request.form["date"]
     userid = request.form["user_id"]
     sessionid = users.user_id()
-    print(userid)
-    print(sessionid)
     if int(userid) == int(sessionid):
-        return render_template("editpayment.html", project_id=project_id, recipient=recipient, total=total, subproject=subproject, message=message, user_name=user_name, date=date, userid=userid)
+        return render_template("editpayment.html", project_id=project_id, recipient=recipient, total=total, subproject=subproject, message=message, user_name=user_name, date=date, userid=userid, payment_id=payment_id)
     else:
         return render_template("error.html", message="Vain maksun luonut käyttäjä voi muokata sitä.")
+
+@app.route("/setrecipient", methods=["POST"])
+def setrecipient():
+    payment_id = request.form["payment_id"]
+    project_id = request.form["project_id"]
+    newrecipient = request.form["newrecipient"]
+    if payments.updaterecipient(payment_id, newrecipient):
+        return redirect("/project/"+project_id)
+    else:
+        return render_template("error.html", message="Jokin muutoksessa meni pieleen, yritä uudelleen.")
 
 # -----
 # USER AND SESSION ROUTES
