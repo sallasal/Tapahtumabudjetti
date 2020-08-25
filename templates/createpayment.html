@@ -4,14 +4,17 @@
 {% if session.user_id %}
 <h2>Lisää uusi maksu tapahtumaan {{ project_information[1] }}</h2>
 <p><a href="/project/{{ project_information[0] }}">Palaa takaisin tapahtuman sivulle</a></p>
+
+<p>Tähdellä merkityt tiedot ovat pakollisia.</p>
+
 <form action="/addpayment" method="POST" onsubmit="return check(this)">
 <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
-<p>Saaja: <input type="text" name="recipient" /></p>
+<p>* Saaja: <input type="text" name="recipient" /></p>
 <p>Maksun syy / lisätiedot: <input type="text" name="message" /></p>
 <p>Summa (EUR): <input type="number" name="total" placeholder="1.0" step="0.01" /></p>
-<p>Maksupäivä:</p>
-<input type="date" name="paymentdate" value="2020-08-01" />
-<p>Maksu kuuluu tapahtuman osa-alueeseen (pakollinen)</p>
+<p>* Maksupäivä:</p>
+<input type="date" name="paymentdate" />
+<p>* Maksu kuuluu tapahtuman osa-alueeseen</p>
   {% for subproject in subproject_list %}
     <input type="radio" name="paymentsubproject" value="{{ subproject[0] }}" /> {{ subproject[1] }} <br />
   {% endfor %}
