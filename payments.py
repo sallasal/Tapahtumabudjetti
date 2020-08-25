@@ -129,10 +129,26 @@ def paymentsafterdate(project_id,date):
     paymentsafterdate = result.fetchall()
     return paymentsafterdate
 
-
 # Update recipient
-def updaterecipient(payment_id, newrecipient):
+def update_recipient(payment_id, newrecipient):
     sql= "UPDATE payments SET recipient=:newrecipient WHERE id=:payment_id"
     db.session.execute(sql, {"newrecipient":newrecipient, "payment_id":payment_id})
     db.session.commit()
-    return True
+
+# Update total
+def update_total(payment_id, newtotal):
+    sql= "UPDATE payments SET total=:newtotal WHERE id=:payment_id"
+    db.session.execute(sql, {"newtotal":newtotal, "payment_id":payment_id})
+    db.session.commit()
+
+# Update message
+def update_message(payment_id, newmessage):
+    sql= "UPDATE payments SET message=:newmessage WHERE id=:payment_id"
+    db.session.execute(sql, {"newmessage":newmessage, "payment_id":payment_id})
+    db.session.commit()
+
+# Update date
+def update_date(payment_id, newdate):
+    sql = "UPDATE payments SET date=:newdate WHERE id=:payment_id"
+    db.session.execute(sql, {"newdate":newdate, "payment_id":payment_id})
+    db.session.commit()

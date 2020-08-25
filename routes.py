@@ -253,15 +253,42 @@ def editpayment(payment_id):
     else:
         return render_template("error.html", message="Vain maksun luonut käyttäjä voi muokata sitä.")
 
+# Route for updating payment recipient
 @app.route("/setrecipient", methods=["POST"])
-def setrecipient():
+def set_recipient():
     payment_id = request.form["payment_id"]
     project_id = request.form["project_id"]
-    newrecipient = request.form["newrecipient"]
-    if payments.updaterecipient(payment_id, newrecipient):
-        return redirect("/project/"+project_id)
-    else:
-        return render_template("error.html", message="Jokin muutoksessa meni pieleen, yritä uudelleen.")
+    new_recipient = request.form["newrecipient"]
+    payments.update_recipient(payment_id, new_recipient)
+    return redirect("/project/"+project_id)
+
+# Route for updating payment total
+@app.route("/settotal", methods=["POST"])
+def set_total():
+    payment_id = request.form["payment_id"]
+    project_id = request.form["project_id"]
+    new_total = request.form["newtotal"]
+    payments.update_total(payment_id, new_total)
+    return redirect("/project/"+project_id)
+
+# Route for updating payment message
+@app.route("/setmessage", methods=["POST"])
+def set_message():
+    payment_id = request.form["payment_id"]
+    project_id = request.form["project_id"]
+    new_message = request.form["newmessage"]
+    payments.update_message(payment_id, new_message)
+    return redirect("/project/"+project_id)
+
+# Route for updating payment total
+@app.route("/setdate", methods=["POST"])
+def set_date():
+    payment_id = request.form["payment_id"]
+    project_id = request.form["project_id"]
+    new_date = request.form["newdate"]
+    payments.update_date(payment_id, new_total)
+    return redirect("/project/"+project_id)
+
 
 # -----
 # USER AND SESSION ROUTES
