@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 
+{% block title %}
+- Uusi maksu
+{% endblock %}
+
 {% block content %}
 {% if session.user_id %}
 <h2>Lisää uusi maksu tapahtumaan {{ project_information[1] }}</h2>

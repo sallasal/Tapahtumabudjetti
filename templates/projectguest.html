@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 
+{% block title %}
+- {{ project_information[1] }}
+{% endblock %}
+
 {% block content %}
 {% if session.user_id %}
 <h2>Tapahtumayhteenveto: {{ project_information[1] }}</h2>
