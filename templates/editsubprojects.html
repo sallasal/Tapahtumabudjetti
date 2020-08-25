@@ -42,6 +42,10 @@ function check(form) {
         alert("Virheellinen nimi. Nimessä on oltava 3–100 merkkiä.");
         return false;
     }
+    if (form.total_sum.value == '') {
+        alert("Lisää uudelle osa-alueelle summa.");
+        return false;
+    }
     return true;
 }
 </script>

@@ -32,6 +32,10 @@ function check(form) {
         alert("Liian pitkä viesti, viestin maksimipituus on 100 merkkiä.")
         return false;
     }
+    if (form.paymentdate.value == '') {
+        alert("Lisää maksulle päivämäärä.")
+        return false;
+    }
     return true;
 }
 </script>

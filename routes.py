@@ -60,6 +60,8 @@ def createsubproject():
     project_id = request.form["tapahtumaid"]
     name = request.form["name"]
     total_sum = request.form["total_sum"]
+    if total_sum == '':
+        return render_template("error.html", message="Uutta osa-aluetta ei voi lisätä ilman summaa. Lisää summa.")
     if len(name) < 3 or len(name) > 100:
         return render_template("error.html", message="Virheellinen osa-alueen nimi. Osa-alueen nimen on oltava 3–100 merkkiä pitkä.")
     if subprojects.add_subproject(name,total_sum,project_id):
@@ -149,6 +151,8 @@ def addpayment():
     total = request.form["total"]
     date = request.form["paymentdate"]
     message = request.form["message"]
+    if date == '':
+        return render_template("error.html", message="Lisää maksulle päivämäärä.")
     if len(recipient) < 3 or len(recipient) > 100:
         return render_template("error.html", message="Vastaanottaja-kentän arvon pituuden on oltava 3–100 merkkiä.")
     if len(message) > 100:
