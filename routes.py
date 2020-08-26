@@ -48,6 +48,8 @@ def createproject():
         return render_template("createproject.html")
     if request.method == "POST":
         name = request.form["name"]
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
         if len(name) < 3 or len(name) > 100:
             return render_template("error.html",message="Väärän pituinen nimi. Tapahtuman nimen on oltava 3–100 merkkiä pitkä.")
         project_id = projects.add_project(name)
@@ -66,6 +68,8 @@ def createsubproject():
     project_id = request.form["tapahtumaid"]
     name = request.form["name"]
     total_sum = request.form["total_sum"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     if total_sum == '':
         return render_template("error.html", message="Uutta osa-aluetta ei voi lisätä ilman summaa. Lisää summa.")
     if len(name) < 3 or len(name) > 100:
@@ -94,6 +98,8 @@ def updatetotal():
     project_id = request.form["project_id"]
     subproject_id = request.form["subproject_id"]
     newtotal = request.form["newtotal"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     if subprojects.update_total(subproject_id,newtotal):
         return redirect("/project/"+project_id)
     else:

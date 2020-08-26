@@ -13,6 +13,7 @@
 Osa-alueiden yhteisbudjetti muodostaa koko tapahtuman budjetin. Lisää tapahtumaan uusi budjetin osa-alue:</p>
 <form action="/createsubproject" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="tapahtumaid" value="{{ project_information[0] }}" />
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   <p>Uuden osa-alueen nimi: <input type="text" name="name" /></p>
   <p>Osa-alueelle budjetoitava summa: <input type="number" name="total_sum" /><p>
   <p><input type="submit" value="Lisää osa-alue" /></p>
@@ -26,6 +27,7 @@ Osa-alueiden yhteisbudjetti muodostaa koko tapahtuman budjetin. Lisää tapahtum
     <form action="/updatetotal" method="POST">
       <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
       <input type="hidden" name="subproject_id" value="{{ subproject[0] }}" />
+      <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
       <p>Uusi summa: <input type="number" name="newtotal" value="{{ subproject[2] }}"/> <input type="submit" value="Muuta budjetoitu summa" /></p>
     </form>
   </li>

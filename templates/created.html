@@ -12,6 +12,7 @@ Osa-alueella on nimi ja sille on budjetoitu summa, ja tapahtuman kokonaisbudjett
 
 <form action="/createsubproject" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="tapahtumaid" value="{{ project_id }}" />
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   <p>Ensimmäisen osa-alueen nimi: <input type="text" name="name" /></p>
   <p>Osa-alueelle budjetoitava summa: <input type="number" name="total_sum" /></p>
   <p><input type="submit" value="Lisää osa-alue" /></p>

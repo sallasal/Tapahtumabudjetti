@@ -10,6 +10,7 @@
 <p>Luo uusi tapahtuma syöttämällä tapahtuman nimi alla olevaan kenttään. Sinusta tulee tapahtuman järjestäjä.</p>
 <p>Lisäämisen jälkeen tapahtumaan voi lisätä osa-alueita ja maksuja tapahtuman omalla sivulla.</p>
 <form action="/createproject" method="POST" onsubmit="return check(this)">
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   <p>Uuden tapahtuman nimi:</p>
   <p>
     <input type="text" name="name" />
