@@ -43,7 +43,7 @@ def project(id):
 
 #Route for creating new project and form page for this
 @app.route("/createproject", methods=["GET","POST"])
-def createproject():
+def create_project():
     if request.method == "GET":
         return render_template("createproject.html")
     if request.method == "POST":
@@ -64,7 +64,7 @@ def createproject():
 
 # Route for creating new subproject
 @app.route("/createsubproject", methods=["POST"])
-def createsubproject():
+def create_subproject():
     project_id = request.form["tapahtumaid"]
     name = request.form["name"]
     total_sum = request.form["total_sum"]
@@ -81,7 +81,7 @@ def createsubproject():
 
 # Route for allowing user to edit subproject values
 @app.route("/editsubprojects/<int:id>", methods=["GET"])
-def editsubprojects(id):
+def edit_subprojects(id):
     project_information = projects.get_project(id)
     subproject_list = subprojects.list_subprojects(id)
     getid = projects.get_userid(id)
@@ -94,7 +94,7 @@ def editsubprojects(id):
 
 # Route for update subproject values in db
 @app.route("/updatetotal", methods=["POST"])
-def updatetotal():
+def update_total():
     project_id = request.form["project_id"]
     subproject_id = request.form["subproject_id"]
     newtotal = request.form["newtotal"]
@@ -128,7 +128,7 @@ def subprojectpayments(subproject_id):
 
 # Route for adding new category to db
 @app.route("/addcategory", methods=["POST"])
-def addcategory():
+def add_category():
     project_id = request.form["project_id"]
     name = request.form["name"]
     if session["csrf_token"] != request.form["csrf_token"]:
@@ -161,7 +161,7 @@ def categorypayments(category_id):
 
 # Route for adding new category
 @app.route("/createcategories/<int:id>", methods=["GET"])
-def createcategories(id):
+def create_categories(id):
     project_information = projects.get_project(id)
     getid = projects.get_userid(id)
     userid1 = getid[0]
@@ -177,7 +177,7 @@ def createcategories(id):
 
 # Route for page and form to adding payment
 @app.route("/addpayment", methods=["POST"])
-def addpayment():
+def add_payment():
     project_id = request.form["project_id"]
     recipient = request.form["recipient"]
     total = request.form["total"]
@@ -202,7 +202,7 @@ def addpayment():
 
 # Route for creating new payment in project
 @app.route("/createpayment/<int:id>", methods=["GET"])
-def createpayment(id):
+def create_payment(id):
     project_information = projects.get_project(id)
     subproject_list = subprojects.list_subprojects(id)
     category_list = categories.list_categories(id)
@@ -210,7 +210,7 @@ def createpayment(id):
 
 # Route for deleting payment first from paymentcategories, then from payments
 @app.route("/deletepayment", methods=["POST"])
-def deletepayment():
+def delete_payment():
     payment_id = request.form["payment_id"]
     project_id = request.form["project_id"]
     if session["csrf_token"] != request.form["csrf_token"]:
@@ -222,7 +222,7 @@ def deletepayment():
 
 # Route for listing payments by date, oldest first
 @app.route("/paymentsbydate/<int:id>", methods=["POST"])
-def paymentsbydate(id):
+def payments_by_date(id):
     project_id = request.form["project_id"]
     if session["csrf_token"] != request.form["csrf_token"]:
         abort(403)
@@ -231,7 +231,7 @@ def paymentsbydate(id):
 
 # Route for listing payments by date, newest first
 @app.route("/paymentsbydatedesc/<int:id>", methods=["POST"])
-def paymentsbydatedesc(id):
+def payments_by_date_desc(id):
     project_id = request.form["project_id"]
     if session["csrf_token"] != request.form["csrf_token"]:
         abort(403)
@@ -240,7 +240,7 @@ def paymentsbydatedesc(id):
 
 #Route for listing payments before defined date
 @app.route("/paymentsbeforedate", methods=["GET"])
-def paymnetsbeforedate():
+def payments_before_date():
     project_id = request.args["project_id"]
     date = request.args["enddate"]
     if session["csrf_token"] != request.args["csrf_token"]:
@@ -257,7 +257,7 @@ def paymnetsbeforedate():
 
 # Route for listing payments after defined date
 @app.route("/paymentsafterdate", methods=["GET"])
-def paymentsafterdate():
+def payments_after_date():
     project_id = request.args["project_id"]
     date = request.args["enddate"]
     if session["csrf_token"] != request.args["csrf_token"]:
@@ -274,7 +274,7 @@ def paymentsafterdate():
 
 # Route for payment edition form
 @app.route("/editpayment/<int:payment_id>", methods=["POST"])
-def editpayment(payment_id):
+def edit_payment(payment_id):
     project_id = request.form["project_id"]
     recipient = request.form["recipient"]
     total = request.form["total"]
