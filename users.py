@@ -1,6 +1,7 @@
 from db import db
 from flask import session
 from werkzeug.security import check_password_hash, generate_password_hash
+import os
 
 # Check credentials and if accepted, start new session
 def login(username,password):
@@ -12,6 +13,7 @@ def login(username,password):
     else:
         if check_password_hash(user[0],password):
             session["user_id"] = user[1]
+            session["csrf_token"] = os.urandom(16).hex()
             return True
         else:
             return False

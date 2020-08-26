@@ -302,7 +302,7 @@ def set_date():
     payment_id = request.form["payment_id"]
     project_id = request.form["project_id"]
     new_date = request.form["newdate"]
-    payments.update_date(payment_id, new_total)
+    payments.update_date(payment_id, new_date)
     return redirect("/project/"+project_id)
 
 
