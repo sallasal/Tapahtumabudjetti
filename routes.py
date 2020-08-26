@@ -1,6 +1,6 @@
 from app import app
 import categories, payments, projects, subprojects, users
-from flask import render_template, redirect, session, request
+from flask import render_template, redirect, session, request, abort
 
 # Route for index page
 @app.route("/")
@@ -111,6 +111,8 @@ def subprojectpayments(subproject_id):
     project_id = request.form["project_id"]
     subproject_name = request.form["subproject_name"]
     subproject_total = request.form["subproject_total"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     payments_in_subproject = subprojects.payments_in_subproject(subproject_id)
     getid = projects.get_userid(project_id)
     userid1 = getid[0]
@@ -129,6 +131,8 @@ def subprojectpayments(subproject_id):
 def addcategory():
     project_id = request.form["project_id"]
     name = request.form["name"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     if len(name) < 3 or len(name) > 100:
         return render_template("error.html",message="Virheellinen kategorian nimi. Nimessä on oltava 3–100 merkkiä.")
     if categories.add_category(name,project_id):
@@ -143,6 +147,8 @@ def categorypayments(category_id):
     category_name = request.form["category_name"]
     payments_in_category = categories.payments_in_category(category_id)
     category_total = categories.category_total(category_id)
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     if category_total is None:
         category_total = 0
     getid = projects.get_userid(project_id)

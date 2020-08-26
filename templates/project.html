@@ -21,6 +21,7 @@
     <li>
       <form action="/subprojectpayments/{{ subproject[0] }}" method="POST"><strong>{{ subproject[1] }}.</strong> Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa, 
         maksuja syötetty <strong>{{ subproject[3] }}</strong> euroa. Budjettia jäljellä: <strong>{{ subproject[4] }}</strong> euroa.
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
         <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
         <input type="hidden" name="subproject_name" value="{{ subproject[1] }}" />
         <input type="hidden" name="subproject_total" value="{{ subproject[3] }}" />
@@ -45,6 +46,7 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
       <form action="/categorypayments/{{ category[0] }}" method="POST">
       {{ category[1] }}
       <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
+      <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
       <input type="hidden" name="category_name" value="{{ category[1] }}" />
       <input type="submit" value="Katso kategorian maksut" />
       </form>
