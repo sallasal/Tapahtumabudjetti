@@ -4,15 +4,16 @@ import users
 # Add new payment information to db
 def add_payment(recipient,total,paymentsubproject,category_list,date,message):
     userid = users.user_id()
-    sql = "INSERT INTO payments (userid, subproject, recipient, total, date, message) VALUES (:userid,:subproject,:recipient,:total,:date,:message) RETURNING id"
-    result = db.session.execute(sql, {"userid":userid,"subproject":paymentsubproject,"recipient":recipient,"total":total,"date":date,"message":message})
+    sql = """INSERT INTO payments (userid, subproject, recipient, total, date, message) 
+        VALUES (:userid,:subproject,:recipient,:total,:date,:message) RETURNING id"""
+    result = db.session.execute(sql, {"userid":userid,"subproject":paymentsubproject,"recipient":recipient,
+        "total":total,"date":date,"message":message})
     payment_id = result.fetchone()[0]
     db.session.commit()
     for category in category_list:
         category_sql = "INSERT INTO paymentcategory (payment_id,category_id) VALUES (:payment_id,:category_id)"
         db.session.execute(category_sql, {"payment_id":payment_id,"category_id":int(category)})
     db.session.commit()
-    return True
 
 # List all payments from project, includes names of payment owner and subproject of the payment
 def list_payments(project_id):
@@ -35,7 +36,8 @@ def list_user_payments(project_id):
     user_payment_list = result.fetchall()
     return user_payment_list
 
-# List all payments from project that are NOT own by user logged in, includes names payment owner and subproject of the payment
+# List all payments from project that are NOT own by user logged in,
+# includes names payment owner and subproject of the payment
 def list_other_payments(project_id):
     user_id = users.user_id()
     sql = """SELECT p.recipient, p.message, p.total, p.date, users.name, s.name FROM payments p 

@@ -5,7 +5,6 @@ def add_category(name,project_id):
     sql = "INSERT INTO categories (name,project_id) VALUES (:name,:project_id)"
     db.session.execute(sql, {"name":name,"project_id":project_id})
     db.session.commit()
-    return True
 
 # List all categories with defined project
 def list_categories(project_id):
@@ -28,7 +27,9 @@ def payments_in_category(category_id):
 
 # Get total sum of category payments
 def category_total(category_id):
-    sql = "SELECT SUM(p.total) FROM payments p LEFT JOIN paymentcategory c ON c.payment_id=p.id WHERE c.category_id=:category_id"
+    sql = """SELECT SUM(p.total) FROM payments p 
+        LEFT JOIN paymentcategory c ON c.payment_id=p.id 
+        WHERE c.category_id=:category_id"""
     result = db.session.execute(sql, {"category_id":category_id})
     category_total = result.fetchone()[0]
     return category_total

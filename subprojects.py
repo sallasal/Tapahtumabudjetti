@@ -22,14 +22,12 @@ def add_subproject(name,total_sum,project_id):
     sql = "INSERT INTO subprojects (name,total,project) VALUES (:name,:total_sum,:project_id)"
     db.session.execute(sql, {"name":name,"total_sum":total_sum,"project_id":project_id})
     db.session.commit()
-    return True
 
 # Update budgeted sum for one subproject
 def update_total(subproject_id,newtotal):
     sql = "UPDATE subprojects SET total=:newtotal WHERE id=:subproject_id"
     db.session.execute(sql, {"newtotal":newtotal,"subproject_id":subproject_id})
     db.session.commit()
-    return True
 
 # Get subproject total sum for any project
 def get_grandtotal(project_id):

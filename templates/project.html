@@ -19,8 +19,10 @@
 <ul>
   {% for subproject in subproject_list %}
     <li>
-      <form action="/subprojectpayments/{{ subproject[0] }}" method="POST"><strong>{{ subproject[1] }}.</strong> Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa, 
-        maksuja syötetty <strong>{{ subproject[3] }}</strong> euroa. Budjettia jäljellä: <strong>{{ subproject[4] }}</strong> euroa.
+      <form action="/subprojectpayments/{{ subproject[0] }}" method="POST">
+        <strong>{{ subproject[1] }}.</strong> Osa-alueeseen on  budjetoitu <strong>{{ subproject[2] }}</strong> euroa, 
+        maksuja syötetty <strong>{{ subproject[3] }}</strong> euroa. 
+        Budjettia jäljellä: <strong>{{ subproject[4] }}</strong> euroa.
         <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
         <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
         <input type="hidden" name="subproject_name" value="{{ subproject[1] }}" />
@@ -56,11 +58,13 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
 <strong><a href="/createcategories/{{ project_information[0] }}">Lisää vapaaehtoisia lisäkategorioita</a>.</strong>
 <hr />
 <h3>Omat maksusi tapahtumassa</h3>
-<p>Olet syöttänyt tapahtumaan maksuja <strong>{{ user_payment_total }}</strong> euron edestä. <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
+<p>Olet syöttänyt tapahtumaan maksuja <strong>{{ user_payment_total }}</strong> euron edestä. 
+  <a href="/createpayment/{{ project_information[0] }}">Lisää uusi maksu</a>.
 <ul>
   {% for payment in user_payment_list %}
     <li>
-      <p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}
+      <p><strong>Saaja: {{ payment[0] }}</strong> | Summa (EUR): {{ payment[2] }} | Osa-alue: {{ payment[5] }} 
+        | Viesti: {{ payment[1] }} | Maksun luonut käyttäjä: {{ payment[4] }} | Päivämäärä: {{ payment[3] }}
       <form action="/deletepayment" method="POST" class="inline">
         <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
         <input type="hidden" name="payment_id" value="{{ payment[6] }}" />
