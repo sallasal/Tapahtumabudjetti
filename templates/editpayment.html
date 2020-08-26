@@ -22,6 +22,7 @@
 <form action="/setrecipient" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="payment_id" value="{{ payment_id }}" />
   <input type="hidden" name="project_id" value="{{ project_id }}" />
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   Uusi vastaanottaja:
   <input type="text" name="newrecipient" />
   <input type="submit" value="Muuta vastaanottaja" />
@@ -30,6 +31,7 @@
 <form action="/settotal" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="payment_id" value="{{ payment_id }}" />
   <input type="hidden" name="project_id" value="{{ project_id }}" />
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   Uusi summa:
   <input type="number" name="newtotal" placeholder="1.0" step="0.01" value="{{ total }}" />
   <input type="submit" value="Muuta summa" />
@@ -38,6 +40,7 @@
 <form action="/setmessage" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="payment_id" value="{{ payment_id }}" />
   <input type="hidden" name="project_id" value="{{ project_id }}" />
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   Uusi viesti:
   <input type="text" name="newmessage" />
   <input type="submit" value="Muuta viesti" />
@@ -46,6 +49,7 @@
 <form action="/setdate" method="POST" onsubmit="return check(this)">
   <input type="hidden" name="payment_id" value="{{ payment_id }}" />
   <input type="hidden" name="project_id" value="{{ project_id }}" />
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   Uusi päivämäärä:
   <input type="date" name="newdate" value="{{ date }}" />
   <input type="submit" value="Muuta päivämäärä" />

@@ -224,6 +224,8 @@ def deletepayment():
 @app.route("/paymentsbydate/<int:id>", methods=["POST"])
 def paymentsbydate(id):
     project_id = request.form["project_id"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     payments_by_date = payments.payments_by_date(id)
     return render_template("paymentsbydate.html", payments_by_date=payments_by_date, project_id=project_id)
 
@@ -231,6 +233,8 @@ def paymentsbydate(id):
 @app.route("/paymentsbydatedesc/<int:id>", methods=["POST"])
 def paymentsbydatedesc(id):
     project_id = request.form["project_id"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     payments_by_date_desc = payments.payments_by_date_desc(id)
     return render_template("paymentsbydatedesc.html", payments_by_date_desc=payments_by_date_desc, project_id=project_id)
 
@@ -239,6 +243,8 @@ def paymentsbydatedesc(id):
 def paymnetsbeforedate():
     project_id = request.args["project_id"]
     date = request.args["enddate"]
+    if session["csrf_token"] != request.args["csrf_token"]:
+        abort(403)
     getid = projects.get_userid(project_id)
     userid1 = getid[0]
     userid2 = users.user_id()
@@ -254,6 +260,8 @@ def paymnetsbeforedate():
 def paymentsafterdate():
     project_id = request.args["project_id"]
     date = request.args["enddate"]
+    if session["csrf_token"] != request.args["csrf_token"]:
+        abort(403)
     getid = projects.get_userid(project_id)
     userid1 = getid[0]
     userid2 = users.user_id()
@@ -275,6 +283,8 @@ def editpayment(payment_id):
     user_name = request.form["user_name"]
     date = request.form["date"]
     userid = request.form["user_id"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     sessionid = users.user_id()
     if int(userid) == int(sessionid):
         return render_template("editpayment.html", project_id=project_id, recipient=recipient, total=total, subproject=subproject, message=message, user_name=user_name, date=date, userid=userid, payment_id=payment_id)
@@ -287,6 +297,8 @@ def set_recipient():
     payment_id = request.form["payment_id"]
     project_id = request.form["project_id"]
     new_recipient = request.form["newrecipient"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     if len(new_recipient) < 3 or len(new_recipient) > 100:
         return render_template("error.html", message="Vastaanottajan nimessä on oltava 3–100 merkkiä.")
     payments.update_recipient(payment_id, new_recipient)
@@ -298,6 +310,8 @@ def set_total():
     payment_id = request.form["payment_id"]
     project_id = request.form["project_id"]
     new_total = request.form["newtotal"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     payments.update_total(payment_id, new_total)
     return redirect("/project/"+project_id)
 
@@ -307,6 +321,8 @@ def set_message():
     payment_id = request.form["payment_id"]
     project_id = request.form["project_id"]
     new_message = request.form["newmessage"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     if len(new_message) > 100:
         return render_template("error.html", message="Viestissä saa olla korkeintaan 100 merkkiä.")
     payments.update_message(payment_id, new_message)
@@ -318,6 +334,8 @@ def set_date():
     payment_id = request.form["payment_id"]
     project_id = request.form["project_id"]
     new_date = request.form["newdate"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     payments.update_date(payment_id, new_date)
     return redirect("/project/"+project_id)
 
