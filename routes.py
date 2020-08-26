@@ -183,6 +183,8 @@ def addpayment():
     total = request.form["total"]
     date = request.form["paymentdate"]
     message = request.form["message"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     if date == '':
         return render_template("error.html", message="Lisää maksulle päivämäärä.")
     if len(recipient) < 3 or len(recipient) > 100:
@@ -198,7 +200,7 @@ def addpayment():
     else:
         return render_template("error.html",message="Maksun lisääminen ei onnistunut. Tarkista arvot ja yritä uudelleen.")
 
-# Route for creating a new category in project
+# Route for creating new payment in project
 @app.route("/createpayment/<int:id>", methods=["GET"])
 def createpayment(id):
     project_information = projects.get_project(id)
@@ -211,6 +213,8 @@ def createpayment(id):
 def deletepayment():
     payment_id = request.form["payment_id"]
     project_id = request.form["project_id"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     if payments.delete_payment(payment_id):
         return redirect("/project/"+project_id)
     else:

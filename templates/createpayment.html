@@ -12,6 +12,7 @@
 <p>Tähdellä merkityt tiedot ovat pakollisia.</p>
 
 <form action="/addpayment" method="POST" onsubmit="return check(this)">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
 <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
 <p>* Saaja: <input type="text" name="recipient" /></p>
 <p>Maksun syy / lisätiedot: <input type="text" name="message" /></p>

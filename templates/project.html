@@ -64,6 +64,7 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
       <form action="/deletepayment" method="POST" class="inline">
         <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
         <input type="hidden" name="payment_id" value="{{ payment[6] }}" />
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
         <input type="submit" value="Poista maksu" />
       </form>
       <form action="/editpayment/{{ payment[6] }}" method="POST" class="inline">
