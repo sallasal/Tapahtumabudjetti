@@ -243,7 +243,11 @@ def payments_by_date(id):
     if session["csrf_token"] != request.form["csrf_token"]:
         abort(403)
     payments_by_date = payments.payments_by_date(id)
-    return render_template("paymentsbydate.html", payments_by_date=payments_by_date, project_id=project_id)
+    headlines = ('Saaja','Summa','Viesti','Osa-alue','Käyttäjä','Pvm')
+    if payments_by_date == []:
+        headlines = []
+    return render_template("paymentsbydate.html", payments_by_date=payments_by_date, project_id=project_id,
+        headlines=headlines)
 
 # Route for listing payments by date, newest first
 @app.route("/paymentsbydatedesc/<int:id>", methods=["POST"])
@@ -252,8 +256,11 @@ def payments_by_date_desc(id):
     if session["csrf_token"] != request.form["csrf_token"]:
         abort(403)
     payments_by_date_desc = payments.payments_by_date_desc(id)
+    headlines = ('Saaja','Summa','Viesti','Osa-alue','Käyttäjä','Pvm')
+    if payments_by_date_desc == []:
+        headlines = []
     return render_template("paymentsbydatedesc.html", payments_by_date_desc=payments_by_date_desc, 
-        project_id=project_id)
+        project_id=project_id, headlines=headlines)
 
 #Route for listing payments before defined date
 @app.route("/paymentsbeforedate", methods=["GET"])
@@ -270,7 +277,11 @@ def payments_before_date():
     if date == '':
         return render_template("error.html",message="Syötä päivämäärä, jota varhaisemmat maksut listataan.")
     paymentsbeforedate = payments.paymentsbeforedate(project_id,date)
-    return render_template("paymentsbeforedate.html", paymentsbeforedate = paymentsbeforedate, project_id=project_id)
+    headlines = ('Saaja','Summa','Viesti','Osa-alue','Käyttäjä','Pvm')
+    if paymentsbeforedate == []:
+        headlines = []
+    return render_template("paymentsbeforedate.html", paymentsbeforedate = paymentsbeforedate, project_id=project_id,
+        headlines=headlines)
 
 # Route for listing payments after defined date
 @app.route("/paymentsafterdate", methods=["GET"])
@@ -287,7 +298,11 @@ def payments_after_date():
     if date == '':
         return render_template("error.html",message="Syötä päivämäärä, jota varhaisemmat maksut listataan.")
     paymentsafterdate = payments.paymentsafterdate(project_id,date)
-    return render_template("paymentsafterdate.html", paymentsafterdate = paymentsafterdate, project_id=project_id)
+    headlines = ('Saaja','Summa','Viesti','Osa-alue','Käyttäjä','Pvm')
+    if paymentsafterdate == []:
+        headlines = []
+    return render_template("paymentsafterdate.html", paymentsafterdate = paymentsafterdate, project_id=project_id,
+        headlines=headlines)
 
 # Route for payment edition form
 @app.route("/editpayment/<int:payment_id>", methods=["POST"])
