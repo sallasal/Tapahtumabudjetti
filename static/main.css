@@ -48,7 +48,7 @@ form {
 
 input {
     background-color: #fff;
-    color: #41404
+    color: #414042;
 }
 
 input[type=submit] {
@@ -76,9 +76,19 @@ div {
     border-radius: 2em;
 }
 
+.handle_overflow {
+    overflow-x: auto;
+}
+
 hr {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 156, 130, 1), rgba(0, 0, 0, 0));
     margin: 20px;
+}
+
+table {
+    width: 100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
