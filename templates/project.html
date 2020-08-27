@@ -90,6 +90,8 @@ riippumatta siitä, minkä osa-alueen kautta maksu on liitetty tapahtuman budjet
         <input type="hidden" name="user_id" value="{{ payment[7] }}" />
         <input type="submit" value="Muokkaa maksua" />
       </form>
+      </td>
+      <td>
       <form action="/deletepayment" method="POST" class="inline">
         <input type="hidden" name="project_id" value="{{ project_information[0] }}" />
         <input type="hidden" name="payment_id" value="{{ payment[6] }}" />
