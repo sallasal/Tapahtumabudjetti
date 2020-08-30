@@ -37,7 +37,7 @@ Kirjautunut käyttäjä puolestaan voi
 * lisätä tapahtumaan, jonka järjestäjä on, osaprojekteja ja muokata niihin budjetoituja summia
 * lisätä tapahtumaan, jonka järjestäjä on, maksukategorioita
 * lisätä maksun kenen tahansa järjestämään tapahtumaan
-* muokata omia maksujaan missä tahansa tapahtumassa
+* muokata omia maksujaan (vastaanottaja, summa, viesti, päivämäärä) missä tahansa tapahtumassa
 * poistaa omia maksujaan mistä tahansa tapahtumasta
 * nähdä tapahtumasivulla tapahtumaan budjetoidun kokonaissumman sekä tähän mennessä tapahtuman maksuista kertyneen summan
 * verrata osaprojektin maksimibudjettia ja tähän mennessä syötettyjen maksujen summaa sekä nähdä tiedon budjetin alituksesta tai ylityksestä.
@@ -47,8 +47,6 @@ Kirjautunut käyttäjä puolestaan voi
 * listata kaikki oman tapahtuman maksut ennen ja jälkeen määrittelemänsä päivämäärän
 * poistaa omasta tapahtumasta kaikkien maksujen yhteenvedoissa minkä tahansa maksun
 * kirjautua ulos.
-
-Lisäillään vielä kokonaissummia sekä erilaisia yhteenvetomahdollisuuksia tapahtuman järjestäjälle.
 
 ## Myöhempiä laajennusmahdollisuuksia
 Sovellus toimii suurin piirtein tällaisenaan esimerkiksi ainejärjestön tai muun yhden tapahtumia järjestävän joukon sisällä. 
