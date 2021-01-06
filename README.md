@@ -1,6 +1,12 @@
 # Tapahtumabudjetti
 Tsoha 2020 -harjoitustyö
 
+## Briefly in English
+
+This is a school project for Database application course (4 credits, Computer Science, University of Helsinki).
+
+See the project in https://tapahtumabudjetti.herokuapp.com/. You can create your own test user in Rekisteröidy view or use test user Eemeli (pw: testieemeli).
+
 ## Heroku
 Sovellusta voi testata Herokussa: https://tapahtumabudjetti.herokuapp.com/.
 
