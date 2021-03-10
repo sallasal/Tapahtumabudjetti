@@ -22,6 +22,10 @@ Sovelluksen käyttämät kirjastot on listattu tiedostossa requirements.txt.
 
 Sovellus toimii myös mobiilissa.
 
+## Esimerkki layoutista
+
+![Esimerkki sovelluksen layoutista](https://github.com/sallasal/Tapahtumabudjetti/blob/master/layout.png)
+
 ## Sovelluksen tarkoitus
 Sovellus on tarkoitettu tilanteeseen, jossa joukko ihmisiä järjestää tapahtumaa. Sovellus sopii esimerkiksi suurten juhlien tai järjestötapahtumien järjestäjäjoukoille.
 Sovelluksen avulla voi budjetoida koko tapahtuman ja sen osa-alueet (esim. ruoka, koristelu, ohjelma) sekä seurata toteutuneita maksuja käyttäjittäin ja osa-alueittain.
@@ -58,7 +62,3 @@ Kirjautunut käyttäjä puolestaan voi
 Sovellus toimii suurin piirtein tällaisenaan esimerkiksi ainejärjestön tai muun yhden tapahtumia järjestävän joukon sisällä. 
 Jos käyttäjäkunta olisi useampi erillinen järjestäjäjoukko, sovelluksen käyttäjänhallintaa voisi kehittää vielä niin, että kullekin tapahtumalle määritetään järjestäjäjoukko, jota hallinnoi järjestäjä.
 Tällöin vain järjestäjäjoukko näkisi tapahtuman tiedot.
-
-## Esimerkki layoutista
-
-![Esimerkki sovelluksen layoutista](https://github.com/sallasal/Tapahtumabudjetti/blob/master/layout.png)
