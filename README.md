@@ -28,7 +28,7 @@ Sovelluksen avulla voi budjetoida koko tapahtuman ja sen osa-alueet (esim. ruoka
 
 Lisäksi maksut kategorisoidaan tarvittaessa erikseen seurattaviin kulukategorioihin (esim. varausmaksu, käteiskassan maksu, kuititon kulu), ja maksuja voi tarkastella näistä kategorioista käsin.
 
-## Kehityksen tilanne
+## Toteutetut ominaisuudet
 Sovelluksen taulut ja lisäystoiminnallisuudet on toteutettu. Kirjautuminen on toteutettu ja sovellus näyttää erilaiselta kullekin kirjautuneelle käyttäjälle. Tiedonhakua monipuolistetaan vielä paljon.
 
 Tiivistetysti: kirjautumaton käyttäjä voi ohjelman tämänhetkisessä versiossa
@@ -54,7 +54,11 @@ Kirjautunut käyttäjä puolestaan voi
 * poistaa omasta tapahtumasta kaikkien maksujen yhteenvedoissa minkä tahansa maksun
 * kirjautua ulos.
 
-## Myöhempiä laajennusmahdollisuuksia
+## Laajennusmahdollisuuksia
 Sovellus toimii suurin piirtein tällaisenaan esimerkiksi ainejärjestön tai muun yhden tapahtumia järjestävän joukon sisällä. 
 Jos käyttäjäkunta olisi useampi erillinen järjestäjäjoukko, sovelluksen käyttäjänhallintaa voisi kehittää vielä niin, että kullekin tapahtumalle määritetään järjestäjäjoukko, jota hallinnoi järjestäjä.
 Tällöin vain järjestäjäjoukko näkisi tapahtuman tiedot.
+
+## Esimerkki layoutista
+
+![Esimerkki sovelluksen layoutista](https://github.com/sallasal/Tapahtumabudjetti/blob/master/layout.png)
